@@ -28,7 +28,7 @@ The syllabus is available [here](syllabus.md). Please read it carefully to under
 - Felix	Fu - OH Tuesdays, 14:00-15:00 in ICCS X150 table 1
 - Neo Ghassemi - OH Wednesdays, 13:00-14:00 in ICCS X141
 - Zoe Harris
-- Zheng He - OH Fridays, 16:00-17:00 DEMCO table 6
+- Zheng He - OH Mondays, 16:00-17:00 DEMCO table 6
 - Mishaal Kazmi
 - Kanwal Mehreen
 - Himanshu Mishra
