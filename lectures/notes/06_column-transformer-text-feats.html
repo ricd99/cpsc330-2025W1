@@ -2087,6 +2087,22 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct</span><span class="o">.</span><span class="n">named_transformers_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;standardscaler&#39;: StandardScaler(),
+ &#39;passthrough&#39;: FunctionTransformer(accept_sparse=True, check_inverse=False,
+                     feature_names_out=&#39;one-to-one&#39;),
+ &#39;onehotencoder&#39;: OneHotEncoder(),
+ &#39;drop&#39;: &#39;drop&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">numeric_feats</span>
     <span class="o">+</span> <span class="n">passthrough_feats</span>    
@@ -2115,25 +2131,33 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the order of the columns in the transformed data depends upon the order of the features we pass to the <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> and can be different than the order of the features in the original dataframe.</p>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> 1.0 and later, you can directly call <code class="docutils literal notranslate"><span class="pre">get_feature_names_out</span></code> on a fitted ColumnTransformer (including those created with <code class="docutils literal notranslate"><span class="pre">make_column_transformer</span></code>) to get the output feature names. The names typically include the original feature names, and when applicable, category labels or transformer prefixes (e.g., <code class="docutils literal notranslate"><span class="pre">nehotencoder__major_Computer</span> <span class="pre">Science</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct</span><span class="o">.</span><span class="n">named_transformers_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">column_names</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;standardscaler&#39;: StandardScaler(),
- &#39;passthrough&#39;: FunctionTransformer(accept_sparse=True, check_inverse=False,
-                     feature_names_out=&#39;one-to-one&#39;),
- &#39;onehotencoder&#39;: OneHotEncoder(),
- &#39;drop&#39;: &#39;drop&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;standardscaler__university_years&#39;, &#39;standardscaler__lab1&#39;,
+       &#39;standardscaler__lab3&#39;, &#39;standardscaler__lab4&#39;,
+       &#39;standardscaler__quiz1&#39;, &#39;passthrough__ml_experience&#39;,
+       &#39;onehotencoder__major_Biology&#39;,
+       &#39;onehotencoder__major_Computer Science&#39;,
+       &#39;onehotencoder__major_Economics&#39;,
+       &#39;onehotencoder__major_Linguistics&#39;,
+       &#39;onehotencoder__major_Mathematics&#39;,
+       &#39;onehotencoder__major_Mechanical Engineering&#39;,
+       &#39;onehotencoder__major_Physics&#39;, &#39;onehotencoder__major_Psychology&#39;],
+      dtype=object)
 </pre></div>
 </div>
 </div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that the order of the columns in the transformed data depends upon the order of the features we pass to the <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> and can be different than the order of the features in the original dataframe.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2160,20 +2184,20 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>university_years</th>
-      <th>lab1</th>
-      <th>lab3</th>
-      <th>lab4</th>
-      <th>quiz1</th>
-      <th>ml_experience</th>
-      <th>major_Biology</th>
-      <th>major_Computer Science</th>
-      <th>major_Economics</th>
-      <th>major_Linguistics</th>
-      <th>major_Mathematics</th>
-      <th>major_Mechanical Engineering</th>
-      <th>major_Physics</th>
-      <th>major_Psychology</th>
+      <th>standardscaler__university_years</th>
+      <th>standardscaler__lab1</th>
+      <th>standardscaler__lab3</th>
+      <th>standardscaler__lab4</th>
+      <th>standardscaler__quiz1</th>
+      <th>passthrough__ml_experience</th>
+      <th>onehotencoder__major_Biology</th>
+      <th>onehotencoder__major_Computer Science</th>
+      <th>onehotencoder__major_Economics</th>
+      <th>onehotencoder__major_Linguistics</th>
+      <th>onehotencoder__major_Mathematics</th>
+      <th>onehotencoder__major_Mechanical Engineering</th>
+      <th>onehotencoder__major_Physics</th>
+      <th>onehotencoder__major_Psychology</th>
     </tr>
   </thead>
   <tbody>
@@ -5402,38 +5426,8 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <p>How to get feature names of the transformed data?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">numeric_feats</span>
-    <span class="o">+</span> <span class="n">passthrough_feats</span>    
-    <span class="o">+</span> <span class="n">ct</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">column_names</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;university_years&#39;,
- &#39;lab1&#39;,
- &#39;lab2&#39;,
- &#39;lab3&#39;,
- &#39;lab4&#39;,
- &#39;quiz1&#39;,
- &#39;ml_experience&#39;,
- &#39;major_Biology&#39;,
- &#39;major_Computer Science&#39;,
- &#39;major_Economics&#39;,
- &#39;major_Linguistics&#39;,
- &#39;major_Mathematics&#39;,
- &#39;major_Mechanical Engineering&#39;,
- &#39;major_Physics&#39;,
- &#39;major_Psychology&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ct</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -5477,21 +5471,21 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>university_years</th>
-      <th>lab1</th>
-      <th>lab2</th>
-      <th>lab3</th>
-      <th>lab4</th>
-      <th>quiz1</th>
-      <th>ml_experience</th>
-      <th>major_Biology</th>
-      <th>major_Computer Science</th>
-      <th>major_Economics</th>
-      <th>major_Linguistics</th>
-      <th>major_Mathematics</th>
-      <th>major_Mechanical Engineering</th>
-      <th>major_Physics</th>
-      <th>major_Psychology</th>
+      <th>pipeline__university_years</th>
+      <th>pipeline__lab1</th>
+      <th>pipeline__lab2</th>
+      <th>pipeline__lab3</th>
+      <th>pipeline__lab4</th>
+      <th>pipeline__quiz1</th>
+      <th>passthrough__ml_experience</th>
+      <th>onehotencoder__major_Biology</th>
+      <th>onehotencoder__major_Computer Science</th>
+      <th>onehotencoder__major_Economics</th>
+      <th>onehotencoder__major_Linguistics</th>
+      <th>onehotencoder__major_Mathematics</th>
+      <th>onehotencoder__major_Mechanical Engineering</th>
+      <th>onehotencoder__major_Physics</th>
+      <th>onehotencoder__major_Psychology</th>
     </tr>
   </thead>
   <tbody>
@@ -7519,33 +7513,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">numeric_feats</span>
-    <span class="o">+</span> <span class="n">ordinal_feats</span>
-    <span class="o">+</span> <span class="n">passthrough_feats</span>    
-    <span class="o">+</span> <span class="n">ct</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="p">)</span>
-<span class="n">column_names</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;university_years&#39;,
- &#39;lab1&#39;,
- &#39;lab2&#39;,
- &#39;lab3&#39;,
- &#39;lab4&#39;,
- &#39;quiz1&#39;,
- &#39;class_attendance&#39;,
- &#39;ml_experience&#39;,
- &#39;major_Biology&#39;,
- &#39;major_Computer Science&#39;,
- &#39;major_Economics&#39;,
- &#39;major_Linguistics&#39;,
- &#39;major_Mathematics&#39;,
- &#39;major_Mechanical Engineering&#39;,
- &#39;major_Physics&#39;,
- &#39;major_Psychology&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7575,22 +7543,22 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>university_years</th>
-      <th>lab1</th>
-      <th>lab2</th>
-      <th>lab3</th>
-      <th>lab4</th>
-      <th>quiz1</th>
-      <th>class_attendance</th>
-      <th>ml_experience</th>
-      <th>major_Biology</th>
-      <th>major_Computer Science</th>
-      <th>major_Economics</th>
-      <th>major_Linguistics</th>
-      <th>major_Mathematics</th>
-      <th>major_Mechanical Engineering</th>
-      <th>major_Physics</th>
-      <th>major_Psychology</th>
+      <th>pipeline__university_years</th>
+      <th>pipeline__lab1</th>
+      <th>pipeline__lab2</th>
+      <th>pipeline__lab3</th>
+      <th>pipeline__lab4</th>
+      <th>pipeline__quiz1</th>
+      <th>ordinalencoder__class_attendance</th>
+      <th>passthrough__ml_experience</th>
+      <th>onehotencoder__major_Biology</th>
+      <th>onehotencoder__major_Computer Science</th>
+      <th>onehotencoder__major_Economics</th>
+      <th>onehotencoder__major_Linguistics</th>
+      <th>onehotencoder__major_Mathematics</th>
+      <th>onehotencoder__major_Mechanical Engineering</th>
+      <th>onehotencoder__major_Physics</th>
+      <th>onehotencoder__major_Psychology</th>
     </tr>
   </thead>
   <tbody>
@@ -8097,36 +8065,36 @@ ValueError: Found unknown categories [&#39;Biology&#39;] in column 0 during tran
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.004911</td>
-      <td>0.002185</td>
+      <td>0.004553</td>
+      <td>0.001883</td>
       <td>1.00</td>
       <td>0.937500</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.003475</td>
-      <td>0.001826</td>
+      <td>0.002893</td>
+      <td>0.001615</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003001</td>
-      <td>0.001771</td>
+      <td>0.003439</td>
+      <td>0.001590</td>
       <td>0.50</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.002951</td>
-      <td>0.001596</td>
+      <td>0.002805</td>
+      <td>0.001529</td>
       <td>0.75</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.002974</td>
-      <td>0.009169</td>
+      <td>0.002827</td>
+      <td>0.008406</td>
       <td>NaN</td>
       <td>1.000000</td>
     </tr>
@@ -9150,36 +9118,36 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.004722</td>
-      <td>0.002284</td>
+      <td>0.005090</td>
+      <td>0.002576</td>
       <td>1.00</td>
       <td>0.937500</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.004370</td>
-      <td>0.001857</td>
+      <td>0.003732</td>
+      <td>0.001948</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.004301</td>
-      <td>0.002006</td>
+      <td>0.002951</td>
+      <td>0.001596</td>
       <td>0.50</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003932</td>
-      <td>0.001741</td>
+      <td>0.003082</td>
+      <td>0.001553</td>
       <td>0.75</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003612</td>
-      <td>0.002149</td>
+      <td>0.003011</td>
+      <td>0.001594</td>
       <td>0.75</td>
       <td>1.000000</td>
     </tr>
@@ -10410,36 +10378,36 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.005331</td>
-      <td>0.002514</td>
+      <td>0.005207</td>
+      <td>0.002402</td>
       <td>1.00</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.004900</td>
-      <td>0.002013</td>
+      <td>0.003368</td>
+      <td>0.001843</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003875</td>
-      <td>0.001962</td>
+      <td>0.003481</td>
+      <td>0.001833</td>
       <td>0.50</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003368</td>
-      <td>0.001870</td>
+      <td>0.003287</td>
+      <td>0.001781</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003861</td>
-      <td>0.001922</td>
+      <td>0.003310</td>
+      <td>0.001778</td>
       <td>0.75</td>
       <td>1.000000</td>
     </tr>
@@ -12673,46 +12641,22 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span>
-    <span class="n">categorical_features</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;ocean_proximity_&lt;1H OCEAN&#39;, &#39;ocean_proximity_INLAND&#39;,
-       &#39;ocean_proximity_ISLAND&#39;, &#39;ocean_proximity_NEAR BAY&#39;,
-       &#39;ocean_proximity_NEAR OCEAN&#39;], dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Combining this with the numeric feature names gives us all the column names:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="n">numeric_features</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span>
-    <span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span>
-        <span class="n">categorical_features</span>
-    <span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">column_names</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;longitude&#39;,
- &#39;latitude&#39;,
- &#39;housing_median_age&#39;,
- &#39;households&#39;,
- &#39;median_income&#39;,
- &#39;rooms_per_household&#39;,
- &#39;bedrooms_per_household&#39;,
- &#39;population_per_household&#39;,
- &#39;ocean_proximity_&lt;1H OCEAN&#39;,
- &#39;ocean_proximity_INLAND&#39;,
- &#39;ocean_proximity_ISLAND&#39;,
- &#39;ocean_proximity_NEAR BAY&#39;,
- &#39;ocean_proximity_NEAR OCEAN&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;pipeline__longitude&#39;, &#39;pipeline__latitude&#39;,
+       &#39;pipeline__housing_median_age&#39;, &#39;pipeline__households&#39;,
+       &#39;pipeline__median_income&#39;, &#39;pipeline__rooms_per_household&#39;,
+       &#39;pipeline__bedrooms_per_household&#39;,
+       &#39;pipeline__population_per_household&#39;,
+       &#39;onehotencoder__ocean_proximity_&lt;1H OCEAN&#39;,
+       &#39;onehotencoder__ocean_proximity_INLAND&#39;,
+       &#39;onehotencoder__ocean_proximity_ISLAND&#39;,
+       &#39;onehotencoder__ocean_proximity_NEAR BAY&#39;,
+       &#39;onehotencoder__ocean_proximity_NEAR OCEAN&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -12743,19 +12687,19 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>housing_median_age</th>
-      <th>households</th>
-      <th>median_income</th>
-      <th>rooms_per_household</th>
-      <th>bedrooms_per_household</th>
-      <th>population_per_household</th>
-      <th>ocean_proximity_&lt;1H OCEAN</th>
-      <th>ocean_proximity_INLAND</th>
-      <th>ocean_proximity_ISLAND</th>
-      <th>ocean_proximity_NEAR BAY</th>
-      <th>ocean_proximity_NEAR OCEAN</th>
+      <th>pipeline__longitude</th>
+      <th>pipeline__latitude</th>
+      <th>pipeline__housing_median_age</th>
+      <th>pipeline__households</th>
+      <th>pipeline__median_income</th>
+      <th>pipeline__rooms_per_household</th>
+      <th>pipeline__bedrooms_per_household</th>
+      <th>pipeline__population_per_household</th>
+      <th>onehotencoder__ocean_proximity_&lt;1H OCEAN</th>
+      <th>onehotencoder__ocean_proximity_INLAND</th>
+      <th>onehotencoder__ocean_proximity_ISLAND</th>
+      <th>onehotencoder__ocean_proximity_NEAR BAY</th>
+      <th>onehotencoder__ocean_proximity_NEAR OCEAN</th>
     </tr>
   </thead>
   <tbody>
@@ -12979,8 +12923,8 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>dummy</th>
+      <td>0.002 (+/- 0.001)</td>
       <td>0.001 (+/- 0.000)</td>
-      <td>0.000 (+/- 0.000)</td>
       <td>-0.001 (+/- 0.001)</td>
       <td>0.000 (+/- 0.000)</td>
     </tr>
@@ -14014,15 +13958,15 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>dummy</th>
+      <td>0.002 (+/- 0.001)</td>
       <td>0.001 (+/- 0.000)</td>
-      <td>0.000 (+/- 0.000)</td>
       <td>-0.001 (+/- 0.001)</td>
       <td>0.000 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>imp + scaling + ohe + KNN</th>
-      <td>0.017 (+/- 0.001)</td>
-      <td>0.117 (+/- 0.009)</td>
+      <td>0.020 (+/- 0.010)</td>
+      <td>0.117 (+/- 0.012)</td>
       <td>0.706 (+/- 0.015)</td>
       <td>0.806 (+/- 0.015)</td>
     </tr>
@@ -14074,22 +14018,22 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>dummy</th>
+      <td>0.002 (+/- 0.001)</td>
       <td>0.001 (+/- 0.000)</td>
-      <td>0.000 (+/- 0.000)</td>
       <td>-0.001 (+/- 0.001)</td>
       <td>0.000 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>imp + scaling + ohe + KNN</th>
-      <td>0.017 (+/- 0.001)</td>
-      <td>0.117 (+/- 0.009)</td>
+      <td>0.020 (+/- 0.010)</td>
+      <td>0.117 (+/- 0.012)</td>
       <td>0.706 (+/- 0.015)</td>
       <td>0.806 (+/- 0.015)</td>
     </tr>
     <tr>
       <th>imp + scaling + ohe + SVR (default)</th>
-      <td>7.270 (+/- 0.139)</td>
-      <td>2.515 (+/- 0.020)</td>
+      <td>7.192 (+/- 0.114)</td>
+      <td>2.487 (+/- 0.015)</td>
       <td>-0.049 (+/- 0.012)</td>
       <td>-0.048 (+/- 0.001)</td>
     </tr>
@@ -14142,29 +14086,29 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>dummy</th>
+      <td>0.002 (+/- 0.001)</td>
       <td>0.001 (+/- 0.000)</td>
-      <td>0.000 (+/- 0.000)</td>
       <td>-0.001 (+/- 0.001)</td>
       <td>0.000 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>imp + scaling + ohe + KNN</th>
-      <td>0.017 (+/- 0.001)</td>
-      <td>0.117 (+/- 0.009)</td>
+      <td>0.020 (+/- 0.010)</td>
+      <td>0.117 (+/- 0.012)</td>
       <td>0.706 (+/- 0.015)</td>
       <td>0.806 (+/- 0.015)</td>
     </tr>
     <tr>
       <th>imp + scaling + ohe + SVR (default)</th>
-      <td>7.270 (+/- 0.139)</td>
-      <td>2.515 (+/- 0.020)</td>
+      <td>7.192 (+/- 0.114)</td>
+      <td>2.487 (+/- 0.015)</td>
       <td>-0.049 (+/- 0.012)</td>
       <td>-0.048 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>imp + scaling + ohe + SVR (C=10000)</th>
-      <td>6.635 (+/- 0.096)</td>
-      <td>2.570 (+/- 0.085)</td>
+      <td>6.901 (+/- 0.551)</td>
+      <td>2.537 (+/- 0.101)</td>
       <td>0.708 (+/- 0.011)</td>
       <td>0.713 (+/- 0.017)</td>
     </tr>
@@ -15543,7 +15487,7 @@ The value at cell 3,27 is: 1
 <section id="preprocessing">
 <h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Note that <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> is carrying out some preprocessing such as because of the default argument values</p>
+<li><p>Note that <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> is carrying out some preprocessing by default such as</p>
 <ul>
 <li><p>Converting words to lowercase (<code class="docutils literal notranslate"><span class="pre">lowercase=True</span></code>)</p></li>
 <li><p>getting rid of punctuation and special characters (<code class="docutils literal notranslate"><span class="pre">token_pattern</span> <span class="pre">='(?u)\\b\\w\\w+\\b'</span></code>)</p></li>
