@@ -2708,7 +2708,6 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
 <section id="iclicker-exercise-6-1">
 <h3>(iClicker) Exercise 6.1<a class="headerlink" href="#iclicker-exercise-6-1" title="Link to this heading">#</a></h3>
-<p><strong>iClicker cloud join link: https://join.iclicker.com/RITY</strong></p>
 <p><strong>Select all of the following statements which are TRUE.</strong></p>
 <ol class="arabic simple">
 <li><p>You could carry out cross-validation by passing a <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> object to <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code>.</p></li>
@@ -2716,6 +2715,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li><p>After applying a column transformer, the transformed data is always going to be of different shape than the original data.</p></li>
 <li><p>When you call <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> on a <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> object, you get a numpy ndarray.</p></li>
 </ol>
+<p><a class="reference external" href="https://docs.google.com/presentation/d/1spcb2ugf-ieAw94IXeGMKByjccj_qeTCtbc8oFcs6nA/edit?usp=sharing">Recap slides</a></p>
 <p><br><br><br><br></p>
 </section>
 </section>
@@ -3859,6 +3859,96 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_transformed</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">X_transformed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.09345386,  0.3589134 ,  0.89326049, -0.21733442,  0.36269995,
+         0.84002795,  3.        ,  1.        ,  1.        ,  0.        ,
+         1.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [-1.07471942,  0.59082668,  0.29425051, -0.61420598, -0.85597188,
+         0.71219761,  1.        ,  1.        ,  1.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  1.        ,
+         0.        ,  0.        ],
+       [-0.09345386, -1.26447953, -0.70409944, -0.31655231, -1.31297381,
+        -0.69393613,  0.        ,  1.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  1.        ,  0.        ,
+         0.        ,  0.        ],
+       [-0.09345386,  0.24295676,  0.        ,  0.57640869,  0.36269995,
+         0.45653693,  3.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  1.        ,  0.        ,
+         0.        ,  0.        ],
+       [ 0.8878117 , -1.38043616, -1.10343943,  0.37797291,  0.51503393,
+        -0.05478443,  2.        ,  1.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  1.        ],
+       [ 1.86907725, -2.19213263, -3.10013934, -1.80482065, -2.22697768,
+        -1.84440919,  2.        ,  0.        ,  1.        ,  0.        ,
+         0.        ,  1.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [ 0.8878117 , -1.03256625, -0.10508947,  0.27875502, -0.09430199,
+         0.71219761,  3.        ,  1.        ,  1.        ,  0.        ,
+         1.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [-0.09345386,  0.70678332,  0.89326049, -1.70560276, -1.46530779,
+        -1.33308783,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  1.        ,
+         0.        ,  0.        ],
+       [-1.07471942,  0.93869659,  0.29425051,  0.77484447, -1.00830586,
+        -0.69393613,  1.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  1.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [ 0.8878117 ,  0.70678332, -1.30310942,  0.77484447,  0.81970188,
+        -0.05478443,  1.        ,  1.        ,  1.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  1.        ,  0.        ,
+         0.        ,  0.        ],
+       [-0.09345386,  1.05465323, -0.50442945,  0.87406235,  0.97203586,
+        -0.94959681,  2.        ,  1.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  1.        ],
+       [-2.05598498,  0.70678332, -0.10508947,  0.67562658,  0.51503393,
+        -0.05478443,  1.        ,  1.        ,  1.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         1.        ,  0.        ],
+       [-1.07471942,  1.05465323,  1.49227046,  0.97328024,  1.58137177,
+         1.86267067,  3.        ,  1.        ,  1.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         1.        ,  0.        ],
+       [ 0.8878117 ,  0.70678332,  1.09293048,  0.97328024,  0.97203586,
+         1.86267067,  3.        ,  1.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  1.        ,
+         0.        ,  0.        ],
+       [-0.09345386,  0.70678332,  0.29425051,  0.67562658,  0.97203586,
+        -1.97223953,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  1.        ,  0.        ,
+         0.        ,  0.        ],
+       [-0.09345386,  0.3589134 , -0.70409944, -1.90403853,  0.81970188,
+         0.84002795,  2.        ,  0.        ,  1.        ,  0.        ,
+         1.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [ 1.86907725, -1.61234944,  0.49392051,  0.67562658, -0.39896994,
+        -0.05478443,  1.        ,  1.        ,  0.        ,  0.        ,
+         1.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [-0.09345386, -0.33682642,  0.09458052, -2.10247431, -0.39896994,
+         0.20087625,  1.        ,  1.        ,  1.        ,  0.        ,
+         0.        ,  1.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [-1.07471942,  0.24295676,  0.        ,  0.37797291, -0.09430199,
+        -0.43827545,  2.        ,  0.        ,  1.        ,  1.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ],
+       [-1.07471942, -1.38043616,  1.09293048,  0.08031924, -1.16063983,
+         0.45653693,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  1.        ],
+       [ 0.8878117 ,  0.82273995,  0.6935905 ,  0.57640869,  1.12436984,
+         0.20087625,  3.        ,  1.        ,  1.        ,  0.        ,
+         0.        ,  0.        ,  1.        ,  0.        ,  0.        ,
+         0.        ,  0.        ]])
 </pre></div>
 </div>
 </div>
@@ -6025,48 +6115,48 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/model_selection/_validation.py:960: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\model_selection\_validation.py:960: UserWarning: Scoring failed. The score on this train-test partition for these parameters will be set to nan. Details: 
 Traceback (most recent call last):
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/model_selection/_validation.py&quot;, line 949, in _score
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\model_selection\_validation.py&quot;, line 949, in _score
     scores = scorer(estimator, X_test, y_test, **score_params)
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/metrics/_scorer.py&quot;, line 472, in __call__
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\metrics\_scorer.py&quot;, line 472, in __call__
     return estimator.score(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/pipeline.py&quot;, line 1195, in score
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\pipeline.py&quot;, line 1195, in score
     Xt = transform.transform(Xt)
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/utils/_set_output.py&quot;, line 319, in wrapped
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\utils\_set_output.py&quot;, line 319, in wrapped
     data_to_wrap = f(self, X, *args, **kwargs)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/compose/_column_transformer.py&quot;, line 1101, in transform
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\compose\_column_transformer.py&quot;, line 1101, in transform
     Xs = self._call_func_on_transformers(
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/compose/_column_transformer.py&quot;, line 910, in _call_func_on_transformers
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\compose\_column_transformer.py&quot;, line 910, in _call_func_on_transformers
     return Parallel(n_jobs=self.n_jobs)(jobs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/utils/parallel.py&quot;, line 77, in __call__
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\utils\parallel.py&quot;, line 77, in __call__
     return super().__call__(iterable_with_config)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/joblib/parallel.py&quot;, line 1918, in __call__
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\joblib\parallel.py&quot;, line 1918, in __call__
     return output if self.return_generator else list(output)
                                                 ^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/joblib/parallel.py&quot;, line 1847, in _get_sequential_output
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\joblib\parallel.py&quot;, line 1847, in _get_sequential_output
     res = func(*args, **kwargs)
           ^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/utils/parallel.py&quot;, line 139, in __call__
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\utils\parallel.py&quot;, line 139, in __call__
     return self.function(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/pipeline.py&quot;, line 1531, in _transform_one
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\pipeline.py&quot;, line 1531, in _transform_one
     res = transformer.transform(X, **params.transform)
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/utils/_set_output.py&quot;, line 319, in wrapped
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\utils\_set_output.py&quot;, line 319, in wrapped
     data_to_wrap = f(self, X, *args, **kwargs)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py&quot;, line 1043, in transform
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\preprocessing\_encoders.py&quot;, line 1043, in transform
     X_int, X_mask = self._transform(
                     ^^^^^^^^^^^^^^^^
-  File &quot;/Users/gtoti/anaconda3/envs/cpsc330/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py&quot;, line 218, in _transform
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\sklearn\preprocessing\_encoders.py&quot;, line 218, in _transform
     raise ValueError(msg)
 ValueError: Found unknown categories [&#39;Biology&#39;] in column 0 during transform
 
@@ -6100,36 +6190,36 @@ ValueError: Found unknown categories [&#39;Biology&#39;] in column 0 during tran
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.005508</td>
-      <td>0.002571</td>
+      <td>0.017659</td>
+      <td>0.014559</td>
       <td>1.00</td>
       <td>0.937500</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.004745</td>
-      <td>0.002478</td>
+      <td>0.016993</td>
+      <td>0.017297</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003949</td>
-      <td>0.002059</td>
+      <td>0.017370</td>
+      <td>0.025941</td>
       <td>0.50</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003519</td>
-      <td>0.002069</td>
+      <td>0.021729</td>
+      <td>0.001354</td>
       <td>0.75</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003736</td>
-      <td>0.007116</td>
+      <td>0.024286</td>
+      <td>0.031326</td>
       <td>NaN</td>
       <td>1.000000</td>
     </tr>
@@ -6698,36 +6788,36 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.006737</td>
-      <td>0.002845</td>
+      <td>0.034544</td>
+      <td>0.017003</td>
       <td>1.00</td>
       <td>0.937500</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.004262</td>
-      <td>0.002549</td>
+      <td>0.023324</td>
+      <td>0.012505</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.003820</td>
-      <td>0.002070</td>
+      <td>0.017468</td>
+      <td>0.015831</td>
       <td>0.50</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003586</td>
-      <td>0.002035</td>
+      <td>0.026816</td>
+      <td>0.006475</td>
       <td>0.75</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003565</td>
-      <td>0.002021</td>
+      <td>0.027102</td>
+      <td>0.006393</td>
       <td>0.75</td>
       <td>1.000000</td>
     </tr>
@@ -7416,36 +7506,36 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.005868</td>
-      <td>0.003015</td>
+      <td>0.024534</td>
+      <td>0.017251</td>
       <td>1.00</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.005071</td>
-      <td>0.002512</td>
+      <td>0.017508</td>
+      <td>0.027465</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.004203</td>
-      <td>0.002367</td>
+      <td>0.026896</td>
+      <td>0.016992</td>
       <td>0.50</td>
       <td>1.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.003904</td>
-      <td>0.002317</td>
+      <td>0.026169</td>
+      <td>0.015851</td>
       <td>1.00</td>
       <td>0.941176</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.004358</td>
-      <td>0.002564</td>
+      <td>0.017339</td>
+      <td>0.016381</td>
       <td>0.75</td>
       <td>1.000000</td>
     </tr>
@@ -7954,8 +8044,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Compressed Sparse Row sparse matrix of dtype &#39;int64&#39;
-	with 71 stored elements and shape (6, 61)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;6x61 sparse matrix of type &#39;&lt;class &#39;numpy.int64&#39;&gt;&#39;
+	with 71 stored elements in Compressed Sparse Row format&gt;
 </pre></div>
 </div>
 </div>
@@ -8818,7 +8908,7 @@ The value at cell 3,27 is: 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-11 {
+<div class="output text_html"><style>#sk-container-id-8 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -8849,15 +8939,15 @@ The value at cell 3,27 is: 1
   }
 }
 
-#sk-container-id-11 {
+#sk-container-id-8 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-11 pre {
+#sk-container-id-8 pre {
   padding: 0;
 }
 
-#sk-container-id-11 input.sk-hidden--visually {
+#sk-container-id-8 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -8869,7 +8959,7 @@ The value at cell 3,27 is: 1
   width: 1px;
 }
 
-#sk-container-id-11 div.sk-dashed-wrapped {
+#sk-container-id-8 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -8877,7 +8967,7 @@ The value at cell 3,27 is: 1
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-11 div.sk-container {
+#sk-container-id-8 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -8887,7 +8977,7 @@ The value at cell 3,27 is: 1
   position: relative;
 }
 
-#sk-container-id-11 div.sk-text-repr-fallback {
+#sk-container-id-8 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -8903,14 +8993,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-11 div.sk-parallel-item::after {
+#sk-container-id-8 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-11 div.sk-parallel {
+#sk-container-id-8 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -8918,28 +9008,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-11 div.sk-parallel-item {
+#sk-container-id-8 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-11 div.sk-parallel-item:first-child::after {
+#sk-container-id-8 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-11 div.sk-parallel-item:last-child::after {
+#sk-container-id-8 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-11 div.sk-parallel-item:only-child::after {
+#sk-container-id-8 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-11 div.sk-serial {
+#sk-container-id-8 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8957,14 +9047,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-11 div.sk-toggleable {
+#sk-container-id-8 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-11 label.sk-toggleable__label {
+#sk-container-id-8 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -8977,13 +9067,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-11 label.sk-toggleable__label .caption {
+#sk-container-id-8 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-11 label.sk-toggleable__label-arrow:before {
+#sk-container-id-8 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -8991,13 +9081,13 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-11 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-8 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-11 div.sk-toggleable__content {
+#sk-container-id-8 div.sk-toggleable__content {
   max-height: 0;
   max-width: 0;
   overflow: hidden;
@@ -9006,12 +9096,12 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-11 div.sk-toggleable__content.fitted {
+#sk-container-id-8 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-11 div.sk-toggleable__content pre {
+#sk-container-id-8 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -9019,79 +9109,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-11 div.sk-toggleable__content.fitted pre {
+#sk-container-id-8 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-11 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-8 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
   max-height: 200px;
   max-width: 100%;
   overflow: auto;
 }
 
-#sk-container-id-11 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-8 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-11 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-8 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-11 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-8 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-11 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-8 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-11 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-8 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-11 div.sk-label label.sk-toggleable__label,
-#sk-container-id-11 div.sk-label label {
+#sk-container-id-8 div.sk-label label.sk-toggleable__label,
+#sk-container-id-8 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-11 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-8 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-11 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-8 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-11 div.sk-label label {
+#sk-container-id-8 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-11 div.sk-label-container {
+#sk-container-id-8 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-11 div.sk-estimator {
+#sk-container-id-8 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -9101,18 +9191,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-11 div.sk-estimator.fitted {
+#sk-container-id-8 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-11 div.sk-estimator:hover {
+#sk-container-id-8 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-11 div.sk-estimator.fitted:hover {
+#sk-container-id-8 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -9200,7 +9290,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-11 a.estimator_doc_link {
+#sk-container-id-8 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -9215,25 +9305,25 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-11 a.estimator_doc_link.fitted {
+#sk-container-id-8 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-11 a.estimator_doc_link:hover {
+#sk-container-id-8 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-11 a.estimator_doc_link.fitted:hover {
+#sk-container-id-8 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</style><div id="sk-container-id-11" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;countvectorizer&#x27;, CountVectorizer()), (&#x27;svc&#x27;, SVC())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-96" type="checkbox" ><label for="sk-estimator-id-96" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;countvectorizer&#x27;, CountVectorizer()), (&#x27;svc&#x27;, SVC())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-97" type="checkbox" ><label for="sk-estimator-id-97" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>CountVectorizer</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html">?<span>Documentation for CountVectorizer</span></a></div></label><div class="sk-toggleable__content fitted"><pre>CountVectorizer()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-98" type="checkbox" ><label for="sk-estimator-id-98" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>SVC</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a></div></label><div class="sk-toggleable__content fitted"><pre>SVC()</pre></div> </div></div></div></div></div></div></div></div>
+</style><div id="sk-container-id-8" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;countvectorizer&#x27;, CountVectorizer()), (&#x27;svc&#x27;, SVC())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-76" type="checkbox" ><label for="sk-estimator-id-76" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;countvectorizer&#x27;, CountVectorizer()), (&#x27;svc&#x27;, SVC())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-77" type="checkbox" ><label for="sk-estimator-id-77" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>CountVectorizer</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html">?<span>Documentation for CountVectorizer</span></a></div></label><div class="sk-toggleable__content fitted"><pre>CountVectorizer()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-78" type="checkbox" ><label for="sk-estimator-id-78" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>SVC</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a></div></label><div class="sk-toggleable__content fitted"><pre>SVC()</pre></div> </div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
