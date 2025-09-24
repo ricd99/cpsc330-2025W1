@@ -26,7 +26,7 @@ The syllabus is available [here](syllabus.md). Please read it carefully to under
 - Gaurav Bhatt - OH Fridays, 15:00-16:00 DEMCO table 6
 - Jun He Cui - OH Thursdays, 16:00-17:00 in ICCS X153
 - Felix	Fu - OH Tuesdays, 14:00-15:00 in ICCS X150 table 1
-- Neo Ghassemi - OH Wednesdays, 14:00-15:00 in ICCS X141
+- Neo Ghassemi - OH Wednesdays, 14:00-15:00 in ICCS X337
 - Zoe Harris
 - Zheng He - OH Mondays, 16:00-17:00 DEMCO table 6
 - Mishaal Kazmi
