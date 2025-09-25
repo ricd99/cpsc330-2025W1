@@ -378,6 +378,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#columntransformer-on-the-california-housing-dataset"><code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> on the California housing dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-0-eda">Step 0: EDA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
@@ -446,106 +447,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>housing_median_age</th>
-      <th>total_rooms</th>
-      <th>total_bedrooms</th>
-      <th>population</th>
-      <th>households</th>
-      <th>median_income</th>
-      <th>median_house_value</th>
-      <th>ocean_proximity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6051</th>
-      <td>-117.75</td>
-      <td>34.04</td>
-      <td>22.0</td>
-      <td>2948.0</td>
-      <td>636.0</td>
-      <td>2600.0</td>
-      <td>602.0</td>
-      <td>3.1250</td>
-      <td>113600.0</td>
-      <td>INLAND</td>
-    </tr>
-    <tr>
-      <th>20113</th>
-      <td>-119.57</td>
-      <td>37.94</td>
-      <td>17.0</td>
-      <td>346.0</td>
-      <td>130.0</td>
-      <td>51.0</td>
-      <td>20.0</td>
-      <td>3.4861</td>
-      <td>137500.0</td>
-      <td>INLAND</td>
-    </tr>
-    <tr>
-      <th>14289</th>
-      <td>-117.13</td>
-      <td>32.74</td>
-      <td>46.0</td>
-      <td>3355.0</td>
-      <td>768.0</td>
-      <td>1457.0</td>
-      <td>708.0</td>
-      <td>2.6604</td>
-      <td>170100.0</td>
-      <td>NEAR OCEAN</td>
-    </tr>
-    <tr>
-      <th>13665</th>
-      <td>-117.31</td>
-      <td>34.02</td>
-      <td>18.0</td>
-      <td>1634.0</td>
-      <td>274.0</td>
-      <td>899.0</td>
-      <td>285.0</td>
-      <td>5.2139</td>
-      <td>129300.0</td>
-      <td>INLAND</td>
-    </tr>
-    <tr>
-      <th>14471</th>
-      <td>-117.23</td>
-      <td>32.88</td>
-      <td>18.0</td>
-      <td>5566.0</td>
-      <td>1465.0</td>
-      <td>6303.0</td>
-      <td>1458.0</td>
-      <td>1.8580</td>
-      <td>205000.0</td>
-      <td>NEAR OCEAN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Let’s also add some new features that may help us with the prediction:</p>
 <div class="cell docutils container">
@@ -588,6 +489,31 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="step-0-eda">
+<h2>Step 0: EDA<a class="headerlink" href="#step-0-eda" title="Link to this heading">#</a></h2>
+<p>Let’s get a sense for our dataset using the strategies we learned about last time. From this information, what kinds of preprocessing steps might we need to take here?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span><span class="p">[</span><span class="s2">&quot;ocean_proximity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="step-1">
 <h2>Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h2>
 <p>Your turn now! Start by importing ColumnTranformer and make_column_transformer</p>
@@ -606,15 +532,16 @@ document.write(`
 </section>
 <section id="step-5">
 <h2>Step 5<a class="headerlink" href="#step-5" title="Link to this heading">#</a></h2>
-<p>Finally, let’s train a classifier (or even better, for practice, a baseline and another classifier):</p>
+<p>Finally, let’s train a classifier (or even better, for practice, a baseline and another regressor):</p>
 <ul class="simple">
-<li><p>create a pipeline with the preprocessor and a classifier of your choice.</p></li>
+<li><p>create a pipeline with the preprocessor and a regressor of your choice.</p></li>
 <li><p>use the pipeline to perform cross-validation</p></li>
 </ul>
 </section>
 <section id="recap-comprehension-questions">
 <h2><font color='red'>Recap/comprehension questions</font><a class="headerlink" href="#recap-comprehension-questions" title="Link to this heading">#</a></h2>
 <ul class="simple">
+<li><p>Do we have to preprocess the target column too?</p></li>
 <li><p>If we only plan to use a Decision Tree as classifier, do we still need to scale the numerical features?</p></li>
 <li><p>If the dataset included an ordinal feature “Neighbourhood desirability”, with numerical labels 1 (poor), 2 (good) and 3 (excellent), would we need to apply an ordinal encoder to it?</p></li>
 <li><p>Why do we add the argument <code class="docutils literal notranslate"><span class="pre">drop=&quot;if_binary&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> when dealing with categorical features with only two possible values? What would be the disadvantages of not doing so?</p></li>
@@ -631,16 +558,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "cpsc330"
+            mode: "conda-env-cpsc330-py"
         },
         kernelOptions: {
-            name: "cpsc330",
+            name: "conda-env-cpsc330-py",
             path: "./lectures/tutorials"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'cpsc330'</script>
+    <script>kernelName = 'conda-env-cpsc330-py'</script>
 
                 </article>
               
@@ -670,6 +597,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#columntransformer-on-the-california-housing-dataset"><code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> on the California housing dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-0-eda">Step 0: EDA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
