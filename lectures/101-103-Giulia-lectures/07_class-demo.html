@@ -705,36 +705,36 @@ dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.732208</td>
-      <td>0.291456</td>
+      <td>1.779838</td>
+      <td>0.295741</td>
       <td>0.832</td>
       <td>0.99975</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.739868</td>
-      <td>0.303998</td>
+      <td>1.606754</td>
+      <td>0.283948</td>
       <td>0.825</td>
       <td>0.99975</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.689433</td>
-      <td>0.289591</td>
+      <td>1.671219</td>
+      <td>0.304494</td>
       <td>0.841</td>
       <td>0.99975</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.086289</td>
-      <td>0.286186</td>
+      <td>1.671772</td>
+      <td>0.286870</td>
       <td>0.828</td>
       <td>1.00000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.696626</td>
-      <td>0.271704</td>
+      <td>1.804580</td>
+      <td>0.286442</td>
       <td>0.844</td>
       <td>0.99975</td>
     </tr>
@@ -1589,25 +1589,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)[</span><span class="n">words_in_ex</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;acting&#39;, &#39;bit&#39;, &#39;boring&#39;, &#39;direction&#39;, &#39;enjoyed&#39;, &#39;excellent&#39;,
-       &#39;flawless&#39;, &#39;got&#39;, &#39;highly&#39;, &#39;movie&#39;, &#39;overall&#39;, &#39;recommend&#39;,
-       &#39;times&#39;], dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">coeffs</span><span class="p">[</span><span class="n">words_in_ex</span><span class="p">],</span>
     <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)[</span><span class="n">words_in_ex</span><span class="p">],</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Coefficient&quot;</span><span class="p">],</span>
 <span class="p">)</span>
+
 <span class="n">ex_df</span>
 </pre></div>
 </div>
@@ -1694,14 +1681,28 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>Let’s visualize how the words with positive and negative coefficients are driving the prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)[</span><span class="n">words_in_ex</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;acting&#39;, &#39;bit&#39;, &#39;boring&#39;, &#39;direction&#39;, &#39;enjoyed&#39;, &#39;excellent&#39;,
+       &#39;flawless&#39;, &#39;got&#39;, &#39;highly&#39;, &#39;movie&#39;, &#39;overall&#39;, &#39;recommend&#39;,
+       &#39;times&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mglearn</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">visualize_coefficients</span><span class="p">(</span>
-    <span class="n">coeffs</span><span class="p">[</span><span class="n">words_in_ex</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)[</span><span class="n">words_in_ex</span><span class="p">],</span> <span class="n">n_top_features</span><span class="o">=</span><span class="mi">6</span>
+    <span class="n">coeffs</span><span class="p">[</span><span class="n">words_in_ex</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)[</span><span class="n">words_in_ex</span><span class="p">],</span> <span class="n">n_top_features</span><span class="o">=</span><span class="mi">5</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/25629e9668c69f05d3d583aed8694eda1b91614ad88b66c159b09f6fd3454d50.png" src="../../_images/25629e9668c69f05d3d583aed8694eda1b91614ad88b66c159b09f6fd3454d50.png" />
+<img alt="../../_images/8866d1d2173d29f36ebebae59fd7321811cc8502c0ca279b208651ce3fdcdd43.png" src="../../_images/8866d1d2173d29f36ebebae59fd7321811cc8502c0ca279b208651ce3fdcdd43.png" />
 </div>
 </div>
 <div class="cell docutils container">
