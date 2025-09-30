@@ -67,7 +67,7 @@ Usually the homework assignments will be due on Mondays (except next week) and w
 | hw2            | Sept 16, 11:59 pm     | [GitHub repo](https://github.com/new?template_name=hw2&template_owner=ubc-cpsc330) | [Gradescope](https://www.gradescope.ca/courses/29785) |
 | Syllabus quiz  | Sept 19, 11:59 pm     | PrairieLearn (access through [Canvas tab](https://canvas.ubc.ca/courses/170662)) | (access through [Canvas tab](https://canvas.ubc.ca/courses/170662))  |
 | hw3            | Sept 29, 11:59 pm      | [GitHub repo](https://github.com/new?template_name=hw3&template_owner=ubc-cpsc330)  | [Gradescope](https://www.gradescope.ca/courses/29785) |
-| hw4            | Oct 06, 11:59 pm      | GitHub repo | [Gradescope](https://www.gradescope.ca/courses/29785) |
+| hw4            | Oct 06, 11:59 pm      | [GitHub repo](https://github.com/new?template_name=hw4&template_owner=ubc-cpsc330) | [Gradescope](https://www.gradescope.ca/courses/29785) |
 | **Midterm 1**  | Oct 15 and Oct 16     | PrairieLearn (CBTF, in person)                                                     | PrairieLearn (CBTF, in person)                        |
 | hw5            | Oct 27, 11:59 pm      | GitHub repo | [Gradescope](https://www.gradescope.ca/courses/29785) |
 | hw6            | Nov 03, 11:59 pm | GitHub repo | [Gradescope](https://www.gradescope.ca/courses/29785) |
