@@ -406,7 +406,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomized-hyperparameter-search">Randomized hyperparameter search</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-iter"><code class="docutils literal notranslate"><span class="pre">n_iter</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-passing-probability-distributions-to-random-search">(Optional) Passing probability distributions to random search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passing-probability-distributions-to-random-search">Passing probability distributions to random search</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">Uniform distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-distribution">Gaussian distribution</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-randomizedsearchcv">Advantages of <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Advantages of <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-searching-for-optimal-parameters-with-successive-halving">(Optional) Searching for optimal parameters with successive halving¶</a></li>
@@ -788,7 +792,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.7309366767301886)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.7309385996961713)
 </pre></div>
 </div>
 </div>
@@ -1960,8 +1964,8 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.037270
-score_time     0.008823
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fit_time       0.039284
+score_time     0.009678
 test_score     0.734011
 train_score    0.828891
 dtype: float64
@@ -4726,99 +4730,99 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>mean_fit_time</th>
-      <td>0.088418</td>
-      <td>0.079594</td>
-      <td>0.070193</td>
-      <td>0.068153</td>
-      <td>0.070428</td>
-      <td>0.090107</td>
-      <td>0.083481</td>
-      <td>0.074097</td>
-      <td>0.072245</td>
-      <td>0.078251</td>
+      <td>0.109699</td>
+      <td>0.098674</td>
+      <td>0.078283</td>
+      <td>0.076476</td>
+      <td>0.070749</td>
+      <td>0.066341</td>
+      <td>0.071841</td>
+      <td>0.073977</td>
+      <td>0.071301</td>
+      <td>0.091579</td>
       <td>...</td>
-      <td>0.125682</td>
-      <td>0.106053</td>
-      <td>0.120632</td>
-      <td>0.096003</td>
-      <td>0.080849</td>
-      <td>0.126946</td>
-      <td>0.112036</td>
-      <td>0.10537</td>
-      <td>0.103922</td>
-      <td>0.091815</td>
+      <td>0.108461</td>
+      <td>0.103122</td>
+      <td>0.156906</td>
+      <td>0.157115</td>
+      <td>0.287001</td>
+      <td>0.14751</td>
+      <td>0.113097</td>
+      <td>0.108918</td>
+      <td>0.116086</td>
+      <td>0.088699</td>
     </tr>
     <tr>
       <th>std_fit_time</th>
-      <td>0.00756</td>
-      <td>0.009472</td>
-      <td>0.005077</td>
-      <td>0.008508</td>
-      <td>0.009566</td>
-      <td>0.010081</td>
-      <td>0.013966</td>
-      <td>0.015594</td>
-      <td>0.015776</td>
-      <td>0.003268</td>
+      <td>0.011003</td>
+      <td>0.006015</td>
+      <td>0.009833</td>
+      <td>0.00689</td>
+      <td>0.008783</td>
+      <td>0.00905</td>
+      <td>0.006441</td>
+      <td>0.00478</td>
+      <td>0.013622</td>
+      <td>0.011096</td>
       <td>...</td>
-      <td>0.019533</td>
-      <td>0.011604</td>
-      <td>0.006792</td>
-      <td>0.004726</td>
-      <td>0.006095</td>
-      <td>0.008376</td>
-      <td>0.008215</td>
-      <td>0.009909</td>
-      <td>0.006663</td>
-      <td>0.00866</td>
+      <td>0.006219</td>
+      <td>0.008434</td>
+      <td>0.027965</td>
+      <td>0.021329</td>
+      <td>0.067929</td>
+      <td>0.009414</td>
+      <td>0.016911</td>
+      <td>0.011908</td>
+      <td>0.011476</td>
+      <td>0.008608</td>
     </tr>
     <tr>
       <th>mean_score_time</th>
-      <td>0.018743</td>
-      <td>0.020475</td>
-      <td>0.017394</td>
-      <td>0.021264</td>
-      <td>0.019808</td>
-      <td>0.025115</td>
-      <td>0.020531</td>
-      <td>0.019305</td>
-      <td>0.017954</td>
-      <td>0.01858</td>
+      <td>0.024746</td>
+      <td>0.026145</td>
+      <td>0.018024</td>
+      <td>0.016047</td>
+      <td>0.021764</td>
+      <td>0.016963</td>
+      <td>0.017344</td>
+      <td>0.015263</td>
+      <td>0.027952</td>
+      <td>0.024122</td>
       <td>...</td>
-      <td>0.019942</td>
-      <td>0.021693</td>
-      <td>0.021152</td>
-      <td>0.0195</td>
-      <td>0.017587</td>
-      <td>0.016903</td>
-      <td>0.016884</td>
-      <td>0.021662</td>
-      <td>0.021483</td>
-      <td>0.0178</td>
+      <td>0.020649</td>
+      <td>0.02677</td>
+      <td>0.061164</td>
+      <td>0.060012</td>
+      <td>0.02325</td>
+      <td>0.022852</td>
+      <td>0.0217</td>
+      <td>0.02148</td>
+      <td>0.019718</td>
+      <td>0.018402</td>
     </tr>
     <tr>
       <th>std_score_time</th>
-      <td>0.00211</td>
-      <td>0.003912</td>
-      <td>0.004748</td>
-      <td>0.007462</td>
-      <td>0.00675</td>
-      <td>0.006496</td>
-      <td>0.004631</td>
-      <td>0.003597</td>
-      <td>0.004359</td>
-      <td>0.003851</td>
+      <td>0.002886</td>
+      <td>0.007754</td>
+      <td>0.001636</td>
+      <td>0.001842</td>
+      <td>0.008096</td>
+      <td>0.003114</td>
+      <td>0.00304</td>
+      <td>0.001834</td>
+      <td>0.009805</td>
+      <td>0.006744</td>
       <td>...</td>
-      <td>0.002046</td>
-      <td>0.003497</td>
-      <td>0.000782</td>
-      <td>0.002511</td>
-      <td>0.001458</td>
-      <td>0.00251</td>
-      <td>0.00204</td>
-      <td>0.001315</td>
-      <td>0.00111</td>
-      <td>0.002667</td>
+      <td>0.001835</td>
+      <td>0.015522</td>
+      <td>0.006284</td>
+      <td>0.065183</td>
+      <td>0.003258</td>
+      <td>0.00168</td>
+      <td>0.005012</td>
+      <td>0.00757</td>
+      <td>0.001535</td>
+      <td>0.003182</td>
     </tr>
     <tr>
       <th>param_columntransformer__countvectorizer__max_features</th>
@@ -5335,99 +5339,99 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
   <tbody>
     <tr>
       <th>mean_fit_time</th>
-      <td>0.079084</td>
-      <td>0.08315</td>
-      <td>0.065636</td>
-      <td>0.071026</td>
-      <td>0.065099</td>
-      <td>0.064079</td>
-      <td>0.101057</td>
-      <td>0.104053</td>
-      <td>0.125682</td>
-      <td>0.120751</td>
+      <td>0.075644</td>
+      <td>0.087046</td>
+      <td>0.068939</td>
+      <td>0.068648</td>
+      <td>0.062566</td>
+      <td>0.059406</td>
+      <td>0.098295</td>
+      <td>0.130979</td>
+      <td>0.108461</td>
+      <td>0.110133</td>
       <td>...</td>
-      <td>0.096961</td>
-      <td>0.084388</td>
-      <td>0.087522</td>
-      <td>0.077451</td>
-      <td>0.081758</td>
-      <td>0.085374</td>
-      <td>0.08021</td>
-      <td>0.072371</td>
-      <td>0.075886</td>
-      <td>0.088418</td>
+      <td>0.08183</td>
+      <td>0.081548</td>
+      <td>0.090165</td>
+      <td>0.081658</td>
+      <td>0.091177</td>
+      <td>0.079238</td>
+      <td>0.11562</td>
+      <td>0.076862</td>
+      <td>0.076464</td>
+      <td>0.109699</td>
     </tr>
     <tr>
       <th>std_fit_time</th>
-      <td>0.009409</td>
-      <td>0.004249</td>
-      <td>0.006348</td>
-      <td>0.003338</td>
-      <td>0.00427</td>
-      <td>0.007405</td>
-      <td>0.006666</td>
-      <td>0.004949</td>
-      <td>0.019533</td>
-      <td>0.012001</td>
+      <td>0.004807</td>
+      <td>0.002531</td>
+      <td>0.00468</td>
+      <td>0.00151</td>
+      <td>0.00535</td>
+      <td>0.009325</td>
+      <td>0.005116</td>
+      <td>0.007308</td>
+      <td>0.006219</td>
+      <td>0.012507</td>
       <td>...</td>
-      <td>0.007325</td>
-      <td>0.009175</td>
-      <td>0.009386</td>
-      <td>0.003778</td>
-      <td>0.003331</td>
-      <td>0.010764</td>
-      <td>0.010051</td>
-      <td>0.003442</td>
-      <td>0.005096</td>
-      <td>0.00756</td>
+      <td>0.002326</td>
+      <td>0.002866</td>
+      <td>0.006334</td>
+      <td>0.012121</td>
+      <td>0.014107</td>
+      <td>0.012002</td>
+      <td>0.014669</td>
+      <td>0.014192</td>
+      <td>0.006595</td>
+      <td>0.011003</td>
     </tr>
     <tr>
       <th>mean_score_time</th>
-      <td>0.017287</td>
-      <td>0.016913</td>
-      <td>0.015327</td>
-      <td>0.015567</td>
-      <td>0.015632</td>
-      <td>0.013152</td>
-      <td>0.017841</td>
-      <td>0.017469</td>
-      <td>0.019942</td>
-      <td>0.018172</td>
+      <td>0.015429</td>
+      <td>0.01614</td>
+      <td>0.016634</td>
+      <td>0.016928</td>
+      <td>0.013445</td>
+      <td>0.01352</td>
+      <td>0.016163</td>
+      <td>0.020474</td>
+      <td>0.020649</td>
+      <td>0.020858</td>
       <td>...</td>
-      <td>0.019279</td>
-      <td>0.019463</td>
-      <td>0.018179</td>
-      <td>0.019456</td>
-      <td>0.01978</td>
-      <td>0.015776</td>
-      <td>0.018359</td>
-      <td>0.019653</td>
-      <td>0.021837</td>
-      <td>0.018743</td>
+      <td>0.020825</td>
+      <td>0.018245</td>
+      <td>0.021613</td>
+      <td>0.023985</td>
+      <td>0.026378</td>
+      <td>0.020629</td>
+      <td>0.021819</td>
+      <td>0.019558</td>
+      <td>0.018535</td>
+      <td>0.024746</td>
     </tr>
     <tr>
       <th>std_score_time</th>
-      <td>0.003978</td>
-      <td>0.001254</td>
-      <td>0.000843</td>
-      <td>0.00239</td>
-      <td>0.004528</td>
-      <td>0.002168</td>
-      <td>0.005681</td>
-      <td>0.003362</td>
-      <td>0.002046</td>
-      <td>0.003306</td>
+      <td>0.001851</td>
+      <td>0.002241</td>
+      <td>0.004174</td>
+      <td>0.003293</td>
+      <td>0.002369</td>
+      <td>0.002999</td>
+      <td>0.001124</td>
+      <td>0.005149</td>
+      <td>0.001835</td>
+      <td>0.005562</td>
       <td>...</td>
-      <td>0.004724</td>
-      <td>0.00305</td>
-      <td>0.002274</td>
-      <td>0.002822</td>
-      <td>0.004271</td>
-      <td>0.002158</td>
-      <td>0.004263</td>
-      <td>0.001682</td>
-      <td>0.00444</td>
-      <td>0.00211</td>
+      <td>0.002926</td>
+      <td>0.001988</td>
+      <td>0.002705</td>
+      <td>0.006845</td>
+      <td>0.005157</td>
+      <td>0.004852</td>
+      <td>0.00361</td>
+      <td>0.00406</td>
+      <td>0.002533</td>
+      <td>0.002886</td>
     </tr>
     <tr>
       <th>param_columntransformer__countvectorizer__max_features</th>
@@ -5938,7 +5942,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <td>0.726583</td>
       <td>0.726573</td>
       <td>...</td>
-      <td>0.507750</td>
+      <td>0.50775</td>
       <td>0.507750</td>
       <td>0.507750</td>
       <td>0.507750</td>
@@ -5962,7 +5966,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <td>2000.000000</td>
       <td>400.000000</td>
       <td>...</td>
-      <td>1000.000000</td>
+      <td>1000.00000</td>
       <td>1000.000000</td>
       <td>1000.000000</td>
       <td>400.000000</td>
@@ -5986,7 +5990,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <td>0.100000</td>
       <td>0.100000</td>
       <td>...</td>
-      <td>0.100000</td>
+      <td>0.10000</td>
       <td>0.010000</td>
       <td>0.001000</td>
       <td>0.001000</td>
@@ -6010,7 +6014,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <td>10.000000</td>
       <td>10.000000</td>
       <td>...</td>
-      <td>0.001000</td>
+      <td>0.00100</td>
       <td>0.001000</td>
       <td>0.001000</td>
       <td>0.001000</td>
@@ -6023,27 +6027,27 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
     </tr>
     <tr>
       <th>mean_fit_time</th>
-      <td>0.079084</td>
-      <td>0.083150</td>
-      <td>0.065636</td>
-      <td>0.071026</td>
-      <td>0.065099</td>
-      <td>0.064079</td>
-      <td>0.101057</td>
-      <td>0.104053</td>
-      <td>0.125682</td>
-      <td>0.120751</td>
+      <td>0.075644</td>
+      <td>0.087046</td>
+      <td>0.068939</td>
+      <td>0.068648</td>
+      <td>0.062566</td>
+      <td>0.059406</td>
+      <td>0.098295</td>
+      <td>0.130979</td>
+      <td>0.108461</td>
+      <td>0.110133</td>
       <td>...</td>
-      <td>0.096961</td>
-      <td>0.084388</td>
-      <td>0.087522</td>
-      <td>0.077451</td>
-      <td>0.081758</td>
-      <td>0.085374</td>
-      <td>0.08021</td>
-      <td>0.072371</td>
-      <td>0.075886</td>
-      <td>0.088418</td>
+      <td>0.08183</td>
+      <td>0.081548</td>
+      <td>0.090165</td>
+      <td>0.081658</td>
+      <td>0.091177</td>
+      <td>0.079238</td>
+      <td>0.11562</td>
+      <td>0.076862</td>
+      <td>0.076464</td>
+      <td>0.109699</td>
     </tr>
   </tbody>
 </table>
@@ -8486,7 +8490,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">max_features&nbsp;</td>
-            <td class="value">100</td>
+            <td class="value">2000</td>
         </tr>
     
 
@@ -8536,7 +8540,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">C&nbsp;</td>
-            <td class="value">np.float64(2.8)</td>
+            <td class="value">np.float64(2.2)</td>
         </tr>
     
 
@@ -8768,35 +8772,35 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>5</th>
       <th>6</th>
       <th>7</th>
-      <th>7</th>
+      <th>8</th>
       <th>9</th>
       <th>10</th>
       <th>...</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
-      <th>79</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
+      <th>84</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>mean_test_score</th>
-      <td>0.745801</td>
-      <td>0.745178</td>
-      <td>0.744565</td>
-      <td>0.743949</td>
       <td>0.743324</td>
-      <td>0.742709</td>
+      <td>0.743323</td>
+      <td>0.742703</td>
       <td>0.742088</td>
-      <td>0.742088</td>
+      <td>0.742084</td>
+      <td>0.742078</td>
       <td>0.741465</td>
       <td>0.741463</td>
+      <td>0.740842</td>
+      <td>0.738980</td>
       <td>...</td>
       <td>0.508371</td>
       <td>0.508371</td>
@@ -8811,27 +8815,27 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
     </tr>
     <tr>
       <th>param_columntransformer__countvectorizer__max_features</th>
-      <td>100.000000</td>
-      <td>100.000000</td>
-      <td>400.000000</td>
-      <td>400.000000</td>
       <td>2000.000000</td>
+      <td>200.000000</td>
       <td>2000.000000</td>
-      <td>400.000000</td>
       <td>2000.000000</td>
       <td>800.000000</td>
       <td>1000.000000</td>
-      <td>...</td>
+      <td>400.000000</td>
+      <td>1000.000000</td>
       <td>200.000000</td>
+      <td>800.000000</td>
+      <td>...</td>
+      <td>800.000000</td>
       <td>400.000000</td>
       <td>200.000000</td>
       <td>2000.000000</td>
+      <td>100.000000</td>
+      <td>2000.000000</td>
+      <td>100.000000</td>
+      <td>400.000000</td>
       <td>800.000000</td>
-      <td>100.000000</td>
-      <td>100.000000</td>
-      <td>200.000000</td>
-      <td>100.000000</td>
-      <td>200.000000</td>
+      <td>2000.000000</td>
     </tr>
     <tr>
       <th>param_svc__gamma</th>
@@ -8859,51 +8863,51 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
     </tr>
     <tr>
       <th>param_svc__C</th>
-      <td>2.800000</td>
-      <td>3.000000</td>
-      <td>3.000000</td>
-      <td>2.800000</td>
       <td>2.200000</td>
-      <td>2.800000</td>
-      <td>2.600000</td>
       <td>2.600000</td>
       <td>2.400000</td>
+      <td>2.600000</td>
+      <td>2.800000</td>
+      <td>2.000000</td>
+      <td>2.400000</td>
       <td>3.000000</td>
+      <td>3.000000</td>
+      <td>2.000000</td>
       <td>...</td>
+      <td>2.000000</td>
+      <td>2.600000</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
       <td>3.000000</td>
-      <td>2.200000</td>
-      <td>2.200000</td>
+      <td>2.600000</td>
       <td>2.600000</td>
       <td>2.800000</td>
+      <td>2.400000</td>
       <td>2.200000</td>
-      <td>2.000000</td>
-      <td>2.800000</td>
-      <td>2.600000</td>
-      <td>2.000000</td>
     </tr>
     <tr>
       <th>mean_fit_time</th>
-      <td>0.066786</td>
-      <td>0.069451</td>
-      <td>0.102484</td>
-      <td>0.073914</td>
-      <td>0.143105</td>
-      <td>0.099943</td>
-      <td>0.077523</td>
-      <td>0.098497</td>
-      <td>0.101745</td>
-      <td>0.098376</td>
+      <td>0.102050</td>
+      <td>0.066551</td>
+      <td>0.129216</td>
+      <td>0.102463</td>
+      <td>0.106453</td>
+      <td>0.091030</td>
+      <td>0.087194</td>
+      <td>0.109532</td>
+      <td>0.069839</td>
+      <td>0.079957</td>
       <td>...</td>
-      <td>0.082176</td>
-      <td>0.133355</td>
-      <td>0.092549</td>
-      <td>0.112250</td>
-      <td>0.095235</td>
-      <td>0.099391</td>
-      <td>0.099000</td>
-      <td>0.083318</td>
-      <td>0.108306</td>
-      <td>0.094719</td>
+      <td>0.092606</td>
+      <td>0.152934</td>
+      <td>0.147944</td>
+      <td>0.110429</td>
+      <td>0.080112</td>
+      <td>0.118142</td>
+      <td>0.078622</td>
+      <td>0.088616</td>
+      <td>0.086573</td>
+      <td>0.115081</td>
     </tr>
   </tbody>
 </table>
@@ -8922,8 +8926,8 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <li><p>I have set the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> for reproducibility but you don’t have to do it.</p></li>
 </ul>
 </section>
-<section id="optional-passing-probability-distributions-to-random-search">
-<h3>(Optional) Passing probability distributions to random search<a class="headerlink" href="#optional-passing-probability-distributions-to-random-search" title="Link to this heading">#</a></h3>
+<section id="passing-probability-distributions-to-random-search">
+<h3>Passing probability distributions to random search<a class="headerlink" href="#passing-probability-distributions-to-random-search" title="Link to this heading">#</a></h3>
 <p>Another thing we can do is give probability distributions to draw from:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8935,52 +8939,70 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_distribution</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">dist_name</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;Value&#39;</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s2">&quot;Frequency&quot;</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of values from a </span><span class="si">{}</span><span class="s1"> distribution&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dist_name</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="uniform-distribution">
+<h4>Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate random values from a uniform distribution</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
-<span class="nb">bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>  
+<span class="c1"># Creating bins within the range of the data</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Bins from 0 to 5, in increments of 0.1</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">bin</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_distribution</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/17e72442c897f4f418a6d02a7628a6d84c3e75ef81ca9522afc0510e56960469.png" src="../../_images/17e72442c897f4f418a6d02a7628a6d84c3e75ef81ca9522afc0510e56960469.png" />
+<img alt="../../_images/7675f79c6c26935b3a61e17f75fb622946cc216ce0862fa9b6458e05c718c35c.png" src="../../_images/7675f79c6c26935b3a61e17f75fb622946cc216ce0862fa9b6458e05c718c35c.png" />
 </div>
 </div>
+</section>
+<section id="gaussian-distribution">
+<h4>Gaussian distribution<a class="headerlink" href="#gaussian-distribution" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
 
-<span class="c1">#creating bin</span>
-<span class="nb">bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>  
+<span class="c1"># Creating bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">bin</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_distribution</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="s2">&quot;normal&quot;</span><span class="p">)</span>  <span class="c1"># Corrected distribution name</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/71b17a931cca5c069b3800c8f4b949fb7402f4429a111bad2190336dbd651153.png" src="../../_images/71b17a931cca5c069b3800c8f4b949fb7402f4429a111bad2190336dbd651153.png" />
+<img alt="../../_images/fd6a23eba49da9f01524a0cf746d9256415b8c5dd933c1210db6639e9fa4c318.png" src="../../_images/fd6a23eba49da9f01524a0cf746d9256415b8c5dd933c1210db6639e9fa4c318.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate random values from a log-uniform distribution</span>
+<span class="c1"># Using loguniform from scipy.stats, specifying a range using the exponents</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">loguniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 
-<span class="c1">#creating bin</span>
-<span class="nb">bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>  
+<span class="c1"># Creating bins on a logarithmic scale for better visualization</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">1e3</span><span class="p">),</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="nb">bin</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_distribution</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="s2">&quot;log uniform&quot;</span><span class="p">)</span>  <span class="c1"># Corrected distribution name</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1e85a6efd2e0cb3071d2ac8cb52b05cecdd257826bd0bd3862bd0607c75febe4.png" src="../../_images/1e85a6efd2e0cb3071d2ac8cb52b05cecdd257826bd0bd3862bd0607c75febe4.png" />
+<img alt="../../_images/55128b3f00f5ea22df9bf1113051015e4eb1fa151240299bae3583adbb58d0b7.png" src="../../_images/55128b3f00f5ea22df9bf1113051015e4eb1fa151240299bae3583adbb58d0b7.png" />
 </div>
 </div>
-<p><br><br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_svm</span>
@@ -10661,9 +10683,9 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                                                                               (&#x27;passthrough&#x27;,
                                                                                &#x27;pass...
                    n_iter=100, n_jobs=-1,
-                   param_distributions={&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x14fe9d7f0&gt;,
-                                        &#x27;svc__C&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x14fe9dbe0&gt;,
-                                        &#x27;svc__gamma&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x152c5afd0&gt;},
+                   param_distributions={&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x12e647e00&gt;,
+                                        &#x27;svc__C&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x12e647cb0&gt;,
+                                        &#x27;svc__gamma&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x12f15ce10&gt;},
                    return_train_score=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-69" type="checkbox" ><label for="sk-estimator-id-69" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>RandomizedSearchCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.model_selection.RandomizedSearchCV.html">?<span>Documentation for RandomizedSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
@@ -10687,7 +10709,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">param_distributions&nbsp;</td>
-            <td class="value">{&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats....t 0x14fe9d7f0&gt;, &#x27;svc__C&#x27;: &lt;scipy.stats....t 0x14fe9dbe0&gt;, &#x27;svc__gamma&#x27;: &lt;scipy.stats....t 0x152c5afd0&gt;}</td>
+            <td class="value">{&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats....t 0x12e647e00&gt;, &#x27;svc__C&#x27;: &lt;scipy.stats....t 0x12e647cb0&gt;, &#x27;svc__gamma&#x27;: &lt;scipy.stats....t 0x12f15ce10&gt;}</td>
         </tr>
     
 
@@ -11566,27 +11588,27 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
     </tr>
     <tr>
       <th>mean_fit_time</th>
-      <td>0.157849</td>
-      <td>0.120098</td>
-      <td>0.134275</td>
-      <td>0.118612</td>
-      <td>0.333186</td>
-      <td>0.106041</td>
-      <td>0.087587</td>
-      <td>0.171891</td>
-      <td>0.149169</td>
-      <td>0.143095</td>
+      <td>0.109334</td>
+      <td>0.104060</td>
+      <td>0.088740</td>
+      <td>0.106724</td>
+      <td>0.331585</td>
+      <td>0.113033</td>
+      <td>0.095812</td>
+      <td>0.171894</td>
+      <td>0.139863</td>
+      <td>0.139912</td>
       <td>...</td>
-      <td>0.101221</td>
-      <td>0.098500</td>
-      <td>0.100595</td>
-      <td>0.113232</td>
-      <td>0.105274</td>
-      <td>0.095625</td>
-      <td>0.095635</td>
-      <td>0.093847</td>
-      <td>0.112440</td>
-      <td>0.127911</td>
+      <td>0.103244</td>
+      <td>0.102629</td>
+      <td>0.092515</td>
+      <td>0.090177</td>
+      <td>0.094077</td>
+      <td>0.095304</td>
+      <td>0.111668</td>
+      <td>0.114976</td>
+      <td>0.081981</td>
+      <td>0.095043</td>
     </tr>
   </tbody>
 </table>
@@ -11596,6 +11618,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <ul class="simple">
 <li><p>This is a bit fancy. What’s nice is that you can have it concentrate more on certain values by setting the distribution.</p></li>
 </ul>
+</section>
 </section>
 <section id="advantages-of-randomizedsearchcv">
 <h3>Advantages of <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code><a class="headerlink" href="#advantages-of-randomizedsearchcv" title="Link to this heading">#</a></h3>
@@ -12139,9 +12162,9 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                                                                                   &#x27;p...
                                                 (&#x27;svc&#x27;, SVC())]),
                       factor=2,
-                      param_distributions={&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x14fe9d7f0&gt;,
-                                           &#x27;svc__C&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x14fe9dbe0&gt;,
-                                           &#x27;svc__gamma&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x152c5afd0&gt;},
+                      param_distributions={&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x12e647e00&gt;,
+                                           &#x27;svc__C&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x12e647cb0&gt;,
+                                           &#x27;svc__gamma&#x27;: &lt;scipy.stats._distn_infrastructure.rv_continuous_frozen object at 0x12f15ce10&gt;},
                       random_state=123)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-81" type="checkbox" ><label for="sk-estimator-id-81" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>HalvingRandomSearchCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.model_selection.HalvingRandomSearchCV.html">?<span>Documentation for HalvingRandomSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
@@ -12165,7 +12188,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                           this.parentElement.nextElementSibling)"
             ></i></td>
             <td class="param">param_distributions&nbsp;</td>
-            <td class="value">{&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats....t 0x14fe9d7f0&gt;, &#x27;svc__C&#x27;: &lt;scipy.stats....t 0x14fe9dbe0&gt;, &#x27;svc__gamma&#x27;: &lt;scipy.stats....t 0x152c5afd0&gt;}</td>
+            <td class="value">{&#x27;columntransformer__countvectorizer__max_features&#x27;: &lt;scipy.stats....t 0x12e647e00&gt;, &#x27;svc__C&#x27;: &lt;scipy.stats....t 0x12e647cb0&gt;, &#x27;svc__gamma&#x27;: &lt;scipy.stats....t 0x12f15ce10&gt;}</td>
         </tr>
     
 
@@ -12972,10 +12995,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>0</th>
       <td>0</td>
       <td>20</td>
-      <td>0.006240</td>
-      <td>0.003795</td>
-      <td>0.002298</td>
-      <td>0.000809</td>
+      <td>0.004481</td>
+      <td>0.000855</td>
+      <td>0.002153</td>
+      <td>0.000126</td>
       <td>1634</td>
       <td>7129.653205</td>
       <td>0.026777</td>
@@ -12996,10 +13019,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>1</th>
       <td>0</td>
       <td>20</td>
-      <td>0.003108</td>
-      <td>0.000204</td>
-      <td>0.001752</td>
-      <td>0.000151</td>
+      <td>0.004059</td>
+      <td>0.000986</td>
+      <td>0.002191</td>
+      <td>0.000601</td>
       <td>1222</td>
       <td>5513.247691</td>
       <td>5.698385</td>
@@ -13020,10 +13043,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>2</th>
       <td>0</td>
       <td>20</td>
-      <td>0.003091</td>
-      <td>0.000212</td>
-      <td>0.001761</td>
-      <td>0.000106</td>
+      <td>0.003176</td>
+      <td>0.000079</td>
+      <td>0.001713</td>
+      <td>0.000157</td>
       <td>1247</td>
       <td>7800.377619</td>
       <td>0.019382</td>
@@ -13044,10 +13067,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>3</th>
       <td>0</td>
       <td>20</td>
-      <td>0.003055</td>
-      <td>0.000176</td>
-      <td>0.001718</td>
-      <td>0.000144</td>
+      <td>0.003092</td>
+      <td>0.000220</td>
+      <td>0.001729</td>
+      <td>0.000131</td>
       <td>213</td>
       <td>4809.419015</td>
       <td>0.013707</td>
@@ -13068,10 +13091,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>4</th>
       <td>0</td>
       <td>20</td>
-      <td>0.003111</td>
-      <td>0.000229</td>
-      <td>0.001752</td>
-      <td>0.000186</td>
+      <td>0.003051</td>
+      <td>0.000177</td>
+      <td>0.001706</td>
+      <td>0.000153</td>
       <td>1042</td>
       <td>6273.270093</td>
       <td>0.003919</td>
@@ -13116,10 +13139,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>155</th>
       <td>5</td>
       <td>640</td>
-      <td>0.015202</td>
-      <td>0.000447</td>
-      <td>0.003595</td>
-      <td>0.000036</td>
+      <td>0.015635</td>
+      <td>0.000668</td>
+      <td>0.003607</td>
+      <td>0.000058</td>
       <td>729</td>
       <td>4943.400650</td>
       <td>0.092454</td>
@@ -13140,10 +13163,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>156</th>
       <td>5</td>
       <td>640</td>
-      <td>0.014583</td>
-      <td>0.000248</td>
-      <td>0.003732</td>
-      <td>0.000056</td>
+      <td>0.014494</td>
+      <td>0.000090</td>
+      <td>0.003742</td>
+      <td>0.000038</td>
       <td>1383</td>
       <td>2705.246646</td>
       <td>0.173979</td>
@@ -13164,10 +13187,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>157</th>
       <td>5</td>
       <td>640</td>
-      <td>0.013769</td>
-      <td>0.000089</td>
-      <td>0.003543</td>
-      <td>0.000029</td>
+      <td>0.013662</td>
+      <td>0.000163</td>
+      <td>0.003588</td>
+      <td>0.000047</td>
       <td>440</td>
       <td>5315.613738</td>
       <td>0.179730</td>
@@ -13188,10 +13211,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>158</th>
       <td>6</td>
       <td>1280</td>
-      <td>0.046712</td>
-      <td>0.000483</td>
-      <td>0.007362</td>
-      <td>0.000118</td>
+      <td>0.046882</td>
+      <td>0.000622</td>
+      <td>0.007545</td>
+      <td>0.000356</td>
       <td>729</td>
       <td>4943.400650</td>
       <td>0.092454</td>
@@ -13212,10 +13235,10 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
       <th>159</th>
       <td>6</td>
       <td>1280</td>
-      <td>0.046486</td>
-      <td>0.001459</td>
-      <td>0.009294</td>
-      <td>0.000497</td>
+      <td>0.046192</td>
+      <td>0.000498</td>
+      <td>0.009097</td>
+      <td>0.000091</td>
       <td>1383</td>
       <td>2705.246646</td>
       <td>0.173979</td>
@@ -13692,8 +13715,8 @@ The expected grade among the best of 10000 tests is : 0.43
       <td>0.650000</td>
       <td>0.650000</td>
       <td>0.650000</td>
-      <td>0.650000</td>
       <td>0.65000</td>
+      <td>0.650000</td>
       <td>0.650000</td>
       <td>0.650000</td>
       <td>...</td>
@@ -13701,11 +13724,11 @@ The expected grade among the best of 10000 tests is : 0.43
       <td>5.500000e-01</td>
       <td>5.500000e-01</td>
       <td>5.500000e-01</td>
-      <td>0.550000</td>
+      <td>0.55000</td>
       <td>0.550000</td>
       <td>0.550000</td>
       <td>5.500000e-01</td>
-      <td>0.55000</td>
+      <td>0.550000</td>
       <td>5.000000e-01</td>
     </tr>
     <tr>
@@ -13716,8 +13739,8 @@ The expected grade among the best of 10000 tests is : 0.43
       <td>1.000000</td>
       <td>10.000000</td>
       <td>100.000000</td>
-      <td>1000.000000</td>
-      <td>10000.00000</td>
+      <td>1000.00000</td>
+      <td>10000.000000</td>
       <td>100000.000000</td>
       <td>1000000.000000</td>
       <td>...</td>
@@ -13725,11 +13748,11 @@ The expected grade among the best of 10000 tests is : 0.43
       <td>1.000000e-01</td>
       <td>1.000000e-09</td>
       <td>1.000000e-10</td>
-      <td>0.100000</td>
+      <td>0.10000</td>
       <td>0.100000</td>
       <td>0.100000</td>
       <td>1.000000e-01</td>
-      <td>0.10000</td>
+      <td>0.100000</td>
       <td>1.000000e-09</td>
     </tr>
     <tr>
@@ -13740,8 +13763,8 @@ The expected grade among the best of 10000 tests is : 0.43
       <td>0.010000</td>
       <td>0.010000</td>
       <td>0.010000</td>
-      <td>0.010000</td>
       <td>0.01000</td>
+      <td>0.010000</td>
       <td>0.010000</td>
       <td>0.010000</td>
       <td>...</td>
@@ -13749,36 +13772,36 @@ The expected grade among the best of 10000 tests is : 0.43
       <td>1.000000e+07</td>
       <td>1.000000e+09</td>
       <td>1.000000e+09</td>
-      <td>1.000000</td>
+      <td>1.00000</td>
       <td>1000.000000</td>
       <td>10.000000</td>
       <td>1.000000e+09</td>
-      <td>1000000.00000</td>
+      <td>1000000.000000</td>
       <td>1.000000e+08</td>
     </tr>
     <tr>
       <th>mean_fit_time</th>
-      <td>2.276139e-02</td>
-      <td>0.007723</td>
-      <td>0.006012</td>
-      <td>0.006376</td>
-      <td>0.005238</td>
-      <td>0.006494</td>
-      <td>0.006087</td>
-      <td>0.00622</td>
-      <td>0.013071</td>
-      <td>0.005298</td>
+      <td>3.142424e-02</td>
+      <td>0.004688</td>
+      <td>0.006033</td>
+      <td>0.004415</td>
+      <td>0.009457</td>
+      <td>0.003389</td>
+      <td>0.00683</td>
+      <td>0.005186</td>
+      <td>0.006582</td>
+      <td>0.005802</td>
       <td>...</td>
-      <td>0.008862</td>
-      <td>6.778574e-03</td>
-      <td>4.210567e-03</td>
-      <td>6.265306e-03</td>
-      <td>0.004731</td>
-      <td>0.005935</td>
-      <td>0.004177</td>
-      <td>5.686951e-03</td>
-      <td>0.00821</td>
-      <td>3.786898e-03</td>
+      <td>0.008017</td>
+      <td>3.952456e-03</td>
+      <td>4.077911e-03</td>
+      <td>4.690599e-03</td>
+      <td>0.00533</td>
+      <td>0.006326</td>
+      <td>0.004846</td>
+      <td>5.025482e-03</td>
+      <td>0.005845</td>
+      <td>6.406212e-03</td>
     </tr>
   </tbody>
 </table>
@@ -14018,7 +14041,11 @@ The expected grade among the best of 10000 tests is : 0.43
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomized-hyperparameter-search">Randomized hyperparameter search</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-iter"><code class="docutils literal notranslate"><span class="pre">n_iter</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-passing-probability-distributions-to-random-search">(Optional) Passing probability distributions to random search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passing-probability-distributions-to-random-search">Passing probability distributions to random search</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">Uniform distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-distribution">Gaussian distribution</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-randomizedsearchcv">Advantages of <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Advantages of <code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-searching-for-optimal-parameters-with-successive-halving">(Optional) Searching for optimal parameters with successive halving¶</a></li>
