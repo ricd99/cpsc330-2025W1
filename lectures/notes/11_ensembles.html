@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 12: Ensembles &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
+    <title>Lecture 11: Ensembles &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
   
   
   
@@ -201,7 +201,7 @@
 <li class="toctree-l1"><a class="reference internal" href="08_hyperparameter-optimization.html">Lecture 8: Hyperparameter Optimization and Optimization Bias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_classification-metrics.html">Lecture 9: Classification metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_regression-metrics.html">Lecture 10: Regression metrics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 12: Ensembles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 11: Ensembles</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Section slides</span></p>
 <ul class="nav bd-sidenav">
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 12: Ensembles</h1>
+    <h1>Lecture 11: Ensembles</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -390,7 +390,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-learning-objectives">Lecture learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-video">Motivation [video]</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-0">iClicker Exercise 12.0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-11-0">iClicker Exercise 11.0</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-netflix-prize">The Netflix prize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-ensemble-models">Tree-based ensemble models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-models">Tree-based models</a></li>
@@ -421,7 +421,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-1">iClicker Exercise 12.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-11-1">iClicker Exercise 11.1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-trees-video">Gradient boosted trees [video]</a><ul class="nav section-nav flex-column">
@@ -460,8 +460,8 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../../_images/330-banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-12-ensembles">
-<h1>Lecture 12: Ensembles<a class="headerlink" href="#lecture-12-ensembles" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-11-ensembles">
+<h1>Lecture 11: Ensembles<a class="headerlink" href="#lecture-11-ensembles" title="Link to this heading">#</a></h1>
 <p>UBC 2025-26</p>
 <blockquote>
 The interests of truth require a diversity of opinions.    
@@ -531,8 +531,8 @@ The interests of truth require a diversity of opinions.
 </section>
 <section id="questions-for-you">
 <h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
-<section id="iclicker-exercise-12-0">
-<h3>iClicker Exercise 12.0<a class="headerlink" href="#iclicker-exercise-12-0" title="Link to this heading">#</a></h3>
+<section id="iclicker-exercise-11-0">
+<h3>iClicker Exercise 11.0<a class="headerlink" href="#iclicker-exercise-11-0" title="Link to this heading">#</a></h3>
 <p>Which of the following scenarios has worked effectively for you in the past?</p>
 <ul class="simple">
 <li><p>(A) Working independently on a project/assignment.</p></li>
@@ -2557,8 +2557,8 @@ Tree 3
 </section>
 <section id="id1">
 <h2>❓❓ Questions for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="iclicker-exercise-12-1">
-<h3>iClicker Exercise 12.1<a class="headerlink" href="#iclicker-exercise-12-1" title="Link to this heading">#</a></h3>
+<section id="iclicker-exercise-11-1">
+<h3>iClicker Exercise 11.1<a class="headerlink" href="#iclicker-exercise-11-1" title="Link to this heading">#</a></h3>
 <p><strong>Select the most accurate option below.</strong></p>
 <ul class="simple">
 <li><p>(A) Every tree in a random forest uses a different bootstrap sample of the training set.</p></li>
@@ -8703,7 +8703,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-learning-objectives">Lecture learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-video">Motivation [video]</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-0">iClicker Exercise 12.0</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-11-0">iClicker Exercise 11.0</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-netflix-prize">The Netflix prize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-ensemble-models">Tree-based ensemble models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-models">Tree-based models</a></li>
@@ -8734,7 +8734,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-1">iClicker Exercise 12.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-11-1">iClicker Exercise 11.1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-trees-video">Gradient boosted trees [video]</a><ul class="nav section-nav flex-column">
