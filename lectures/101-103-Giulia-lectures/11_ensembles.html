@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 12: Ensembles &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
+    <title>Lecture 11: Ensembles &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/101-103-Giulia-lectures/12_ensembles';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/101-103-Giulia-lectures/11_ensembles';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="../../_sources/lectures/101-103-Giulia-lectures/12_ensembles.ipynb" target="_blank"
+      <li><a href="../../_sources/lectures/101-103-Giulia-lectures/11_ensembles.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 12: Ensembles</h1>
+    <h1>Lecture 11: Ensembles</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,9 +388,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-announcements-los">Imports, announcements, LOs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-learning-objectives">Lecture learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-video">Motivation [video]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-0">iClicker Exercise 12.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-video">Motivation [video]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-netflix-prize">The Netflix prize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-models">Ensemble models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-models">Tree-based models</a></li>
@@ -423,7 +421,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weaknesses">Weaknesses</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-1">iClicker Exercise 12.1</a></li>
 </ul>
 </li>
@@ -440,7 +438,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-kind-of-estimators-can-we-combine">What kind of estimators can we combine?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking">Stacking</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-effective-strategy">An effective strategy</a></li>
 </ul>
@@ -461,9 +458,9 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../../_images/330-banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-12-ensembles">
-<h1>Lecture 12: Ensembles<a class="headerlink" href="#lecture-12-ensembles" title="Link to this heading">#</a></h1>
-<p>UBC 2024-25</p>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-11-ensembles">
+<h1>Lecture 11: Ensembles<a class="headerlink" href="#lecture-11-ensembles" title="Link to this heading">#</a></h1>
+<p>UBC 2025-26</p>
 <blockquote>
 The interests of truth require a diversity of opinions.    
 <p>by John Stuart Mill</p>
@@ -532,22 +529,35 @@ The interests of truth require a diversity of opinions.
 </section>
 <section id="motivation-video">
 <h2>Motivation [<a class="reference external" href="https://youtu.be/8litm1H7DLo">video</a>]<a class="headerlink" href="#motivation-video" title="Link to this heading">#</a></h2>
-</section>
-<section id="questions-for-you">
-<h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
-<section id="iclicker-exercise-12-0">
-<h3>iClicker Exercise 12.0<a class="headerlink" href="#iclicker-exercise-12-0" title="Link to this heading">#</a></h3>
-<p><strong>iClicker cloud join link: https://join.iclicker.com/RITY</strong></p>
-<p>Which of the following scenarios has worked effectively for you in the past?</p>
+<p>Which country does this flag belong to?</p>
+<p><img alt="flag.png" src="lectures/101-103-Giulia-lectures/attachment:flag.png" /></p>
 <ul class="simple">
-<li><p>(A) Working independently on a project/assignment.</p></li>
-<li><p>(B) Working with like-minded people.</p></li>
-<li><p>(C) Teaming up with a diverse group offering varied perspectives and skills.</p></li>
+<li><p>(A) South Africa.</p></li>
+<li><p>(B) Australia.</p></li>
+<li><p>(C) Colombia.</p></li>
+<li><p>(D) Albania.</p></li>
 </ul>
+<p>Which country won the FIFA world cup (soccer) in 1994?</p>
+<ul class="simple">
+<li><p>(A) Argentina.</p></li>
+<li><p>(B) Brazil.</p></li>
+<li><p>(C) Italy.</p></li>
+<li><p>(D) Germany.</p></li>
+</ul>
+<p>Who painted this painting (title: “The Kiss”)?</p>
+<p><img alt="thekiss.jpg" src="lectures/101-103-Giulia-lectures/attachment:thekiss.jpg" /></p>
+<ul class="simple">
+<li><p>(A) Claude Monet.</p></li>
+<li><p>(B) Paul Cézanne.</p></li>
+<li><p>(C) Edvard Munch.</p></li>
+<li><p>(D) Gustav Klimt.</p></li>
+</ul>
+<p>What was our accuracy in this trivia quiz?</p>
+<p>If the experiment went according to plan (if!), we should have seen mistakes, but also the majority of people converging on the right answer.</p>
+<p><strong>Question:</strong> what is the most important requirement for this strategy to work?</p>
 <ul class="simple">
 <li><p><strong>Ensembles</strong> are models that combine multiple machine learning models to create more powerful models.</p></li>
 </ul>
-</section>
 <section id="the-netflix-prize">
 <h3>The Netflix prize<a class="headerlink" href="#the-netflix-prize" title="Link to this heading">#</a></h3>
 <p><img alt="" src="../../_images/netflix.png" /></p>
@@ -1436,16 +1446,16 @@ Name: proportion, dtype: float64
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.002 (+/- 0.000)</td>
-      <td>0.000 (+/- 0.000)</td>
+      <td>0.005 (+/- 0.005)</td>
+      <td>0.003 (+/- 0.004)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>Decision tree</th>
-      <td>0.112 (+/- 0.004)</td>
-      <td>0.009 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.467 (+/- 0.006)</td>
+      <td>0.047 (+/- 0.011)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
   </tbody>
@@ -1524,23 +1534,23 @@ Name: proportion, dtype: float64
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.002 (+/- 0.000)</td>
-      <td>0.000 (+/- 0.000)</td>
+      <td>0.005 (+/- 0.005)</td>
+      <td>0.003 (+/- 0.004)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>Decision tree</th>
-      <td>0.112 (+/- 0.004)</td>
-      <td>0.009 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.467 (+/- 0.006)</td>
+      <td>0.047 (+/- 0.011)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>Random forests</th>
-      <td>0.314 (+/- 0.017)</td>
-      <td>0.035 (+/- 0.001)</td>
-      <td>0.848 (+/- 0.006)</td>
+      <td>0.891 (+/- 0.037)</td>
+      <td>0.135 (+/- 0.009)</td>
+      <td>0.847 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
   </tbody>
@@ -1560,6 +1570,7 @@ Name: proportion, dtype: float64
 <li><p><code class="docutils literal notranslate"><span class="pre">fit</span></code> a diverse set of that many decision trees by <strong>injecting randomness</strong> in the model construction (trees must be different for this to work!)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">predict</span></code> by voting (classification) or averaging (regression) of predictions given by individual models</p></li>
 </ul>
+<p><strong>Question:</strong> what do you suggest to do to build different trees?</p>
 </section>
 <section id="inject-randomness-in-the-classifier-construction">
 <h3>Inject randomness in the classifier construction<a class="headerlink" href="#inject-randomness-in-the-classifier-construction" title="Link to this heading">#</a></h3>
@@ -1746,7 +1757,7 @@ Name: proportion, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 582, 1271, 1991, 2268, 2447, 2516, 2556, 4151, 4165, 5294, 5798,
-        5970, 6480]),)
+        5970, 6480], dtype=int64),)
 </pre></div>
 </div>
 </div>
@@ -1857,7 +1868,7 @@ Prediction by random forest:  [1]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tree 1
 </pre></div>
 </div>
-<img alt="../../_images/3feccf09e40268d9970fb840143bc19218ef31b07128cc5b36473fada3722224.png" src="../../_images/3feccf09e40268d9970fb840143bc19218ef31b07128cc5b36473fada3722224.png" />
+<img alt="../../_images/fdffe81c587e32f21a26138f4dd46c0e50c1e2ae46e8348a4f0049a83deab2fe.png" src="../../_images/fdffe81c587e32f21a26138f4dd46c0e50c1e2ae46e8348a4f0049a83deab2fe.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
 </pre></div>
 </div>
@@ -1867,7 +1878,7 @@ Prediction by random forest:  [1]
 Tree 2
 </pre></div>
 </div>
-<img alt="../../_images/397fdc4cd284de2bf89c909e6ab768600a61941186ebdb3fe7c8cd593f06b431.png" src="../../_images/397fdc4cd284de2bf89c909e6ab768600a61941186ebdb3fe7c8cd593f06b431.png" />
+<img alt="../../_images/ecb171cbc5711c7ad3f0e15ee0633f3a0a0c76f0f5400dee934e87c6c42e9d0b.png" src="../../_images/ecb171cbc5711c7ad3f0e15ee0633f3a0a0c76f0f5400dee934e87c6c42e9d0b.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
 </pre></div>
 </div>
@@ -1877,7 +1888,7 @@ Tree 2
 Tree 3
 </pre></div>
 </div>
-<img alt="../../_images/929c433da0be39f0befbecdb6adad57886da83b1118b187282dd886933900120.png" src="../../_images/929c433da0be39f0befbecdb6adad57886da83b1118b187282dd886933900120.png" />
+<img alt="../../_images/cb61dc26fdaafced599dd4acab126dd009a3972dc1d9e9b7a120ba1fd5780ca5.png" src="../../_images/cb61dc26fdaafced599dd4acab126dd009a3972dc1d9e9b7a120ba1fd5780ca5.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
 </pre></div>
 </div>
@@ -1906,7 +1917,7 @@ Tree 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b98366e6c7b85c48f0d112ec319bff6104aaf3f6e811962c30b8415e2fe6adc.png" src="../../_images/9b98366e6c7b85c48f0d112ec319bff6104aaf3f6e811962c30b8415e2fe6adc.png" />
+<img alt="../../_images/e7b08b430e022cfea931e04ad6bbf4155c0148226abc7e64080bf2b9f65bdded.png" src="../../_images/e7b08b430e022cfea931e04ad6bbf4155c0148226abc7e64080bf2b9f65bdded.png" />
 </div>
 </div>
 <section id="number-of-trees-and-fundamental-trade-off">
@@ -1946,11 +1957,10 @@ Tree 3
 </div>
 </section>
 </section>
-<section id="id1">
-<h2>❓❓ Questions for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="questions-for-you">
+<h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
 <section id="iclicker-exercise-12-1">
 <h3>iClicker Exercise 12.1<a class="headerlink" href="#iclicker-exercise-12-1" title="Link to this heading">#</a></h3>
-<p><strong>iClicker cloud join link: https://join.iclicker.com/RITY</strong></p>
 <p><strong>Select the most accurate option below.</strong></p>
 <ul class="simple">
 <li><p>(A) Every tree in a random forest uses a different bootstrap sample of the training set.</p></li>
@@ -2138,6 +2148,21 @@ Tree 3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\joblib\externals\loky\backend\context.py&quot;, line 257, in _count_physical_cores
+    cpu_info = subprocess.run(
+               ^^^^^^^^^^^^^^^
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\subprocess.py&quot;, line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\subprocess.py&quot;, line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File &quot;C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\subprocess.py&quot;, line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2173,64 +2198,64 @@ Tree 3
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.007 (+/- 0.000)</td>
-      <td>0.003 (+/- 0.000)</td>
+      <td>0.025 (+/- 0.004)</td>
+      <td>0.012 (+/- 0.001)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.474 (+/- 0.054)</td>
-      <td>0.010 (+/- 0.000)</td>
+      <td>1.269 (+/- 0.151)</td>
+      <td>0.044 (+/- 0.008)</td>
       <td>0.849 (+/- 0.005)</td>
       <td>0.850 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>decision tree</th>
-      <td>0.114 (+/- 0.002)</td>
-      <td>0.010 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.445 (+/- 0.007)</td>
+      <td>0.047 (+/- 0.006)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>1.208 (+/- 0.054)</td>
-      <td>0.072 (+/- 0.001)</td>
-      <td>0.843 (+/- 0.007)</td>
+      <td>4.713 (+/- 0.069)</td>
+      <td>0.275 (+/- 0.008)</td>
+      <td>0.844 (+/- 0.007)</td>
       <td>0.976 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>XGBoost</th>
-      <td>0.223 (+/- 0.007)</td>
-      <td>0.012 (+/- 0.001)</td>
-      <td>0.871 (+/- 0.005)</td>
-      <td>0.899 (+/- 0.002)</td>
+      <td>0.500 (+/- 0.034)</td>
+      <td>0.045 (+/- 0.002)</td>
+      <td>0.872 (+/- 0.004)</td>
+      <td>0.897 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>LightGBM</th>
-      <td>0.473 (+/- 0.022)</td>
-      <td>0.017 (+/- 0.001)</td>
+      <td>0.575 (+/- 0.077)</td>
+      <td>0.052 (+/- 0.001)</td>
       <td>0.872 (+/- 0.004)</td>
       <td>0.888 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>CatBoost</th>
-      <td>3.402 (+/- 0.041)</td>
-      <td>0.099 (+/- 0.002)</td>
+      <td>17.860 (+/- 1.389)</td>
+      <td>0.371 (+/- 0.007)</td>
       <td>0.873 (+/- 0.003)</td>
       <td>0.895 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>sklearn_histGB</th>
-      <td>1.901 (+/- 0.112)</td>
-      <td>0.026 (+/- 0.001)</td>
+      <td>1.760 (+/- 0.126)</td>
+      <td>0.075 (+/- 0.003)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.887 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>sklearn_GB</th>
-      <td>1.871 (+/- 0.021)</td>
-      <td>0.014 (+/- 0.000)</td>
+      <td>8.302 (+/- 0.085)</td>
+      <td>0.063 (+/- 0.006)</td>
       <td>0.864 (+/- 0.004)</td>
       <td>0.870 (+/- 0.001)</td>
     </tr>
@@ -2284,64 +2309,64 @@ Tree 3
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.007 (+/- 0.000)</td>
-      <td>0.003 (+/- 0.000)</td>
+      <td>0.025 (+/- 0.004)</td>
+      <td>0.012 (+/- 0.001)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.474 (+/- 0.054)</td>
-      <td>0.010 (+/- 0.000)</td>
+      <td>1.269 (+/- 0.151)</td>
+      <td>0.044 (+/- 0.008)</td>
       <td>0.849 (+/- 0.005)</td>
       <td>0.850 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>decision tree</th>
-      <td>0.114 (+/- 0.002)</td>
-      <td>0.010 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.445 (+/- 0.007)</td>
+      <td>0.047 (+/- 0.006)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>1.208 (+/- 0.054)</td>
-      <td>0.072 (+/- 0.001)</td>
-      <td>0.843 (+/- 0.007)</td>
+      <td>4.713 (+/- 0.069)</td>
+      <td>0.275 (+/- 0.008)</td>
+      <td>0.844 (+/- 0.007)</td>
       <td>0.976 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>XGBoost</th>
-      <td>0.223 (+/- 0.007)</td>
-      <td>0.012 (+/- 0.001)</td>
-      <td>0.871 (+/- 0.005)</td>
-      <td>0.899 (+/- 0.002)</td>
+      <td>0.500 (+/- 0.034)</td>
+      <td>0.045 (+/- 0.002)</td>
+      <td>0.872 (+/- 0.004)</td>
+      <td>0.897 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>LightGBM</th>
-      <td>0.473 (+/- 0.022)</td>
-      <td>0.017 (+/- 0.001)</td>
+      <td>0.575 (+/- 0.077)</td>
+      <td>0.052 (+/- 0.001)</td>
       <td>0.872 (+/- 0.004)</td>
       <td>0.888 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>CatBoost</th>
-      <td>3.402 (+/- 0.041)</td>
-      <td>0.099 (+/- 0.002)</td>
+      <td>17.860 (+/- 1.389)</td>
+      <td>0.371 (+/- 0.007)</td>
       <td>0.873 (+/- 0.003)</td>
       <td>0.895 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>sklearn_histGB</th>
-      <td>1.901 (+/- 0.112)</td>
-      <td>0.026 (+/- 0.001)</td>
+      <td>1.760 (+/- 0.126)</td>
+      <td>0.075 (+/- 0.003)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.887 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>sklearn_GB</th>
-      <td>1.871 (+/- 0.021)</td>
-      <td>0.014 (+/- 0.000)</td>
+      <td>8.302 (+/- 0.085)</td>
+      <td>0.063 (+/- 0.006)</td>
       <td>0.864 (+/- 0.004)</td>
       <td>0.870 (+/- 0.001)</td>
     </tr>
@@ -3088,17 +3113,17 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                             &#x27;10th&#x27;, &#x27;11th&#x27;, &#x27;12th&#x27;, &#x27;HS-grad&#x27;, &#x27;Prof-school&#x27;,
                             &#x27;Assoc-voc&#x27;, &#x27;Assoc-acdm&#x27;, &#x27;Some-college&#x27;,
                             &#x27;Bachelors&#x27;, &#x27;Masters&#x27;, &#x27;Doctorate&#x27;]],
-               dtype=&lt;class &#x27;int&#x27;&gt;)</pre></div> </div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-62" type="checkbox" ><label for="sk-estimator-id-62" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>pipeline-1</div></div></label><div class="sk-toggleable__content "><pre>[&#x27;sex&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-63" type="checkbox" ><label for="sk-estimator-id-63" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>SimpleImputer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.impute.SimpleImputer.html">?<span>Documentation for SimpleImputer</span></a></div></label><div class="sk-toggleable__content "><pre>SimpleImputer(fill_value=&#x27;missing&#x27;, strategy=&#x27;constant&#x27;)</pre></div> </div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-64" type="checkbox" ><label for="sk-estimator-id-64" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OneHotEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.OneHotEncoder.html">?<span>Documentation for OneHotEncoder</span></a></div></label><div class="sk-toggleable__content "><pre>OneHotEncoder(drop=&#x27;if_binary&#x27;, dtype=&lt;class &#x27;int&#x27;&gt;)</pre></div> </div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-65" type="checkbox" ><label for="sk-estimator-id-65" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>pipeline-2</div></div></label><div class="sk-toggleable__content "><pre>[&#x27;workclass&#x27;, &#x27;marital.status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;native.country&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-66" type="checkbox" ><label for="sk-estimator-id-66" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>SimpleImputer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.impute.SimpleImputer.html">?<span>Documentation for SimpleImputer</span></a></div></label><div class="sk-toggleable__content "><pre>SimpleImputer(fill_value=&#x27;missing&#x27;, strategy=&#x27;constant&#x27;)</pre></div> </div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-67" type="checkbox" ><label for="sk-estimator-id-67" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OneHotEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.OneHotEncoder.html">?<span>Documentation for OneHotEncoder</span></a></div></label><div class="sk-toggleable__content "><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;, sparse_output=False)</pre></div> </div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-68" type="checkbox" ><label for="sk-estimator-id-68" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>drop</div></div></label><div class="sk-toggleable__content "><pre>[&#x27;fnlwgt&#x27;, &#x27;race&#x27;, &#x27;education.num&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-69" type="checkbox" ><label for="sk-estimator-id-69" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>drop</div></div></label><div class="sk-toggleable__content "><pre>drop</pre></div> </div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-70" type="checkbox" ><label for="sk-estimator-id-70" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>XGBClassifier</div></div></label><div class="sk-toggleable__content "><pre>XGBClassifier(base_score=None, booster=None, callbacks=None,
+               dtype=&lt;class &#x27;int&#x27;&gt;)</pre></div> </div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-62" type="checkbox" ><label for="sk-estimator-id-62" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>pipeline-1</div></div></label><div class="sk-toggleable__content "><pre>[&#x27;sex&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-63" type="checkbox" ><label for="sk-estimator-id-63" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>SimpleImputer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.impute.SimpleImputer.html">?<span>Documentation for SimpleImputer</span></a></div></label><div class="sk-toggleable__content "><pre>SimpleImputer(fill_value=&#x27;missing&#x27;, strategy=&#x27;constant&#x27;)</pre></div> </div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-64" type="checkbox" ><label for="sk-estimator-id-64" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OneHotEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.OneHotEncoder.html">?<span>Documentation for OneHotEncoder</span></a></div></label><div class="sk-toggleable__content "><pre>OneHotEncoder(drop=&#x27;if_binary&#x27;, dtype=&lt;class &#x27;int&#x27;&gt;)</pre></div> </div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-65" type="checkbox" ><label for="sk-estimator-id-65" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>pipeline-2</div></div></label><div class="sk-toggleable__content "><pre>[&#x27;workclass&#x27;, &#x27;marital.status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;native.country&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-66" type="checkbox" ><label for="sk-estimator-id-66" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>SimpleImputer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.impute.SimpleImputer.html">?<span>Documentation for SimpleImputer</span></a></div></label><div class="sk-toggleable__content "><pre>SimpleImputer(fill_value=&#x27;missing&#x27;, strategy=&#x27;constant&#x27;)</pre></div> </div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-67" type="checkbox" ><label for="sk-estimator-id-67" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>OneHotEncoder</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.OneHotEncoder.html">?<span>Documentation for OneHotEncoder</span></a></div></label><div class="sk-toggleable__content "><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;, sparse_output=False)</pre></div> </div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-68" type="checkbox" ><label for="sk-estimator-id-68" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>drop</div></div></label><div class="sk-toggleable__content "><pre>[&#x27;fnlwgt&#x27;, &#x27;race&#x27;, &#x27;education.num&#x27;]</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-69" type="checkbox" ><label for="sk-estimator-id-69" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>drop</div></div></label><div class="sk-toggleable__content "><pre>drop</pre></div> </div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-70" type="checkbox" ><label for="sk-estimator-id-70" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>XGBClassifier</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://xgboost.readthedocs.io/en/release_3.0.0/python/python_api.html#xgboost.XGBClassifier">?<span>Documentation for XGBClassifier</span></a></div></label><div class="sk-toggleable__content "><pre>XGBClassifier(base_score=None, booster=None, callbacks=None,
               colsample_bylevel=None, colsample_bynode=None,
               colsample_bytree=None, device=None, early_stopping_rounds=None,
               enable_categorical=False, eval_metric=None, feature_types=None,
-              gamma=None, grow_policy=None, importance_type=None,
-              interaction_constraints=None, learning_rate=None, max_bin=None,
-              max_cat_threshold=None, max_cat_to_onehot=None,
-              max_delta_step=None, max_depth=None, max_leaves=None,
-              min_child_weight=None, missing=nan, monotone_constraints=None,
-              multi_strategy=None, n_estimators=None, n_jobs=None,
-              num_parallel_tree=None, random_state=123, ...)</pre></div> </div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>LightGBM</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-71" type="checkbox" ><label for="sk-estimator-id-71" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>columntransformer: ColumnTransformer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.compose.ColumnTransformer.html">?<span>Documentation for columntransformer: ColumnTransformer</span></a></div></label><div class="sk-toggleable__content "><pre>ColumnTransformer(transformers=[(&#x27;standardscaler&#x27;, StandardScaler(),
+              feature_weights=None, gamma=None, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=None, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=None,
+              max_leaves=None, min_child_weight=None, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=None,
+              n_jobs=None, num_parallel_tree=None, ...)</pre></div> </div></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><label>LightGBM</label></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-71" type="checkbox" ><label for="sk-estimator-id-71" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>columntransformer: ColumnTransformer</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.compose.ColumnTransformer.html">?<span>Documentation for columntransformer: ColumnTransformer</span></a></div></label><div class="sk-toggleable__content "><pre>ColumnTransformer(transformers=[(&#x27;standardscaler&#x27;, StandardScaler(),
                                  [&#x27;age&#x27;, &#x27;capital.gain&#x27;, &#x27;capital.loss&#x27;,
                                   &#x27;hours.per.week&#x27;]),
                                 (&#x27;ordinalencoder&#x27;,
@@ -3386,40 +3411,40 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
       <th>0</th>
       <td>1</td>
       <td>1</td>
-      <td>0.662853</td>
+      <td>0.662777</td>
       <td>1.0</td>
-      <td>0.780000</td>
-      <td>0.719056</td>
+      <td>0.760000</td>
+      <td>0.669376</td>
       <td>0.685786</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
       <td>1</td>
-      <td>0.247596</td>
+      <td>0.247075</td>
       <td>1.0</td>
-      <td>0.552721</td>
-      <td>0.506023</td>
+      <td>0.678924</td>
+      <td>0.581217</td>
       <td>0.463582</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1</td>
       <td>1</td>
-      <td>0.635815</td>
+      <td>0.635466</td>
       <td>0.5</td>
-      <td>0.602954</td>
-      <td>0.712402</td>
+      <td>0.621537</td>
+      <td>0.684623</td>
       <td>0.665882</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1</td>
       <td>1</td>
-      <td>0.615124</td>
+      <td>0.614629</td>
       <td>0.0</td>
-      <td>0.746114</td>
-      <td>0.694334</td>
+      <td>0.770000</td>
+      <td>0.679356</td>
       <td>0.683015</td>
     </tr>
   </tbody>
@@ -3435,7 +3460,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44601558, 0.55398442])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.40584038, 0.59415962])
 </pre></div>
 </div>
 </div>
@@ -3455,7 +3480,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2300778984319707
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0292019089612867
 </pre></div>
 </div>
 </div>
@@ -3474,7 +3499,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7699221015680298
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.9707980910387133
 </pre></div>
 </div>
 </div>
@@ -3499,7 +3524,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.44601557968639416, 0.553984420313606)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.40584038179225734, 0.5941596182077427)
 </pre></div>
 </div>
 </div>
@@ -3511,7 +3536,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44601558, 0.55398442])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.40584038, 0.59415962])
 </pre></div>
 </div>
 </div>
@@ -3525,7 +3550,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.37658964, 0.62341036])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.37849843, 0.62150157])
 </pre></div>
 </div>
 </div>
@@ -3573,73 +3598,73 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.007 (+/- 0.000)</td>
-      <td>0.003 (+/- 0.000)</td>
+      <td>0.025 (+/- 0.004)</td>
+      <td>0.012 (+/- 0.001)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.474 (+/- 0.054)</td>
-      <td>0.010 (+/- 0.000)</td>
+      <td>1.269 (+/- 0.151)</td>
+      <td>0.044 (+/- 0.008)</td>
       <td>0.849 (+/- 0.005)</td>
       <td>0.850 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>decision tree</th>
-      <td>0.114 (+/- 0.002)</td>
-      <td>0.010 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.445 (+/- 0.007)</td>
+      <td>0.047 (+/- 0.006)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>1.208 (+/- 0.054)</td>
-      <td>0.072 (+/- 0.001)</td>
-      <td>0.843 (+/- 0.007)</td>
+      <td>4.713 (+/- 0.069)</td>
+      <td>0.275 (+/- 0.008)</td>
+      <td>0.844 (+/- 0.007)</td>
       <td>0.976 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>XGBoost</th>
-      <td>0.223 (+/- 0.007)</td>
-      <td>0.012 (+/- 0.001)</td>
-      <td>0.871 (+/- 0.005)</td>
-      <td>0.899 (+/- 0.002)</td>
+      <td>0.500 (+/- 0.034)</td>
+      <td>0.045 (+/- 0.002)</td>
+      <td>0.872 (+/- 0.004)</td>
+      <td>0.897 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>LightGBM</th>
-      <td>0.473 (+/- 0.022)</td>
-      <td>0.017 (+/- 0.001)</td>
+      <td>0.575 (+/- 0.077)</td>
+      <td>0.052 (+/- 0.001)</td>
       <td>0.872 (+/- 0.004)</td>
       <td>0.888 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>CatBoost</th>
-      <td>3.402 (+/- 0.041)</td>
-      <td>0.099 (+/- 0.002)</td>
+      <td>17.860 (+/- 1.389)</td>
+      <td>0.371 (+/- 0.007)</td>
       <td>0.873 (+/- 0.003)</td>
       <td>0.895 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>sklearn_histGB</th>
-      <td>1.901 (+/- 0.112)</td>
-      <td>0.026 (+/- 0.001)</td>
+      <td>1.760 (+/- 0.126)</td>
+      <td>0.075 (+/- 0.003)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.887 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>sklearn_GB</th>
-      <td>1.871 (+/- 0.021)</td>
-      <td>0.014 (+/- 0.000)</td>
+      <td>8.302 (+/- 0.085)</td>
+      <td>0.063 (+/- 0.006)</td>
       <td>0.864 (+/- 0.004)</td>
       <td>0.870 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>Voting</th>
-      <td>2.416 (+/- 0.059)</td>
-      <td>0.119 (+/- 0.002)</td>
+      <td>7.786 (+/- 0.148)</td>
+      <td>0.479 (+/- 0.009)</td>
       <td>0.859 (+/- 0.005)</td>
-      <td>0.953 (+/- 0.001)</td>
+      <td>0.953 (+/- 0.000)</td>
     </tr>
   </tbody>
 </table>
@@ -3700,78 +3725,78 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.007 (+/- 0.000)</td>
-      <td>0.003 (+/- 0.000)</td>
+      <td>0.025 (+/- 0.004)</td>
+      <td>0.012 (+/- 0.001)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.474 (+/- 0.054)</td>
-      <td>0.010 (+/- 0.000)</td>
+      <td>1.269 (+/- 0.151)</td>
+      <td>0.044 (+/- 0.008)</td>
       <td>0.849 (+/- 0.005)</td>
       <td>0.850 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>decision tree</th>
-      <td>0.114 (+/- 0.002)</td>
-      <td>0.010 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.445 (+/- 0.007)</td>
+      <td>0.047 (+/- 0.006)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>1.208 (+/- 0.054)</td>
-      <td>0.072 (+/- 0.001)</td>
-      <td>0.843 (+/- 0.007)</td>
+      <td>4.713 (+/- 0.069)</td>
+      <td>0.275 (+/- 0.008)</td>
+      <td>0.844 (+/- 0.007)</td>
       <td>0.976 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>XGBoost</th>
-      <td>0.223 (+/- 0.007)</td>
-      <td>0.012 (+/- 0.001)</td>
-      <td>0.871 (+/- 0.005)</td>
-      <td>0.899 (+/- 0.002)</td>
+      <td>0.500 (+/- 0.034)</td>
+      <td>0.045 (+/- 0.002)</td>
+      <td>0.872 (+/- 0.004)</td>
+      <td>0.897 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>LightGBM</th>
-      <td>0.473 (+/- 0.022)</td>
-      <td>0.017 (+/- 0.001)</td>
+      <td>0.575 (+/- 0.077)</td>
+      <td>0.052 (+/- 0.001)</td>
       <td>0.872 (+/- 0.004)</td>
       <td>0.888 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>CatBoost</th>
-      <td>3.402 (+/- 0.041)</td>
-      <td>0.099 (+/- 0.002)</td>
+      <td>17.860 (+/- 1.389)</td>
+      <td>0.371 (+/- 0.007)</td>
       <td>0.873 (+/- 0.003)</td>
       <td>0.895 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>sklearn_histGB</th>
-      <td>1.901 (+/- 0.112)</td>
-      <td>0.026 (+/- 0.001)</td>
+      <td>1.760 (+/- 0.126)</td>
+      <td>0.075 (+/- 0.003)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.887 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>sklearn_GB</th>
-      <td>1.871 (+/- 0.021)</td>
-      <td>0.014 (+/- 0.000)</td>
+      <td>8.302 (+/- 0.085)</td>
+      <td>0.063 (+/- 0.006)</td>
       <td>0.864 (+/- 0.004)</td>
       <td>0.870 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>Voting</th>
-      <td>2.416 (+/- 0.059)</td>
-      <td>0.119 (+/- 0.002)</td>
+      <td>7.786 (+/- 0.148)</td>
+      <td>0.479 (+/- 0.009)</td>
       <td>0.859 (+/- 0.005)</td>
-      <td>0.953 (+/- 0.001)</td>
+      <td>0.953 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>Voting_ndt</th>
-      <td>2.277 (+/- 0.032)</td>
-      <td>0.108 (+/- 0.001)</td>
+      <td>7.234 (+/- 0.114)</td>
+      <td>0.433 (+/- 0.006)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.918 (+/- 0.001)</td>
     </tr>
@@ -3840,15 +3865,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ul>
 </li>
 </ul>
-</section>
-</section>
-<section id="id2">
-<h2>❓❓ Questions for you<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Is it possible to get better than the best performing model using averaging.</p></li>
-<li><p>Is random forest is an averaging model?</p></li>
-</ul>
 <p><br><br><br><br></p>
+</section>
 </section>
 <section id="stacking">
 <h2>Stacking<a class="headerlink" href="#stacking" title="Link to this heading">#</a></h2>
@@ -3892,32 +3910,11 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <blockquote>
 <div><p>Note that estimators_ are fitted on the full X while final_estimator_ is trained using cross-validated predictions of the base estimators using cross_val_predict.</p>
 </div></blockquote>
-<p>Here is the input features (X) to the meta-model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid_sample_df</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">valid_sample_X</span> <span class="o">=</span> <span class="n">valid_sample_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;income&quot;</span><span class="p">])</span>
 <span class="n">valid_sample_y</span> <span class="o">=</span> <span class="n">valid_sample_df</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data = {}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># r4 = {</span>
-<span class="c1">#     name + &quot;_proba&quot;: pipe.predict_proba(valid_sample_X)[:, 1]</span>
-<span class="c1">#     for (name, pipe) in stacking_model.named_estimators_.items()</span>
-<span class="c1"># }</span>
-<span class="c1"># data[&#39;y&#39;] = valid_sample_y</span>
-<span class="c1"># data.update(r4)</span>
-<span class="c1"># pd.DataFrame(data)</span>
 </pre></div>
 </div>
 </div>
@@ -3961,23 +3958,23 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   <tbody>
     <tr>
       <th>LightGBM</th>
-      <td>4.066768</td>
+      <td>4.086085</td>
     </tr>
     <tr>
       <th>XGBoost</th>
-      <td>2.009573</td>
+      <td>1.966681</td>
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.688620</td>
+      <td>0.670854</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>0.033149</td>
+      <td>0.043196</td>
     </tr>
     <tr>
       <th>decision tree</th>
-      <td>-0.145915</td>
+      <td>-0.118230</td>
     </tr>
   </tbody>
 </table>
@@ -3990,7 +3987,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.32112113])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.31973465])
 </pre></div>
 </div>
 </div>
@@ -4023,10 +4020,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.22283835, 0.77716165],
-       [0.59291868, 0.40708132],
-       [0.23087929, 0.76912071],
-       [0.21413528, 0.78586472]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.23900927, 0.76099073],
+       [0.55121578, 0.44878422],
+       [0.24202916, 0.75797084],
+       [0.22221842, 0.77778158]])
 </pre></div>
 </div>
 </div>
@@ -4076,87 +4073,87 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   <tbody>
     <tr>
       <th>Dummy</th>
-      <td>0.007 (+/- 0.000)</td>
-      <td>0.003 (+/- 0.000)</td>
+      <td>0.025 (+/- 0.004)</td>
+      <td>0.012 (+/- 0.001)</td>
       <td>0.758 (+/- 0.000)</td>
       <td>0.758 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.474 (+/- 0.054)</td>
-      <td>0.010 (+/- 0.000)</td>
+      <td>1.269 (+/- 0.151)</td>
+      <td>0.044 (+/- 0.008)</td>
       <td>0.849 (+/- 0.005)</td>
       <td>0.850 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>decision tree</th>
-      <td>0.114 (+/- 0.002)</td>
-      <td>0.010 (+/- 0.000)</td>
-      <td>0.817 (+/- 0.007)</td>
+      <td>0.445 (+/- 0.007)</td>
+      <td>0.047 (+/- 0.006)</td>
+      <td>0.817 (+/- 0.006)</td>
       <td>0.979 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>1.208 (+/- 0.054)</td>
-      <td>0.072 (+/- 0.001)</td>
-      <td>0.843 (+/- 0.007)</td>
+      <td>4.713 (+/- 0.069)</td>
+      <td>0.275 (+/- 0.008)</td>
+      <td>0.844 (+/- 0.007)</td>
       <td>0.976 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>XGBoost</th>
-      <td>0.223 (+/- 0.007)</td>
-      <td>0.012 (+/- 0.001)</td>
-      <td>0.871 (+/- 0.005)</td>
-      <td>0.899 (+/- 0.002)</td>
+      <td>0.500 (+/- 0.034)</td>
+      <td>0.045 (+/- 0.002)</td>
+      <td>0.872 (+/- 0.004)</td>
+      <td>0.897 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>LightGBM</th>
-      <td>0.473 (+/- 0.022)</td>
-      <td>0.017 (+/- 0.001)</td>
+      <td>0.575 (+/- 0.077)</td>
+      <td>0.052 (+/- 0.001)</td>
       <td>0.872 (+/- 0.004)</td>
       <td>0.888 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>CatBoost</th>
-      <td>3.402 (+/- 0.041)</td>
-      <td>0.099 (+/- 0.002)</td>
+      <td>17.860 (+/- 1.389)</td>
+      <td>0.371 (+/- 0.007)</td>
       <td>0.873 (+/- 0.003)</td>
       <td>0.895 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>sklearn_histGB</th>
-      <td>1.901 (+/- 0.112)</td>
-      <td>0.026 (+/- 0.001)</td>
+      <td>1.760 (+/- 0.126)</td>
+      <td>0.075 (+/- 0.003)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.887 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>sklearn_GB</th>
-      <td>1.871 (+/- 0.021)</td>
-      <td>0.014 (+/- 0.000)</td>
+      <td>8.302 (+/- 0.085)</td>
+      <td>0.063 (+/- 0.006)</td>
       <td>0.864 (+/- 0.004)</td>
       <td>0.870 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>Voting</th>
-      <td>2.416 (+/- 0.059)</td>
-      <td>0.119 (+/- 0.002)</td>
+      <td>7.786 (+/- 0.148)</td>
+      <td>0.479 (+/- 0.009)</td>
       <td>0.859 (+/- 0.005)</td>
-      <td>0.953 (+/- 0.001)</td>
+      <td>0.953 (+/- 0.000)</td>
     </tr>
     <tr>
       <th>Voting_ndt</th>
-      <td>2.277 (+/- 0.032)</td>
-      <td>0.108 (+/- 0.001)</td>
+      <td>7.234 (+/- 0.114)</td>
+      <td>0.433 (+/- 0.006)</td>
       <td>0.871 (+/- 0.005)</td>
       <td>0.918 (+/- 0.001)</td>
     </tr>
     <tr>
       <th>Stacking</th>
-      <td>13.054 (+/- 0.301)</td>
-      <td>0.121 (+/- 0.004)</td>
+      <td>41.536 (+/- 0.313)</td>
+      <td>0.483 (+/- 0.008)</td>
       <td>0.872 (+/- 0.004)</td>
-      <td>0.890 (+/- 0.003)</td>
+      <td>0.889 (+/- 0.003)</td>
     </tr>
   </tbody>
 </table>
@@ -4194,7 +4191,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a924c1b4c2a2021b4cfff8db3331bd238f2afe2658a175357e18c674583dce77.png" src="../../_images/a924c1b4c2a2021b4cfff8db3331bd238f2afe2658a175357e18c674583dce77.png" />
+<img alt="../../_images/da9f38ba6ba0b194dd3862bf1f5a8b1c7b5288fb4946e1784ae2f79f6fdeb970.png" src="../../_images/da9f38ba6ba0b194dd3862bf1f5a8b1c7b5288fb4946e1784ae2f79f6fdeb970.png" />
 </div>
 </div>
 <section id="an-effective-strategy">
@@ -4269,16 +4266,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-cpsc330-py"
+            mode: "cpsc330"
         },
         kernelOptions: {
-            name: "conda-env-cpsc330-py",
+            name: "cpsc330",
             path: "./lectures/101-103-Giulia-lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-cpsc330-py'</script>
+    <script>kernelName = 'cpsc330'</script>
 
                 </article>
               
@@ -4309,9 +4306,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-announcements-los">Imports, announcements, LOs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-learning-objectives">Lecture learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-video">Motivation [video]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-0">iClicker Exercise 12.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-video">Motivation [video]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-netflix-prize">The Netflix prize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-models">Ensemble models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-based-models">Tree-based models</a></li>
@@ -4344,7 +4339,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weaknesses">Weaknesses</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-12-1">iClicker Exercise 12.1</a></li>
 </ul>
 </li>
@@ -4361,7 +4356,6 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-kind-of-estimators-can-we-combine">What kind of estimators can we combine?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking">Stacking</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-effective-strategy">An effective strategy</a></li>
 </ul>
