@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 17: Recommender Systems &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
+    <title>Lecture 16: Recommender Systems &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
   
   
   
@@ -206,7 +206,7 @@
 <li class="toctree-l1"><a class="reference internal" href="13_feature-engineering-selection.html">Lecture 13: Feature engineering and feature selection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="14_K-Means.html">Lecture 14: K-Means Clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="15_DBSCAN-hierarchical.html">Lecture 15: More Clustering</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 17: Recommender Systems</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 16: Recommender Systems</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Section slides</span></p>
 <ul class="nav bd-sidenav">
@@ -381,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 17: Recommender Systems</h1>
+    <h1>Lecture 16: Recommender Systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,7 +412,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-all-of-the-following-statements-which-are-true-iclicker">Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-class-discussion">Questions for class discussion</a></li>
 </ul>
 </li>
@@ -425,14 +425,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.2 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-error-rate-in-recommendation-systems">Beyond error rate in recommendation systems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-comments-and-summary">Final comments and summary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-problem-of-recommender-systems">Formulating the problem of recommender systems</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-cover">What did we cover?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Evaluation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder">Reminder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
@@ -449,9 +449,9 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../../_images/330-banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-17-recommender-systems">
-<h1>Lecture 17: Recommender Systems<a class="headerlink" href="#lecture-17-recommender-systems" title="Link to this heading">#</a></h1>
-<p>UBC 2024-25</p>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-16-recommender-systems">
+<h1>Lecture 16: Recommender Systems<a class="headerlink" href="#lecture-16-recommender-systems" title="Link to this heading">#</a></h1>
+<p>UBC 2025-26</p>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -482,7 +482,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/af650b4d18b75f18d4f940cfdee96afcd91787b2b0e05468c008a1df12435dba.png" src="../../_images/af650b4d18b75f18d4f940cfdee96afcd91787b2b0e05468c008a1df12435dba.png" />
+<img alt="../../_images/d5cfca0b17bf965991828cc6a6eb790b60b34f0fe1b6c65622cccf48cacc9a05.png" src="../../_images/d5cfca0b17bf965991828cc6a6eb790b60b34f0fe1b6c65622cccf48cacc9a05.png" />
 </div>
 </div>
 </section>
@@ -1972,8 +1972,8 @@ KNN imputer valid RMSE: 1.48
 </section>
 <section id="id1">
 <h2>❓❓ Questions for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">
-<h3>Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
+<section id="select-all-of-the-following-statements-which-are-true-iclicker">
+<h3>Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>(A) In the context of recommendation systems, the shapes of validation utility matrix and train utility matrix are the same.</p></li>
 <li><p>(B) RMSE perfectly captures what we want to measure in the context of recommendation systems.</p></li>
@@ -3416,8 +3416,8 @@ Name: Lion King, dtype: int64
 </section>
 <section id="id2">
 <h2>❓❓ Questions for you<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker">
-<h3>Exercise 17.2 Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
+<section id="id3">
+<h3>Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>(A) In content-based filtering we leverage available item features in addition to similarity between users.</p></li>
 <li><p>(B) In content-based filtering you represent each user in terms of <strong>known</strong> features of items.</p></li>
@@ -3512,8 +3512,8 @@ Name: Lion King, dtype: int64
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=mRToFXlNBpQ">Part2</a></p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>Evaluation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>Evaluation<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>We split the data similar to supervised systems.</p></li>
 <li><p>We evaluate recommendation systems using traditional regression metrics such as MSE or RMSE.</p></li>
@@ -3628,7 +3628,7 @@ Name: Lion King, dtype: int64
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-all-of-the-following-statements-which-are-true-iclicker">Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-class-discussion">Questions for class discussion</a></li>
 </ul>
 </li>
@@ -3641,14 +3641,14 @@ Name: Lion King, dtype: int64
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.2 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-error-rate-in-recommendation-systems">Beyond error rate in recommendation systems</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-comments-and-summary">Final comments and summary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-problem-of-recommender-systems">Formulating the problem of recommender systems</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-cover">What did we cover?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Evaluation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder">Reminder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
