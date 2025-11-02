@@ -35,6 +35,7 @@ parts:
   - file: lectures/notes/13_feature-engineering-selection
   - file: lectures/notes/14_K-Means
   - file: lectures/notes/15_DBSCAN-hierarchical
+  - file: lectures/notes/16_recommender-systems.ipynb
   - file: lecture/notes/AppendixA.ipynb
   - file: lecture/notes/AppendixB.ipynb
 - caption: Section slides
