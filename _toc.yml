@@ -36,8 +36,10 @@ parts:
   - file: lectures/notes/14_K-Means
   - file: lectures/notes/15_DBSCAN-hierarchical
   - file: lectures/notes/16_recommender-systems.ipynb
+  - file: lectures/notes/17_natural-language-processing.ipynb
   - file: lecture/notes/AppendixA.ipynb
   - file: lecture/notes/AppendixB.ipynb
+  - file: lecture/notes/AppendixC.ipynb
 - caption: Section slides
   chapters:
   - file: lectures/101&103-Giulia-lectures/README
