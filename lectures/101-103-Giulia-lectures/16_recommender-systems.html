@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 17: Recommender Systems &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
+    <title>Lecture 16: Recommender Systems &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/101-103-Giulia-lectures/17_recommender-systems';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/101-103-Giulia-lectures/16_recommender-systems';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -298,7 +298,7 @@
       
       
       
-      <li><a href="../../_sources/lectures/101-103-Giulia-lectures/17_recommender-systems.ipynb" target="_blank"
+      <li><a href="../../_sources/lectures/101-103-Giulia-lectures/16_recommender-systems.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -382,7 +382,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 17: Recommender Systems</h1>
+    <h1>Lecture 16: Recommender Systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,7 +394,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning outcomes <a name="lo"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-for-you">❓❓ Question for you</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems-intro-and-motivation">Recommender systems intro and motivation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-recommender-system">What is a recommender system?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-we-care-about-recommendation-systems">Why should we care about recommendation systems?</a></li>
@@ -412,7 +412,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-imputation"><span class="math notranslate nohighlight">\(k\)</span>-nearest neighbours imputation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Question for you</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-class-discussion">Questions for class discussion</a></li>
 </ul>
@@ -425,7 +425,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-comments-on-content-based-filtering">Miscellaneous comments on content-based filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.2 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 </ul>
 </li>
@@ -433,7 +433,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-comments-and-summary">Final comments and summary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-problem-of-recommender-systems">Formulating the problem of recommender systems</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-cover">What did we cover?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder">Reminder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
@@ -450,9 +450,9 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../../_images/330-banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-17-recommender-systems">
-<h1>Lecture 17: Recommender Systems<a class="headerlink" href="#lecture-17-recommender-systems" title="Link to this heading">#</a></h1>
-<p>UBC 2024-25</p>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-16-recommender-systems">
+<h1>Lecture 16: Recommender Systems<a class="headerlink" href="#lecture-16-recommender-systems" title="Link to this heading">#</a></h1>
+<p>UBC 2025-26</p>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -464,8 +464,6 @@ document.write(`
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">),</span> <span class="s2">&quot;code&quot;</span><span class="p">))</span>
-
-<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">plotting_functions</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -482,6 +480,9 @@ document.write(`
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">),</span> <span class="s2">&quot;data/&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c74102351499aaa8ca1e82f20b044f25728f5a282570d4475944c9c23b143f45.png" src="../../_images/c74102351499aaa8ca1e82f20b044f25728f5a282570d4475944c9c23b143f45.png" />
 </div>
 </div>
 </section>
@@ -501,8 +502,8 @@ document.write(`
 </ul>
 <p><br><br></p>
 </section>
-<section id="questions-for-you">
-<h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
+<section id="question-for-you">
+<h2>❓❓ Question for you<a class="headerlink" href="#question-for-you" title="Link to this heading">#</a></h2>
 <p>What percentage of watch time on YouTube do you think comes from recommendations?</p>
 <ul class="simple">
 <li><p>(A) 50%</p></li>
@@ -544,7 +545,7 @@ document.write(`
 <p><img alt="" src="../../_images/reco-examples.png" /></p>
 <ul class="simple">
 <li><p>Recommendation systems are often presented as powerful tools that significantly <strong>reduce the effort users need to put in finding items</strong>, effectively mitigating the problem of information overload.</p></li>
-<li><p>This is more or less true in many contexts. Consider, for instance, the experience of shopping an umbrella on Amazon without the help of recommendations or any specific ranking of products.</p></li>
+<li><p>This is more or less true in many contexts. Consider, for instance, the experience of shopping for an umbrella on Amazon without the help of recommendations or any specific ranking of products.</p></li>
 <li><p>In the absence of a recommendation system, users would be faced with the daunting task of sifting through thousands of available products to find the one that best suits their needs.</p></li>
 </ul>
 <p><img alt="" src="../../_images/info-overload.png" /></p>
@@ -573,7 +574,7 @@ document.write(`
 <li><p>We learn latent features.</p></li>
 </ul>
 </li>
-<li><p><strong>Content-based recommenders</strong> (today’s focus)</p>
+<li><p>Content-based recommenders</p>
 <ul>
 <li><p>Supervised learning</p></li>
 <li><p>Extract features <span class="math notranslate nohighlight">\(x_i\)</span> of users and/or items building a model to predict rating <span class="math notranslate nohighlight">\(y_i\)</span> given <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
@@ -586,7 +587,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p><br><br><br><br></p>
 </section>
 </section>
 <section id="recommender-systems-problem">
@@ -1148,8 +1148,8 @@ Fraction non-nan ratings: 0.438
 <ul class="simple">
 <li><p>We’ll try a number of methods to fill in the missing entries in the utility matrix.</p></li>
 <li><p>Although there is no notion of “accurate” recommendations, we need a way to evaluate our predictions so that we’ll be able to compare different methods.</p></li>
-<li><p>Although we are doing unsupervised learning, we’ll split the data and evaluate our predictions as follows.</p></li>
 </ul>
+<p><strong>Take 2-3 minutes</strong> to discuss with your neighbour how you would go about evaluating the “accuracy” of your recommendations.</p>
 <p><strong>Data splitting</strong></p>
 <ul class="simple">
 <li><p>We split the ratings into train and validation sets.</p></li>
@@ -1183,6 +1183,7 @@ Fraction non-nan ratings: 0.438
 </div>
 </div>
 </div>
+<p><strong>Question for you:</strong> do you think these matrices will be the same size, or different?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">valid_mat</span><span class="o">.</span><span class="n">shape</span>
@@ -1456,7 +1457,6 @@ Fraction non-nan ratings: 0.438
 </div>
 </div>
 </div>
-<p><br><br><br><br></p>
 </section>
 </section>
 <section id="baseline-approaches">
@@ -1850,10 +1850,9 @@ KNN imputer valid RMSE: 1.48
 </section>
 </section>
 <section id="id1">
-<h2>❓❓ Questions for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>❓❓ Question for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">
 <h3>Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
-<p><strong>iClicker cloud join link: https://join.iclicker.com/RITY</strong></p>
 <ul class="simple">
 <li><p>(A) In the context of recommendation systems, the shapes of validation utility matrix and train utility matrix are the same.</p></li>
 <li><p>(B) It would be reasonable to impute missing values in the utility matrix by taking the average of the ratings given to an item by similar users.</p></li>
@@ -1902,7 +1901,6 @@ KNN imputer valid RMSE: 1.48
 <li><p>Once we have trained regression models for each user, we <strong>complete the utility matrix by predicting ratings for each user</strong> using their corresponding models.</p></li>
 </ul>
 <p><img alt="" src="../../_images/content-based-filtering.png" /></p>
-<p>Let’s look into each of these steps one by one with a toy example.</p>
 <section id="movie-features">
 <h3>Movie features<a class="headerlink" href="#movie-features" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -2080,7 +2078,7 @@ KNN imputer valid RMSE: 1.48
 </ul>
 <ul class="simple">
 <li><p>Let’s consider an example user <strong>Pat</strong>.</p></li>
-<li><p>We don’t know anything about Pat but we know her ratings to movies.</p></li>
+<li><p>We don’t know anything about Pat but we know her ratings of movies.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2143,7 +2141,7 @@ Name: Lion King, dtype: int64
 <li><p>Fit a regression model using <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
 <li><p>Apply the model to predict ratings for new items!</p></li>
 </ul>
-<p>As an example, let’s build a profile for pat.</p>
+<p>As an example, let’s build a profile for pat. Try writing the first 3 rows on your own.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Which movies are rated by Pat? </span>
@@ -2361,6 +2359,7 @@ Name: Lion King, dtype: int64
 </div>
 </div>
 <p>Similar to how we created <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> for Pat above, the function below builds <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> for all users.</p>
+<p>Do you think the shape of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> for all users would be the same?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
@@ -2405,29 +2404,28 @@ Name: Lion King, dtype: int64
             {3: array([[0, 0, 1, 0, 1, 0],
                     [0, 1, 1, 1, 0, 0],
                     [0, 1, 1, 1, 0, 0],
-                    [0, 0, 0, 0, 0, 1]]),
+                    [0, 0, 0, 0, 0, 1]], dtype=int64),
              0: array([[0, 1, 1, 0, 0, 0],
                     [0, 1, 1, 1, 0, 0],
                     [1, 0, 1, 0, 0, 0],
                     [0, 0, 0, 0, 0, 1],
-                    [0, 0, 0, 0, 0, 1]]),
+                    [0, 0, 0, 0, 0, 1]], dtype=int64),
              2: array([[0, 1, 1, 0, 0, 0],
                     [0, 0, 1, 0, 1, 0],
                     [0, 0, 1, 0, 1, 0],
                     [0, 1, 1, 0, 0, 0],
                     [0, 1, 1, 1, 0, 0],
                     [0, 0, 0, 0, 0, 1],
-                    [0, 1, 1, 0, 0, 0]]),
+                    [0, 1, 1, 0, 0, 0]], dtype=int64),
              1: array([[0, 1, 1, 0, 0, 0],
                     [0, 0, 1, 0, 1, 0],
                     [0, 0, 0, 0, 0, 1],
                     [0, 0, 0, 0, 0, 1],
-                    [0, 0, 0, 0, 0, 1]])})
+                    [0, 0, 0, 0, 0, 1]], dtype=int64)})
 </pre></div>
 </div>
 </div>
 </div>
-<p>Do you think the shape of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> for all users would be the same?</p>
 <p><strong>Examining user profiles</strong></p>
 <ul class="simple">
 <li><p>Let’s examine some user profiles.</p></li>
@@ -3287,8 +3285,8 @@ Name: Lion King, dtype: int64
 </ul>
 </section>
 </section>
-<section id="id2">
-<h2>❓❓ Questions for you<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="questions-for-you">
+<h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
 <section id="exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker">
 <h3>Exercise 17.2 Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -3385,8 +3383,8 @@ Name: Lion King, dtype: int64
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=mRToFXlNBpQ">Part2</a></p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>Evaluation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>Evaluation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>We split the data similar to supervised systems.</p></li>
 <li><p>We evaluate recommendation systems using traditional regression metrics such as MSE or RMSE.</p></li>
@@ -3425,16 +3423,16 @@ Name: Lion King, dtype: int64
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-cpsc330-py"
+            mode: "cpsc330"
         },
         kernelOptions: {
-            name: "conda-env-cpsc330-py",
+            name: "cpsc330",
             path: "./lectures/101-103-Giulia-lectures"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-cpsc330-py'</script>
+    <script>kernelName = 'cpsc330'</script>
 
                 </article>
               
@@ -3464,7 +3462,7 @@ Name: Lion King, dtype: int64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning outcomes <a name="lo"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-for-you">❓❓ Question for you</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems-intro-and-motivation">Recommender systems intro and motivation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-recommender-system">What is a recommender system?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-we-care-about-recommendation-systems">Why should we care about recommendation systems?</a></li>
@@ -3482,7 +3480,7 @@ Name: Lion King, dtype: int64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-imputation"><span class="math notranslate nohighlight">\(k\)</span>-nearest neighbours imputation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Question for you</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-class-discussion">Questions for class discussion</a></li>
 </ul>
@@ -3495,7 +3493,7 @@ Name: Lion King, dtype: int64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-comments-on-content-based-filtering">Miscellaneous comments on content-based filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-2-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.2 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 </ul>
 </li>
@@ -3503,7 +3501,7 @@ Name: Lion King, dtype: int64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-comments-and-summary">Final comments and summary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-problem-of-recommender-systems">Formulating the problem of recommender systems</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-cover">What did we cover?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reminder">Reminder</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
