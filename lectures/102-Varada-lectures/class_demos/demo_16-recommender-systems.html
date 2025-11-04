@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 17: Class demo &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
+    <title>Lecture 16: Class demo &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/102-Varada-lectures/class_demos/demo_17-recommender-systems';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/102-Varada-lectures/class_demos/demo_16-recommender-systems';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -298,7 +298,7 @@
       
       
       
-      <li><a href="../../../_sources/lectures/102-Varada-lectures/class_demos/demo_17-recommender-systems.ipynb" target="_blank"
+      <li><a href="../../../_sources/lectures/102-Varada-lectures/class_demos/demo_16-recommender-systems.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -382,7 +382,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 17: Class demo</h1>
+    <h1>Lecture 16: Class demo</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -392,18 +392,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning outcomes <a name="lo"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems-intro-and-motivation">Recommender systems intro and motivation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-recommender-system">What is a recommender system?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-we-care-about-recommendation-systems">Why should we care about recommendation systems?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-main-approaches">Data and main approaches</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems-problem">Recommender systems problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-utility-matrix">Creating utility matrix</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-approaches">Baseline Approaches</a><ul class="nav section-nav flex-column">
@@ -411,9 +403,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-imputation"><span class="math notranslate nohighlight">\(k\)</span>-nearest neighbours imputation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-class-discussion">Questions for class discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclciker-exercise">iClciker exercise</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-based-filtering">Content-based filtering</a><ul class="nav section-nav flex-column">
@@ -424,8 +415,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-comments-on-content-based-filtering">Miscellaneous comments on content-based filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-all-of-the-following-statements-which-are-true-iclicker">Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-error-rate-in-recommendation-systems">Beyond error rate in recommendation systems</a><ul class="nav section-nav flex-column">
@@ -448,8 +439,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-17-class-demo">
-<h1>Lecture 17: Class demo<a class="headerlink" href="#lecture-17-class-demo" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-16-class-demo">
+<h1>Lecture 16: Class demo<a class="headerlink" href="#lecture-16-class-demo" title="Link to this heading">#</a></h1>
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -479,175 +470,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/be29570349bd999ace60fc5081848ca142080747f6b7b1d21bd5e3864a46daaf.png" src="../../../_images/be29570349bd999ace60fc5081848ca142080747f6b7b1d21bd5e3864a46daaf.png" />
 </div>
-</section>
-<section id="learning-outcomes">
-<h2>Learning outcomes <a name="lo"></a><a class="headerlink" href="#learning-outcomes" title="Link to this heading">#</a></h2>
-<p>From this lecture, students are expected to be able to:</p>
-<ul class="simple">
-<li><p>State the problem of recommender systems.</p></li>
-<li><p>Describe components of a utility matrix.</p></li>
-<li><p>Create a utility matrix given ratings data.</p></li>
-<li><p>Describe a common approach to evaluate recommender systems.</p></li>
-<li><p>Implement some baseline approaches to complete the utility matrix.</p></li>
-<li><p>Explain the idea of collaborative filtering.</p></li>
-<li><p>Formulate the rating prediction problem as a supervised machine learning problem.</p></li>
-<li><p>Create a content-based filter given ratings data and item features to predict missing ratings in the utility matrix.</p></li>
-<li><p>Explain some serious consequences of recommendation systems.</p></li>
-</ul>
+</div>
 <p><br><br></p>
-</section>
-<section id="recommender-systems-intro-and-motivation">
-<h2>Recommender systems intro and motivation<a class="headerlink" href="#recommender-systems-intro-and-motivation" title="Link to this heading">#</a></h2>
-<section id="what-is-a-recommender-system">
-<h3>What is a recommender system?<a class="headerlink" href="#what-is-a-recommender-system" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>A recommender or a recommendation system <strong>recommends</strong> a particular product or service to users they are likely to consume.</p></li>
-</ul>
-<p><img alt="" src="../../../_images/recommendation_system.png" /></p>
-<!-- <img src="img/recommendation_system.png" alt="" height="900" width="900">  -->
-<p><strong>Example: Recommender Systems</strong></p>
-<ul class="simple">
-<li><p>A user goes to Amazon to buy products.</p></li>
-<li><p>Amazon has some information about the user. They also have information about other users buying similar products.</p></li>
-<li><p>What should they recommend to the user, so that they buy more products?</p></li>
-<li><p>There’s no “right” answer (no label).</p></li>
-<li><p>The whole idea is to understand user behavior in order to recommend them products they are likely to consume.</p></li>
-</ul>
-<p><br><br></p>
-</section>
-<section id="why-should-we-care-about-recommendation-systems">
-<h3>Why should we care about recommendation systems?<a class="headerlink" href="#why-should-we-care-about-recommendation-systems" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Almost everything we buy or consume today is in some way or the other influenced by recommendation systems.</p>
-<ul>
-<li><p>Music (Spotify), videos (YouTube), news, books and products (Amazon), movies (Netflix), jokes, restaurants, dating , friends (Facebook), professional connections (LinkedIn)</p></li>
-</ul>
-</li>
-<li><p>Recommendation systems are at the core of the success of many companies such as Amazon and <a class="reference external" href="https://help.netflix.com/en/node/100639">Netflix</a>.</p></li>
-</ul>
-<p><img alt="" src="../../../_images/reco-examples.png" /></p>
-<ul class="simple">
-<li><p>Recommendation systems are often presented as powerful tools that significantly <strong>reduce the effort users need to put in finding items</strong>, effectively mitigating the problem of information overload.</p></li>
-<li><p>This is more or less true in many contexts. Consider, for instance, the experience of shopping an umbrella on Amazon without the help of recommendations or any specific ranking of products.</p></li>
-<li><p>In the absence of a recommendation system, users would be faced with the daunting task of sifting through thousands of available products to find the one that best suits their needs.</p></li>
-</ul>
-<p><img alt="" src="../../../_images/info-overload.png" /></p>
-<ul class="simple">
-<li><p>That said, we should always be mindful of the drawbacks of relying heavily on recommender systems.</p></li>
-<li><p>For example, these systems tend to recommend articles and products that are similar to those a user has previously interacted with or those their friends like.</p></li>
-<li><p>While this can improve user experience by presenting more of what the system predicts the user will like, it can also lead to a phenomenon known as <strong>“filter bubbles”</strong>.</p></li>
-<li><p>This effect <strong>narrows a user’s exposure to diverse viewpoints and information</strong>. Such a narrowing of perspective can be detrimental, particularly in the context of scientific research or political discourse, where exposure to a wide range of perspectives is crucial.</p></li>
-</ul>
-<p><br><br></p>
-</section>
-<section id="data-and-main-approaches">
-<h3>Data and main approaches<a class="headerlink" href="#data-and-main-approaches" title="Link to this heading">#</a></h3>
-<p><strong>What kind of data we need to build recommendation systems?</strong></p>
-<ul class="simple">
-<li><p>Customer purchase history data (We worked with it last week.)</p></li>
-<li><p><strong>User-item interactions</strong> (e.g., ratings or clicks) (most common)</p></li>
-<li><p><strong>Features related to items or users</strong></p></li>
-</ul>
-<p><strong>Main approaches</strong></p>
-<ul class="simple">
-<li><p>Collaborative filtering</p>
-<ul>
-<li><p>“Unsupervised” learning</p></li>
-<li><p>We only have labels <span class="math notranslate nohighlight">\(y_{ij}\)</span> (rating of user <span class="math notranslate nohighlight">\(i\)</span> for item <span class="math notranslate nohighlight">\(j\)</span>).</p></li>
-<li><p>We learn latent features.</p></li>
-</ul>
-</li>
-<li><p><strong>Content-based recommenders</strong> (today’s focus)</p>
-<ul>
-<li><p>Supervised learning</p></li>
-<li><p>Extract features <span class="math notranslate nohighlight">\(x_i\)</span> of users and/or items building a model to predict rating <span class="math notranslate nohighlight">\(y_i\)</span> given <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
-<li><p>Apply model to predict for new users/items.</p></li>
-</ul>
-</li>
-<li><p>Hybrid</p>
-<ul>
-<li><p>Combining collaborative filtering with content-based filtering</p></li>
-</ul>
-</li>
-</ul>
-<p><br><br><br><br></p>
-</section>
-</section>
-<section id="recommender-systems-problem">
-<h2>Recommender systems problem<a class="headerlink" href="#recommender-systems-problem" title="Link to this heading">#</a></h2>
-<section id="problem-formulation">
-<h3>Problem formulation<a class="headerlink" href="#problem-formulation" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Most often the data for recommender systems come in as <strong>interactions</strong> between a set of items and a set of users.</p></li>
-<li><p>We have two entities: <span class="math notranslate nohighlight">\(N\)</span> <strong>users</strong> and <span class="math notranslate nohighlight">\(M\)</span> <strong>items</strong>.</p></li>
-<li><p><strong>Users</strong> are consumers.</p></li>
-<li><p><strong>Items</strong> are the products or services offered.</p>
-<ul>
-<li><p>E.g., movies (Netflix), books (Amazon), songs (spotify), people (tinder)</p></li>
-</ul>
-</li>
-<li><p>A <strong>utility matrix</strong> is the matrix that captures <strong>interactions</strong> between <span class="math notranslate nohighlight">\(N\)</span> <strong>users</strong> and <span class="math notranslate nohighlight">\(M\)</span> <strong>items</strong>.</p></li>
-<li><p>The interaction may come in different forms:</p>
-<ul>
-<li><p>ratings, clicks, purchases</p></li>
-</ul>
-</li>
-<li><p>Below is a toy utility matrix. Here <span class="math notranslate nohighlight">\(N\)</span> = 6 and <span class="math notranslate nohighlight">\(M\)</span> = 5.</p></li>
-<li><p>Each entry <span class="math notranslate nohighlight">\(y_{ij}\)</span> (<span class="math notranslate nohighlight">\(i^{th}\)</span> row and <span class="math notranslate nohighlight">\(j^{th}\)</span> column) denotes the rating given by the user <span class="math notranslate nohighlight">\(i\)</span> to item <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
-<li><p>We represent users in terms of items and items in terms of users.</p></li>
-</ul>
-<p><img alt="" src="../../../_images/utility_matrix.png" /></p>
-<!-- <img src="img/utility_matrix.png" alt="" height="900" width="900">  -->
-<ul class="simple">
-<li><p>The utility matrix is very sparse because usually users only interact with a few items.</p></li>
-<li><p>For example:</p>
-<ul>
-<li><p>all Netflix users will have rated only a small percentage of content available on Netflix</p></li>
-<li><p>all amazon clients will have rated only a small fraction of items among all items available on Amazon</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>What do we predict?</strong></p>
-<p>Given a utility matrix of <span class="math notranslate nohighlight">\(N\)</span> users and <span class="math notranslate nohighlight">\(M\)</span> items, <strong>complete the utility matrix</strong>. In other words, <strong>predict missing values in the matrix</strong>.</p>
-<ul class="simple">
-<li><p>Once we have predicted ratings, we can recommend items to users they are likely to rate higher.</p></li>
-<li><p>Note: rating prediction <span class="math notranslate nohighlight">\(\neq\)</span> Classification or regression</p></li>
-</ul>
-<p><strong>In classification or regression:</strong></p>
-<ul class="simple">
-<li><p>We have <span class="math notranslate nohighlight">\(X\)</span> and targets for some rows in <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
-<li><p>We want to predict the last column (target column).</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix} 
-\checkmark &amp; \checkmark &amp; \checkmark  &amp; \checkmark &amp; \checkmark\\
-\checkmark &amp; \checkmark &amp; \checkmark  &amp; \checkmark &amp; \checkmark\\
-\checkmark &amp; \checkmark &amp; \checkmark  &amp; \checkmark &amp; \checkmark\\
-\checkmark &amp; \checkmark &amp; \checkmark  &amp; \checkmark &amp; ?\\
-\checkmark &amp; \checkmark &amp; \checkmark  &amp; \checkmark &amp; ?\\
-\checkmark &amp; \checkmark &amp; \checkmark  &amp; \checkmark &amp; ?\\
-\end{bmatrix}
-\end{split}\]</div>
-<p><strong>In rating prediction</strong></p>
-<ul class="simple">
-<li><p>Ratings data has many missing values in the utility matrix. There is no special target column. We want to predict the missing entries in the matrix.</p></li>
-<li><p>Since our goal is to <strong>predict</strong> ratings, usually the utility matrix is referred to as <span class="math notranslate nohighlight">\(Y\)</span> matrix.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix} 
-? &amp; ? &amp; \checkmark  &amp; ? &amp; \checkmark\\
-\checkmark &amp; ? &amp; ?  &amp; ? &amp; ?\\
-? &amp; \checkmark &amp; \checkmark  &amp; ? &amp; \checkmark\\
-? &amp; ? &amp; ?  &amp; ? &amp; ?\\
-? &amp; ? &amp; ? &amp; \checkmark &amp; ?\\
-? &amp; \checkmark &amp; \checkmark  &amp; ? &amp; \checkmark
-\end{bmatrix}
-\end{split}\]</div>
-<p><br><br></p>
-</section>
 <section id="creating-utility-matrix">
 <h3>Creating utility matrix<a class="headerlink" href="#creating-utility-matrix" title="Link to this heading">#</a></h3>
 <p>Let’s work with the following toy example.</p>
@@ -1416,12 +1243,14 @@ Fraction non-nan ratings: 0.438
 <li><p><code class="docutils literal notranslate"><span class="pre">train_mat</span></code> has only ratings from the train set and <code class="docutils literal notranslate"><span class="pre">valid_mat</span></code> has only ratings from the valid set.</p></li>
 <li><p>During training we assume that we do not have access to some of the available ratings. We predict these ratings and evaluate them against ratings in the validation set.</p></li>
 </ul>
-<p><strong>Questions for you</strong></p>
+</section>
+<section id="questions-for-you">
+<h3>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>How do train and validation utility matrices differ?</p></li>
-<li><p>Why are utility matrices for train and validation sets are of the same shape?
-<br><br></p></li>
+<li><p>Why are utility matrices for train and validation sets are of the same shape?</p></li>
 </ul>
+<p><br><br><br><br></p>
 <ul class="simple">
 <li><p>Now that we have train and validation sets, how do we evaluate our predictions?</p></li>
 <li><p>You can calculate the error between actual ratings and predicted ratings with metrics of your choice.</p>
@@ -1602,7 +1431,7 @@ Global average valid RMSE: 0.83
 <li><p>Impute missing values using the mean value from <span class="math notranslate nohighlight">\(k\)</span> nearest neighbours found in the training set.</p></li>
 <li><p>Calculate distances between examples using features where neither value is missing.</p></li>
 </ul>
-<p><img alt="" src="lectures/102-Varada-lectures/img/utility_matrix.png" /></p>
+<p><img alt="" src="../../../_images/utility_matrix.png" /></p>
 <!-- <img src="img/utility_matrix.png" alt="" height="900" width="900">  --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">train_mat</span><span class="p">)</span>
@@ -1762,7 +1591,7 @@ Global average valid RMSE: 0.83
       <td>0.0</td>
       <td>4.0</td>
       <td>3.0</td>
-      <td>1.5</td>
+      <td>2.0</td>
       <td>4.0</td>
       <td>1.0</td>
       <td>4.0</td>
@@ -1777,7 +1606,7 @@ Global average valid RMSE: 0.83
       <td>0.0</td>
       <td>4.0</td>
       <td>3.0</td>
-      <td>1.5</td>
+      <td>2.0</td>
       <td>4.0</td>
       <td>3.0</td>
       <td>4.0</td>
@@ -1809,13 +1638,13 @@ Global average valid RMSE: 0.83
       <td>3.0</td>
       <td>1.0</td>
       <td>4.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
       <td>3.0</td>
-      <td>4.0</td>
-      <td>4.0</td>
-      <td>5.0</td>
-      <td>5.0</td>
-      <td>5.0</td>
-      <td>2.5</td>
     </tr>
   </tbody>
 </table>
@@ -1883,7 +1712,7 @@ KNN imputer valid RMSE: 1.48
       <td>0.0</td>
       <td>4.0</td>
       <td>3.0</td>
-      <td>1.5</td>
+      <td>2.0</td>
       <td>4.0</td>
       <td>1.0</td>
       <td>4.0</td>
@@ -1898,7 +1727,7 @@ KNN imputer valid RMSE: 1.48
       <td>0.0</td>
       <td>4.0</td>
       <td>3.0</td>
-      <td>1.5</td>
+      <td>2.0</td>
       <td>4.0</td>
       <td>3.0</td>
       <td>4.0</td>
@@ -1930,13 +1759,13 @@ KNN imputer valid RMSE: 1.48
       <td>3.0</td>
       <td>1.0</td>
       <td>4.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
       <td>3.0</td>
-      <td>4.0</td>
-      <td>4.0</td>
-      <td>5.0</td>
-      <td>5.0</td>
-      <td>5.0</td>
-      <td>2.5</td>
     </tr>
   </tbody>
 </table>
@@ -1950,10 +1779,11 @@ KNN imputer valid RMSE: 1.48
 <p><br><br><br><br></p>
 </section>
 </section>
-<section id="questions-for-you">
-<h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
-<section id="exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">
-<h3>Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h2>❓❓ Questions for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="iclciker-exercise">
+<h3>iClciker exercise<a class="headerlink" href="#iclciker-exercise" title="Link to this heading">#</a></h3>
+<p>Select all of the following statements which are <strong>True</strong></p>
 <ul class="simple">
 <li><p>(A) In the context of recommendation systems, the shapes of validation utility matrix and train utility matrix are the same.</p></li>
 <li><p>(B) RMSE perfectly captures what we want to measure in the context of recommendation systems.</p></li>
@@ -1962,25 +1792,13 @@ KNN imputer valid RMSE: 1.48
 </ul>
 <p><br><br><br><br></p>
 </section>
-<section id="questions-for-class-discussion">
-<h3>Questions for class discussion<a class="headerlink" href="#questions-for-class-discussion" title="Link to this heading">#</a></h3>
-<p>Discuss how clustering might be applied to the problem of item recommendation:</p>
-<p><br><br><br><br></p>
-</section>
 </section>
 <section id="content-based-filtering">
 <h2>Content-based filtering<a class="headerlink" href="#content-based-filtering" title="Link to this heading">#</a></h2>
-<hr><ul class="simple">
-<li><p>What if a new item or a new user shows up?</p>
-<ul>
-<li><p>You won’t have any ratings information for that item or user</p></li>
-</ul>
-</li>
-<li><p>Content-based filtering is suitable to predict ratings for new items and new users.</p></li>
+<ul class="simple">
 <li><p>Content-based filtering is a <strong>supervised machine learning</strong> approach to recommender systems.</p></li>
-<li><p>In KNN imputation (an example of collaborative filtering) we assumed that we only have ratings data.</p></li>
-<li><p>Usually, there is some information available about items and users.</p></li>
-<li><p>Examples</p>
+<li><p>Usually there is some information available about items and users.</p></li>
+<li><p>Examples:</p>
 <ul>
 <li><p>Netflix can describe movies as action, romance, comedy, documentaries.</p></li>
 <li><p>Netflix has some demographic and preference information on users.</p></li>
@@ -2002,7 +1820,7 @@ KNN imputer valid RMSE: 1.48
 <li><p>We treat ratings prediction problem as <strong>a set of regression problems</strong> and build regression model for each user.</p></li>
 <li><p>Once we have trained regression models for each user, we <strong>complete the utility matrix by predicting ratings for each user</strong> using their corresponding models.</p></li>
 </ul>
-<p><img alt="" src="lectures/102-Varada-lectures/img/content-based-filtering.png" /></p>
+<p><img alt="" src="../../../_images/content-based-filtering.png" /></p>
 <p>Let’s look into each of these steps one by one with a toy example.</p>
 <section id="movie-features">
 <h3>Movie features<a class="headerlink" href="#movie-features" title="Link to this heading">#</a></h3>
@@ -2158,8 +1976,8 @@ KNN imputer valid RMSE: 1.48
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">movie_feats_df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_feats</span> <span class="o">=</span> <span class="n">movie_feats_df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">movie_feats</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2179,56 +1997,6 @@ KNN imputer valid RMSE: 1.48
 </ul>
 </li>
 </ul>
-<ul class="simple">
-<li><p>Let’s consider an example user <strong>Pat</strong>.</p></li>
-<li><p>We don’t know anything about Pat but we know her ratings to movies.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">utility_mat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Pat&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A Beautiful Mind      3.0
-Bambi                 4.0
-Cast Away             3.0
-Downfall              2.0
-Inception            NaN 
-Jerry Maguire         5.0
-Lion King             4.0
-Malcolm x            NaN 
-Man on Wire          NaN 
-Roman Holidays       NaN 
-The Social Dilemma   NaN 
-Titanic               3.0
-Name: Pat, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>We also know about movies and their features.</p></li>
-<li><p>If Pat gave a high rating to <em>Lion King</em>, it means that she liked the features of the movie.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_feats_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Lion King&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Action         0
-Romance        0
-Drama          1
-Comedy         0
-Children       1
-Documentary    0
-Name: Lion King, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
 <p><br><br></p>
 </section>
 <section id="building-user-profiles">
@@ -2250,6 +2018,7 @@ Name: Lion King, dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Which movies are rated by Pat? </span>
 
 <span class="n">movies_rated_by_pat</span> <span class="o">=</span> <span class="n">toy_ratings</span><span class="p">[</span><span class="n">toy_ratings</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Pat&#39;</span><span class="p">][[</span><span class="s1">&#39;movie_id&#39;</span><span class="p">,</span> <span class="s1">&#39;rating&#39;</span><span class="p">]]</span>
+
 <span class="n">movies_rated_by_pat</span>
 </pre></div>
 </div>
@@ -2319,7 +2088,7 @@ Name: Lion King, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">movie_feats</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2340,7 +2109,7 @@ Name: Lion King, dtype: int64
     <span class="n">m</span> <span class="o">=</span> <span class="n">item_mapper</span><span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;movie_id&#39;</span><span class="p">]]</span>
     
     <span class="c1"># Get the feature vector for the movie </span>
-    <span class="n">pat_X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+    <span class="n">pat_X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movie_feats</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
     
     <span class="c1"># Get the rating for the movie</span>
     <span class="n">pat_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">])</span>
@@ -2474,7 +2243,7 @@ Name: Lion King, dtype: int64
     <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">ratings_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">user_mapper</span><span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="n">user_key</span><span class="p">]]</span>
         <span class="n">m</span> <span class="o">=</span> <span class="n">item_mapper</span><span class="p">[</span><span class="n">val</span><span class="p">[</span><span class="n">item_key</span><span class="p">]]</span>
-        <span class="n">lr_X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+        <span class="n">lr_X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">movie_feats</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
         <span class="n">lr_y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="s2">&quot;rating&quot;</span><span class="p">])</span>
         <span class="n">lr_items</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
@@ -3231,7 +3000,7 @@ Name: Lion King, dtype: int64
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="n">models</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
     <span class="n">models</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_usr</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y_train_usr</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
-    <span class="n">pred_lin_reg</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">pred_lin_reg</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">movie_feats</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3341,12 +3110,6 @@ Name: Lion King, dtype: int64
 </div></div></div>
 </div>
 <ul class="simple">
-<li><p>In this toy example, we assumed access to item features. Frequently, we also have access to user features, including demographic information.</p></li>
-<li><p>With this data, we can construct item profiles similar to user profiles and train a unique regression model for each item.</p></li>
-<li><p>These models enable us to predict ratings for each item individually.</p></li>
-<li><p>Typically, the final rating is derived from a weighted average that combines the ratings suggested by both item features and user features.</p></li>
-</ul>
-<ul class="simple">
 <li><p>In this toy example, we assumed that we had item features. Often we also have access to user features such as their demographic information.</p></li>
 <li><p>When such information is available, we can create item profiles similar to user profiles and train a regression model per item.</p></li>
 <li><p>We can then predict ratings for each item using these models.</p></li>
@@ -3356,6 +3119,14 @@ Name: Lion King, dtype: int64
 </section>
 <section id="miscellaneous-comments-on-content-based-filtering">
 <h3>Miscellaneous comments on content-based filtering<a class="headerlink" href="#miscellaneous-comments-on-content-based-filtering" title="Link to this heading">#</a></h3>
+<p>A linear model approach to content-based filtering, where we reconstruct rating for user <span class="math notranslate nohighlight">\(i\)</span> and item <span class="math notranslate nohighlight">\(j\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[\hat{y}_{ij} = w_i^T x_{ij}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_{ij}\)</span> is a feature vector for user <span class="math notranslate nohighlight">\(i\)</span> and item <span class="math notranslate nohighlight">\(j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(w\)</span> are the weights learned for user <span class="math notranslate nohighlight">\(i\)</span></p></li>
+<li><p>Our usual supervised learning setup for linear regression.</p></li>
+</ul>
 <p><strong>Fine-tuning your regression models</strong></p>
 <ul class="simple">
 <li><p>The feature matrix for movies can contain different types of features.</p>
@@ -3392,12 +3163,13 @@ Name: Lion King, dtype: int64
 </li>
 <li><p>Less diversity: hardly recommend an item outside the user’s profile.</p></li>
 </ul>
+<p><br><br><br><br></p>
 </section>
 </section>
-<section id="id1">
-<h2>❓❓ Questions for you<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3>Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h2>❓❓ Questions for you<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="select-all-of-the-following-statements-which-are-true-iclicker">
+<h3>Select all of the following statements which are <strong>True</strong> (iClicker)<a class="headerlink" href="#select-all-of-the-following-statements-which-are-true-iclicker" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>(A) In content-based filtering we leverage available item features in addition to similarity between users.</p></li>
 <li><p>(B) In content-based filtering you represent each user in terms of <strong>known</strong> features of items.</p></li>
@@ -3569,18 +3341,10 @@ Name: Lion King, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-outcomes">Learning outcomes <a name="lo"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems-intro-and-motivation">Recommender systems intro and motivation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-recommender-system">What is a recommender system?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-should-we-care-about-recommendation-systems">Why should we care about recommendation systems?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-main-approaches">Data and main approaches</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommender-systems-problem">Recommender systems problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-utility-matrix">Creating utility matrix</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-approaches">Baseline Approaches</a><ul class="nav section-nav flex-column">
@@ -3588,9 +3352,8 @@ Name: Lion King, dtype: int64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbours-imputation"><span class="math notranslate nohighlight">\(k\)</span>-nearest neighbours imputation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-17-1-select-all-of-the-following-statements-which-are-true-iclicker">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-class-discussion">Questions for class discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclciker-exercise">iClciker exercise</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-based-filtering">Content-based filtering</a><ul class="nav section-nav flex-column">
@@ -3601,8 +3364,8 @@ Name: Lion King, dtype: int64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-comments-on-content-based-filtering">Miscellaneous comments on content-based filtering</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise 17.1 Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-all-of-the-following-statements-which-are-true-iclicker">Select all of the following statements which are <strong>True</strong> (iClicker)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-error-rate-in-recommendation-systems">Beyond error rate in recommendation systems</a><ul class="nav section-nav flex-column">
