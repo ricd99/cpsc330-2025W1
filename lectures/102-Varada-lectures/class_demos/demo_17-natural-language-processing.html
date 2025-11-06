@@ -404,8 +404,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributional-hypothesis">Distributional hypothesis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings-the-idea">Word embeddings: The idea</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-similarity-between-vectors">Measuring similarity between vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-question">Discussion question</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pre-trained-word-embeddings">Using pre-trained word embeddings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-words-sentence-embeddings">Beyond words: sentence embeddings</a></li>
 </ul>
@@ -467,7 +465,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/1c4d9b85c1bd3f92e8090a6c11f6cfc3a662048f9d851a43411890aa024d6c84.png" src="../../../_images/1c4d9b85c1bd3f92e8090a6c11f6cfc3a662048f9d851a43411890aa024d6c84.png" />
+<img alt="../../../_images/2b8fc7e44dc5adf65486e65479feec6fe59234bc08bbcbb0201c7f79b5c5e1a9.png" src="../../../_images/2b8fc7e44dc5adf65486e65479feec6fe59234bc08bbcbb0201c7f79b5c5e1a9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -743,109 +741,8 @@ document.write(`
 <li><p>A research paper might cover <em>machine learning</em> and <em>linguistics</em>.</p></li>
 </ul>
 </li>
-<li><p>In general, humans are pretty good at reading and understanding a document and answering questions such as</p>
-<ul>
-<li><p>What is it about?</p></li>
-<li><p>Which documents is it related to?</p></li>
 </ul>
-</li>
-<li><p>Imagine that you are given a large collection of documents on a variety of topics.</p></li>
-</ul>
-<p><strong>A corpus of news articles</strong></p>
-<p><img alt="" src="../../../_images/TM_NYT_articles.png" /></p>
-<!-- <center> -->
-<!-- <img src="img/TM_NYT_articles.png" height="2000" width="2000">  -->
-<!-- </center> --><p><strong>Example: A corpus of food magazines</strong></p>
-<p><img alt="" src="../../../_images/TM_food_magazines.png" /></p>
-<!-- <center> -->
-<!-- <img src="img/TM_food_magazines.png" height="2000" width="2000">  -->
-<!-- </center> --><p><strong>A corpus of scientific articles</strong></p>
-<p><img alt="" src="../../../_images/TM_science_articles.png" /></p>
-<!-- <center> -->
-<!-- <img src="img/TM_science_articles.png" height="2000" width="2000">  -->
-<!-- </center> -->
-<p>(Credit: <a class="reference external" href="http://www.cs.columbia.edu/~blei/talks/Blei_Science_2008.pdf">Dave Blei’s presentation</a>)</p>
-<ul class="simple">
-<li><p>It would take years to read all documents and organize and categorize them so that they are easy to search.</p></li>
-<li><p>You need an automated way</p>
-<ul>
-<li><p>to get an idea of what’s going on in the data or</p></li>
-<li><p>to pull documents related to a certain topic</p></li>
-</ul>
-</li>
-<li><p><strong>Topic modeling</strong> gives you an ability to summarize the major themes in a large collection of documents (corpus).</p>
-<ul>
-<li><p>Example: The major themes in a collection of news articles could be</p>
-<ul>
-<li><p><strong>politics</strong></p></li>
-<li><p><strong>entertainment</strong></p></li>
-<li><p><strong>sports</strong></p></li>
-<li><p><strong>technology</strong></p></li>
-<li><p>…</p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul class="simple">
-<li><p>Topic modeling is a great EDA tool to get a sense of what’s going on in a large corpus.</p></li>
-<li><p>Some examples</p>
-<ul>
-<li><p>If you want to pull documents related to a particular lawsuit.</p></li>
-<li><p>You want to examine people’s sentiment towards a particular candidate and/or political party and so you want to pull tweets or Facebook posts related to election.</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>How do you do topic modeling?</strong></p>
-<ul class="simple">
-<li><p>A common tool to solve such problems is <strong>unsupervised ML methods</strong>.</p></li>
-<li><p>Given the hyperparameter <span class="math notranslate nohighlight">\(K\)</span>, the goal of topic modeling is to describe a set of documents using <span class="math notranslate nohighlight">\(K\)</span> “topics”.</p></li>
-<li><p>In unsupervised setting, the input of topic modeling is</p>
-<ul>
-<li><p>A large collection of documents</p></li>
-<li><p>A value for the hyperparameter <span class="math notranslate nohighlight">\(K\)</span> (e.g., <span class="math notranslate nohighlight">\(K = 3\)</span>)</p></li>
-</ul>
-</li>
-<li><p>and the output is</p>
-<ol class="arabic simple">
-<li><p>Topic-words association</p>
-<ul>
-<li><p>For each topic, what words describe that topic?</p></li>
-</ul>
-</li>
-<li><p>Document-topics association</p>
-<ul>
-<li><p>For each document, what topics are expressed by the document?</p></li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<p><strong>Topic modeling: Example</strong></p>
-<ul class="simple">
-<li><p>Topic-words association</p>
-<ul>
-<li><p>For each topic, what words describe that topic?</p></li>
-<li><p>A topic is a mixture of words.</p></li>
-</ul>
-</li>
-</ul>
-<p><img alt="" src="../../../_images/topic_modeling_word_topics.png" /></p>
-<!-- <center> -->
-<!-- <img src="img/topic_modeling_word_topics.png" height="1000" width="1000">  -->
-<!-- </center> -->    <p><strong>Topic modeling: Example</strong></p>
-<ul class="simple">
-<li><p>Document-topics association</p>
-<ul>
-<li><p>For each document, what topics are expressed by the document?</p></li>
-<li><p>A document is a mixture of topics.</p></li>
-</ul>
-</li>
-</ul>
-<p><img alt="" src="../../../_images/topic_modeling_doc_topics.png" /></p>
-<!-- <center> -->    
-<!-- <img src="img/topic_modeling_doc_topics.png" height="800" width="800">  -->
-<!-- </center> -->    <p><strong>Topic modeling: Input and output</strong></p>
+<p><strong>Topic modeling: Input and output</strong></p>
 <ul class="simple">
 <li><p>Input</p>
 <ul>
@@ -1463,7 +1360,7 @@ fresh         probabilistic probabilistic
 </ul>
 </li>
 </ul>
-<p>Check out <a class="reference internal" href="#AppendixC.ipynb"><span class="xref myst">AppendixC</span></a> for basic preprocessing in NLP.</p>
+<p>Check out <a class="reference internal" href="../../notes/AppendixC.html"><span class="std std-doc">AppendixC</span></a> for basic preprocessing in NLP.</p>
 <p>We’ll use <a class="reference external" href="https://spacy.io/"><code class="docutils literal notranslate"><span class="pre">spaCy</span></code></a> for preprocessing. Check out available token attributes <a class="reference external" href="https://spacy.io/usage/rule-based-matching#adding-patterns-attributes">here</a>.</p>
 <p>Even though you have <code class="docutils literal notranslate"><span class="pre">spacy</span></code> installed, you will need to install the following pre-trained <code class="docutils literal notranslate"><span class="pre">spacy</span></code> model in the course environment.</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">spacy</span> <span class="pre">download</span> <span class="pre">en_core_web_md</span></code></p>
@@ -1807,84 +1704,6 @@ then we can combine these representations to understand larger pieces of text (s
 </div></blockquote>
 <p>The goal: words like <strong>flibbertigibbet</strong> and <strong>delightful</strong> should be close in the embedding space.</p>
 <p>Word embeddings are built on the distributional hypothesis. They mathematically capture the idea that context defines meaning.</p>
-<p><br><br></p>
-</section>
-<section id="measuring-similarity-between-vectors">
-<h3>Measuring similarity between vectors<a class="headerlink" href="#measuring-similarity-between-vectors" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>To create a vector space where similar words are close together, we need some metric to measure distances between representation.</p></li>
-<li><p>We have used the Euclidean distance before for numeric features.</p></li>
-<li><p>For sparse features, the most commonly used metrics are Dot product and Cosine distance.</p></li>
-<li><p>Let’s look at an example.</p></li>
-</ul>
-<p>Euclidean distance</p>
-<div class="math notranslate nohighlight">
-\[distance(vec1, vec2) = \sqrt{\sum_{i =1}^{n} (vec1_i - vec2_i)^2}\]</div>
-<p>Dot product similarity: $<span class="math notranslate nohighlight">\(similarity_{dot product}(vec1,vec2) = vec1.vec2\)</span>$</p>
-<p>Cosine similarity: normalized version of dot product.
-$<span class="math notranslate nohighlight">\(similarity_{cosine}(vec1,vec2) = \frac{vec1.vec2}{\left\lVert vec1\right\rVert_2 \left\lVert vec2\right\rVert_2}\)</span>$</p>
-<p>Where,</p>
-<ul class="simple">
-<li><p>The L2 norm of <span class="math notranslate nohighlight">\(vec1\)</span> is the magnitude of <span class="math notranslate nohighlight">\(vec1\)</span>
-$<span class="math notranslate nohighlight">\(\left\lVert vec1\right\rVert_2 = \sqrt{\sum_i vec1_i^2}\)</span>$</p></li>
-<li><p>The L2 norm of <span class="math notranslate nohighlight">\(vec2\)</span> is the magnitude of <span class="math notranslate nohighlight">\(vec2\)</span>
-$<span class="math notranslate nohighlight">\(\left\lVert vec2\right\rVert_2 = \sqrt{\sum_i vec2_i^2}\)</span>$</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
-
-<span class="c1"># Euclidean distance: smaller distance --&gt; more similar</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span> 
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
-    
-<span class="c1"># Dot product similarity: larger dot product --&gt; more similar</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">dot_product_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-
-<span class="c1"># Cosine similarity: larger similarity score --&gt; more similar</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">cosine_similarity</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Euclidean Distance: </span><span class="si">{</span><span class="n">euclidean_distance</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dot Product Similarity: </span><span class="si">{</span><span class="n">dot_product_similarity</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine Similarity: </span><span class="si">{</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Euclidean Distance: 5.1962
-Dot Product Similarity: 14.0000
-Cosine Similarity: 0.5098
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="discussion-question">
-<h3>Discussion question<a class="headerlink" href="#discussion-question" title="Link to this heading">#</a></h3>
-<p>Suppose you are recommending items based on similarity between items. Given a query vector “Query” in the picture below and the three item vectors, determine the ranking for the three similarity measures below:</p>
-<ul class="simple">
-<li><p>Similarity based on Euclidean distance</p></li>
-<li><p>similarity based on dot product</p></li>
-<li><p>Cosine similarity</p></li>
-</ul>
-<a class="reference internal image-reference" href="../../../_images/distance-metrics.png"><img alt="" src="../../../_images/distance-metrics.png" style="width: 500px; height: 800px;" />
-</a>
-<!-- ![](../img/distance-metrics.png) -->
-<ul class="simple">
-<li><p>Adapted from <a class="reference external" href="https://developers.google.com/machine-learning/recommendation/overview/candidate-generation">here</a>.</p></li>
-</ul>
 <p><br><br><br><br></p>
 </section>
 <section id="using-pre-trained-word-embeddings">
@@ -2070,6 +1889,7 @@ A number of pre-trained word embeddings are available. The most popular ones are
 </div>
 </div>
 </div>
+<p>Why “erik” and “costco” show up for “british_columbia”? Note that word embeddings capture how words are used, not what they mean.</p>
 <p><strong>Finding similarity scores between words</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2765,7 +2585,7 @@ The similarity between GPU and hummus is 0.094
 <span class="s2">&quot;The cat sat on the mat.&quot;</span><span class="p">,</span>
 <span class="s2">&quot;A feline rested on the rug.&quot;</span><span class="p">,</span>
 <span class="s2">&quot;I love teaching you machine learning.&quot;</span><span class="p">,</span>
-<span class="s2">&quot;Machine learning is fascinating.&quot;</span>
+<span class="s2">&quot;Natural language processing is fascinating.&quot;</span>
 <span class="p">]</span>
 
 <span class="c1"># Compute embeddings</span>
@@ -2807,7 +2627,7 @@ The similarity between GPU and hummus is 0.094
       <th>The cat sat on the mat.</th>
       <th>A feline rested on the rug.</th>
       <th>I love teaching you machine learning.</th>
-      <th>Machine learning is fascinating.</th>
+      <th>Natural language processing is fascinating.</th>
     </tr>
   </thead>
   <tbody>
@@ -2816,27 +2636,27 @@ The similarity between GPU and hummus is 0.094
       <td>1.000</td>
       <td>0.556</td>
       <td>-0.009</td>
-      <td>-0.023</td>
+      <td>0.011</td>
     </tr>
     <tr>
       <th>A feline rested on the rug.</th>
       <td>0.556</td>
       <td>1.000</td>
       <td>-0.009</td>
-      <td>-0.059</td>
+      <td>0.030</td>
     </tr>
     <tr>
       <th>I love teaching you machine learning.</th>
       <td>-0.009</td>
       <td>-0.009</td>
       <td>1.000</td>
-      <td>0.732</td>
+      <td>0.462</td>
     </tr>
     <tr>
-      <th>Machine learning is fascinating.</th>
-      <td>-0.023</td>
-      <td>-0.059</td>
-      <td>0.732</td>
+      <th>Natural language processing is fascinating.</th>
+      <td>0.011</td>
+      <td>0.030</td>
+      <td>0.462</td>
       <td>1.000</td>
     </tr>
   </tbody>
@@ -2845,7 +2665,10 @@ The similarity between GPU and hummus is 0.094
 </div>
 <p><br><br></p>
 <p><strong>(Optional) Quick peek: Getting an embedding from an LLM API</strong></p>
-<p>LLMs like ChatGPT use embeddings as the foundation for understanding meaning, context, and intent, powering chatbots, search, summarization, and many other NLP applications.</p>
+<p>Under the hood, all large language models (LLMs) represent words and sentences as vectors, also called embeddings. These embeddings capture the meaning of text based on how words appear in context.</p>
+<p>In this high-dimensional space, words or sentences with similar meanings lie close together, while unrelated ideas are farther apart.</p>
+<p>LLMs like ChatGPT use these embeddings as the foundation for understanding meaning, context, and intent – powering applications such as chatbots, search, summarization, and many others.</p>
+<p>The quality of these embeddings largely determines how well a model understands your question and how good its responses are.</p>
 <p>Assuming that you’ve your <code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code> setup in the course environment, the following code will return embeddings associated with these sentences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3310,8 +3133,6 @@ engineering**.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributional-hypothesis">Distributional hypothesis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embeddings-the-idea">Word embeddings: The idea</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-similarity-between-vectors">Measuring similarity between vectors</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-question">Discussion question</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pre-trained-word-embeddings">Using pre-trained word embeddings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-words-sentence-embeddings">Beyond words: sentence embeddings</a></li>
 </ul>

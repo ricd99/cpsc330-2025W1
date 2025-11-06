@@ -2954,7 +2954,10 @@ The similarity between GPU and hummus is 0.094
 </div>
 <p><br><br></p>
 <p><strong>(Optional) Quick peek: Getting an embedding from an LLM API</strong></p>
-<p>LLMs like ChatGPT use embeddings as the foundation for understanding meaning, context, and intent, powering chatbots, search, summarization, and many other NLP applications.</p>
+<p>Under the hood, all large language models (LLMs) represent words and sentences as vectors, also called embeddings. These embeddings capture the meaning of text based on how words appear in context.</p>
+<p>In this high-dimensional space, words or sentences with similar meanings lie close together, while unrelated ideas are farther apart.</p>
+<p>LLMs like ChatGPT use these embeddings as the foundation for understanding meaning, context, and intent – powering applications such as chatbots, search, summarization, and many others.</p>
+<p>The quality of these embeddings largely determines how well a model understands your question and how good its responses are.</p>
 <p>Assuming that you’ve your <code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code> setup in the course environment, the following code will return embeddings associated with these sentences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
