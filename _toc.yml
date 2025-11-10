@@ -37,6 +37,7 @@ parts:
   - file: lectures/notes/15_DBSCAN-hierarchical
   - file: lectures/notes/16_recommender-systems.ipynb
   - file: lectures/notes/17_natural-language-processing.ipynb
+  - file: lectures/notes/18_intro_to_computer-vision.ipynb
   - file: lecture/notes/AppendixA.ipynb
   - file: lecture/notes/AppendixB.ipynb
   - file: lecture/notes/AppendixC.ipynb
