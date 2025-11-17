@@ -8603,30 +8603,7 @@ Test score: 0.84
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def create_lag_feature(df, orig_feature, lag):</span>
-<span class="c1">#     &quot;&quot;&quot;Creates a new df with a new feature that&#39;s a lagged version of the original, where lag is an int.&quot;&quot;&quot;</span>
-<span class="c1">#     # note: pandas .shift() kind of does this for you already, but oh well I already wrote this code</span>
-
-<span class="c1">#     new_df = df.copy()</span>
-<span class="c1">#     new_feature_name = &quot;%s_lag%d&quot; % (orig_feature, lag)</span>
-<span class="c1">#     new_df[new_feature_name] = np.nan</span>
-<span class="c1">#     for location, df_location in new_df.groupby(</span>
-<span class="c1">#         &quot;Location&quot;</span>
-<span class="c1">#     ):  # Each location is its own time series</span>
-<span class="c1">#         new_df.loc[df_location.index[lag:], new_feature_name] = df_location.iloc[:-lag][</span>
-<span class="c1">#             orig_feature</span>
-<span class="c1">#         ].values</span>
-<span class="c1">#     return new_df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">create_lag_feature</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_lag_feature</span><span class="p">(</span>
     <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
     <span class="n">orig_feature</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">lag</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
