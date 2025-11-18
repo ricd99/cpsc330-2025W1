@@ -557,7 +557,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e5246271fd63590c054d66bec81e4f685c7ca8aa001b593548daeaace34d3f20.png" src="../../_images/e5246271fd63590c054d66bec81e4f685c7ca8aa001b593548daeaace34d3f20.png" />
+<img alt="../../_images/76a13e151fb44859b39d45766cc4c6d379938b7ff7ddbeb29e47ef65b546301c.png" src="../../_images/76a13e151fb44859b39d45766cc4c6d379938b7ff7ddbeb29e47ef65b546301c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -570,7 +570,8 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: black;
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
   --sklearn-color-line: gray;
   /* Definition of color scheme for unfitted estimators */
   --sklearn-color-unfitted-level-0: #fff5e6;
@@ -715,12 +716,21 @@ clickable and can be expanded/collapsed.
 /* Toggleable label */
 #sk-container-id-1 label.sk-toggleable__label {
   cursor: pointer;
-  display: block;
+  display: flex;
   width: 100%;
   margin-bottom: 0;
   padding: 0.5em;
   box-sizing: border-box;
   text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
 }
 
 #sk-container-id-1 label.sk-toggleable__label-arrow:before {
@@ -873,7 +883,8 @@ a:visited.sk-estimator-doc-link {
   height: 1em;
   width: 1em;
   text-decoration: none !important;
-  margin-left: 1ex;
+  margin-left: 0.5em;
+  text-align: center;
   /* unfitted */
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
   color: var(--sklearn-color-unfitted-level-1);
@@ -972,7 +983,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div></div></div></div>
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1059,7 +1070,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.10793260e-03, 2.31298589e-08, 5.83848729e-06, 9.95886206e-01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.10793260e-03, 2.31298590e-08, 5.83848731e-06, 9.95886206e-01])
 </pre></div>
 </div>
 </div>
@@ -1117,7 +1128,10 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bb1f2c14942463fad0ba9b7753766fe7e777024a1efc87a808f23d6efb04a989.svg" src="../../_images/bb1f2c14942463fad0ba9b7753766fe7e777024a1efc87a808f23d6efb04a989.svg" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Could not load &quot;C:\Users\Giulia\anaconda3\envs\dsci430\Library\bin\gvplugin_pango.dll&quot; - It was found, so perhaps one of its dependents was not.  Try ldd.
+</pre></div>
+</div>
+<img alt="../../_images/98fb173f89ecdb4f23aaf67b39c546a4ec6b4673cd4877e5aad25c83aa3f6e24.svg" src="../../_images/98fb173f89ecdb4f23aaf67b39c546a4ec6b4673cd4877e5aad25c83aa3f6e24.svg" />
 </div>
 </div>
 <ul class="simple">
@@ -1132,7 +1146,10 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c8a5780cbcd545af44a286fdfe441404894c83747435d6a5b0a66dbeb400b16b.svg" src="../../_images/c8a5780cbcd545af44a286fdfe441404894c83747435d6a5b0a66dbeb400b16b.svg" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Could not load &quot;C:\Users\Giulia\anaconda3\envs\dsci430\Library\bin\gvplugin_pango.dll&quot; - It was found, so perhaps one of its dependents was not.  Try ldd.
+</pre></div>
+</div>
+<img alt="../../_images/fa8f0fa51a2241d9917aea4841922734e28b6d312691bd2adf393e47bcac1fac.svg" src="../../_images/fa8f0fa51a2241d9917aea4841922734e28b6d312691bd2adf393e47bcac1fac.svg" />
 </div>
 </div>
 <ul class="simple">
@@ -1145,7 +1162,10 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6962db1e2c6d42f8a4a3cf3ae44d6f9d402f84c86247cd6f1277a9027fdf08f2.svg" src="../../_images/6962db1e2c6d42f8a4a3cf3ae44d6f9d402f84c86247cd6f1277a9027fdf08f2.svg" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Could not load &quot;C:\Users\Giulia\anaconda3\envs\dsci430\Library\bin\gvplugin_pango.dll&quot; - It was found, so perhaps one of its dependents was not.  Try ldd.
+</pre></div>
+</div>
+<img alt="../../_images/a05b4d54cd2670ceca03703b901bb52ea7bd66b5d7bad122630a7986e8d7399d.svg" src="../../_images/a05b4d54cd2670ceca03703b901bb52ea7bd66b5d7bad122630a7986e8d7399d.svg" />
 </div>
 </div>
 <ul class="simple">
@@ -1427,25 +1447,7 @@ Feed the input through the network to calculate the predicted output using the c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cbb0ddddc61d67398c6c8057769f46f0a84c50aec8e6566b0586e99474580520.png" src="../../_images/cbb0ddddc61d67398c6c8057769f46f0a84c50aec8e6566b0586e99474580520.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         Class  Probability score
-                     tiger cat              0.353
-              tabby, tabby cat              0.207
-               lynx, catamount              0.050
-Pembroke, Pembroke Welsh corgi              0.046
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/d82c91eaa17720fbe7c26980d7262f9242ff8efc07fa20b7de7c3f9cd4c47105.png" src="../../_images/d82c91eaa17720fbe7c26980d7262f9242ff8efc07fa20b7de7c3f9cd4c47105.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     Class  Probability score
-         cheetah, chetah, Acinonyx jubatus              0.983
-                  leopard, Panthera pardus              0.012
-jaguar, panther, Panthera onca, Felis onca              0.004
-       snow leopard, ounce, Panthera uncia              0.001
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/2019b92a3f97a6e5c64898ba1d35a4434cdb360a496e4e7633376db2386500cd.png" src="../../_images/2019b92a3f97a6e5c64898ba1d35a4434cdb360a496e4e7633376db2386500cd.png" />
+<img alt="../../_images/b9b68287bf4ae836ee407ea7de9e11e3b5188b10000f475f514d64a40e376a58.png" src="../../_images/b9b68287bf4ae836ee407ea7de9e11e3b5188b10000f475f514d64a40e376a58.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Class  Probability score
                                  macaque              0.714
 patas, hussar monkey, Erythrocebus patas              0.122
@@ -1454,7 +1456,25 @@ patas, hussar monkey, Erythrocebus patas              0.122
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/8738eba89ba7be15536186cec1e44fcfdc6ed689b57e63a602f3632e9574d87d.png" src="../../_images/8738eba89ba7be15536186cec1e44fcfdc6ed689b57e63a602f3632e9574d87d.png" />
+<img alt="../../_images/80b0e7a44ddd54f2125abc3eb7633ff3974a768947ae595196dabaf20802b9ae.png" src="../../_images/80b0e7a44ddd54f2125abc3eb7633ff3974a768947ae595196dabaf20802b9ae.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         Class  Probability score
+                     tiger cat              0.353
+              tabby, tabby cat              0.207
+               lynx, catamount              0.050
+Pembroke, Pembroke Welsh corgi              0.046
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/8d54e9647b2d73abaaa9c4b098d65095b4f3ab77334b28af66f730077b08aab0.png" src="../../_images/8d54e9647b2d73abaaa9c4b098d65095b4f3ab77334b28af66f730077b08aab0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     Class  Probability score
+         cheetah, chetah, Acinonyx jubatus              0.983
+                  leopard, Panthera pardus              0.012
+jaguar, panther, Panthera onca, Felis onca              0.004
+       snow leopard, ounce, Panthera uncia              0.001
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/b315ed8fa044c796223d166f1f55eb50675c2f95715b5f8251cf9f6b5dac2c60.png" src="../../_images/b315ed8fa044c796223d166f1f55eb50675c2f95715b5f8251cf9f6b5dac2c60.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        Class  Probability score
 Walker hound, Walker foxhound              0.580
              English foxhound              0.091
@@ -1492,25 +1512,7 @@ Walker hound, Walker foxhound              0.580
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5db23f44ba8a5d6f706ccfd8a053c0bded5c0a17d9b15d40d21e7a8b747f2d56.png" src="../../_images/5db23f44ba8a5d6f706ccfd8a053c0bded5c0a17d9b15d40d21e7a8b747f2d56.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                   Class  Probability score
-                                       sandbar, sand bar              0.421
-                    seashore, coast, seacoast, sea-coast              0.157
-breakwater, groin, groyne, mole, bulwark, seawall, jetty              0.071
-                                     lakeside, lakeshore              0.036
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/ea470e29f7cf22ba3603de3dd6af8b090f927c75e0b4dbf6fc1c8b7ae611da1c.png" src="../../_images/ea470e29f7cf22ba3603de3dd6af8b090f927c75e0b4dbf6fc1c8b7ae611da1c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Class  Probability score
-            obelisk              0.104
-               pole              0.077
-bell cote, bell cot              0.057
-       sliding door              0.045
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/3da96beae66f5feb93a5cabf82315319c761d33e32720a646bd8971a318a6331.png" src="../../_images/3da96beae66f5feb93a5cabf82315319c761d33e32720a646bd8971a318a6331.png" />
+<img alt="../../_images/e9709227c09b83c6ca67e85cb7bdd2fdda58e3a1ee17399ed14d40ab1b2f7cba.png" src="../../_images/e9709227c09b83c6ca67e85cb7bdd2fdda58e3a1ee17399ed14d40ab1b2f7cba.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                      Class  Probability score
                                         fig              0.637
                                 pomegranate              0.193
@@ -1519,7 +1521,16 @@ grocery store, grocery, food market, market              0.041
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/fa64b179c0acec70810f26c70f7f829744c99b224e6acb0bd8ec2f6e285d0a33.png" src="../../_images/fa64b179c0acec70810f26c70f7f829744c99b224e6acb0bd8ec2f6e285d0a33.png" />
+<img alt="../../_images/e0684bc1bb22d4e696b536ea36112f315d43fd2ab7f269bc077f510f86d9d906.png" src="../../_images/e0684bc1bb22d4e696b536ea36112f315d43fd2ab7f269bc077f510f86d9d906.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Class  Probability score
+            obelisk              0.104
+               pole              0.077
+bell cote, bell cot              0.057
+       sliding door              0.045
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/59807a275eb5b7155d71f956c26358de876861e8fafbe216207a562ab2c2af9c.png" src="../../_images/59807a275eb5b7155d71f956c26358de876861e8fafbe216207a562ab2c2af9c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Class  Probability score
     castle              0.056
      altar              0.056
@@ -1528,16 +1539,7 @@ park bench              0.049
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/1e62a94584768cf63a8d57f944b23109ef7b5dc9f9dd672dc7ee3b7104a8eda1.png" src="../../_images/1e62a94584768cf63a8d57f944b23109ef7b5dc9f9dd672dc7ee3b7104a8eda1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                      Class  Probability score
-                 totem pole              0.987
-                       pole              0.011
-                    sundial              0.000
-pedestal, plinth, footstall              0.000
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/873950d0ce4567dab1bc2026761bab931cec25f965bc3694a82d685026024f6b.png" src="../../_images/873950d0ce4567dab1bc2026761bab931cec25f965bc3694a82d685026024f6b.png" />
+<img alt="../../_images/cf34b8628810d86b1026f296dcd811d43980ceb53566fa6793745896c3d0e64c.png" src="../../_images/cf34b8628810d86b1026f296dcd811d43980ceb53566fa6793745896c3d0e64c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                    Class  Probability score
                                       lakeside, lakeshore              0.568
 worm fence, snake fence, snake-rail fence, Virginia fence              0.180
@@ -1546,7 +1548,25 @@ worm fence, snake fence, snake-rail fence, Virginia fence              0.180
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/301425c7fb155e2baec9b52b8b6c8c5557af39f93a5061255e1464a3b55c0aac.png" src="../../_images/301425c7fb155e2baec9b52b8b6c8c5557af39f93a5061255e1464a3b55c0aac.png" />
+<img alt="../../_images/eb4ad329d20f7af7fb40389c5fe7fac778d8f6377cb2df9c0c9706610d96d8ff.png" src="../../_images/eb4ad329d20f7af7fb40389c5fe7fac778d8f6377cb2df9c0c9706610d96d8ff.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                      Class  Probability score
+                 totem pole              0.987
+                       pole              0.011
+                    sundial              0.000
+pedestal, plinth, footstall              0.000
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/858c1c074e8a628eccd9cde9c70796e6971885152d32054640b0ca1477377d95.png" src="../../_images/858c1c074e8a628eccd9cde9c70796e6971885152d32054640b0ca1477377d95.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                   Class  Probability score
+                                       sandbar, sand bar              0.421
+                    seashore, coast, seacoast, sea-coast              0.157
+breakwater, groin, groyne, mole, bulwark, seawall, jetty              0.071
+                                     lakeside, lakeshore              0.036
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/6973cd1ff730871c2ba9dc7b2e804c1c886584a386a93249938715c1d1aedebd.png" src="../../_images/6973cd1ff730871c2ba9dc7b2e804c1c886584a386a93249938715c1d1aedebd.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                               Class  Probability score
                                          toilet seat              0.171
                                           safety pin              0.060
@@ -1555,7 +1575,7 @@ bannister, banister, balustrade, balusters, handrail              0.039
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/83a00bc4a86f72913725634fdf6d06e4d61ae4350164fc531b7d02d5e51ee8a8.png" src="../../_images/83a00bc4a86f72913725634fdf6d06e4d61ae4350164fc531b7d02d5e51ee8a8.png" />
+<img alt="../../_images/d76bd58ceb1f6ce3a40face50bbf0f8cd69ee147ed0e4b16f685343b0cb7170c.png" src="../../_images/d76bd58ceb1f6ce3a40face50bbf0f8cd69ee147ed0e4b16f685343b0cb7170c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Class  Probability score
      patio, terrace              0.213
            fountain              0.164
@@ -1581,7 +1601,7 @@ lakeside, lakeshore              0.097
 <li><p>Let’s use pre-trained models to extract features.</p></li>
 <li><p>We will pass our specific data through a pre-trained network to get a feature vector for each example in the data.</p></li>
 <li><p>The feature vector is usually extracted from the last layer, before the classification layer from the pre-trained network.</p></li>
-<li><p>You can think of each layer a transformer applying some transformations on the input received to that later.</p></li>
+<li><p>You can think of each layer as a transformer applying some transformations on the input received.</p></li>
 </ul>
 <p><img alt="" src="../../_images/cnn-ex.png" /></p>
 <p>Source: https://cezannec.github.io/Convolutional_Neural_Networks/</p>
@@ -1626,14 +1646,14 @@ lakeside, lakeshore              0.097
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c3b77b4833da608e329e89e28421ceab0e7ad2fc1bfee9702009ced328740cf2.png" src="../../_images/c3b77b4833da608e329e89e28421ceab0e7ad2fc1bfee9702009ced328740cf2.png" />
+<img alt="../../_images/e94a11da0f57d7162461268399756e992d7a0bef0d620fecc0ff6edce3194be4.png" src="../../_images/e94a11da0f57d7162461268399756e992d7a0bef0d620fecc0ff6edce3194be4.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classes: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Class count: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;Class count: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Samples:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First sample: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1642,9 +1662,9 @@ lakeside, lakeshore              0.097
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes: [&#39;beet_salad&#39;, &#39;chocolate_cake&#39;, &#39;edamame&#39;, &#39;french_fries&#39;, &#39;pizza&#39;, &#39;spring_rolls&#39;, &#39;sushi&#39;]
-Class count: 40, 38, 40
+Class count: 40, 38, 40, 40, 43, 41, 41
 Samples: 283
-First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/food-transfer-learning/train/beet_salad/104294.jpg&#39;, 0)
+First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\lectures\\data/food-transfer-learning\\train\\beet_salad\\104294.jpg&#39;, 0)
 </pre></div>
 </div>
 </div>
@@ -1885,8 +1905,8 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/f
 </div>
 </div>
 <ul class="simple">
-<li><p>This is great accuracy for so little data (we only have 150 examples) and little effort of all different types of animals!!!</p></li>
-<li><p>With logistic regression and flattened representation of images we would get much worse accuracy with more compute</p></li>
+<li><p>This is great accuracy for so little data (we only have 283 examples) and little effort of all different types of food!!!</p></li>
+<li><p>With logistic regression and flattened representation of images we would get much worse accuracy.</p></li>
 </ul>
 <p><br><br></p>
 </section>
@@ -1941,15 +1961,19 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 /Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/yolo_test/3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 119.3ms
-Speed: 5.9ms preprocess, 119.3ms inference, 1.2ms postprocess per image at shape (1, 3, 512, 640)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8n.pt to &#39;yolov8n.pt&#39;...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kvarada/miniforge3/envs/cpsc330/lib/python3.12/site-packages/ultralytics/utils/torch_utils.py:218: UserWarning: Cannot set number of intraop threads after parallel work has started or after set_num_threads call when using native parallel backend (Triggered internally at /Users/runner/work/_temp/anaconda/conda-bld/pytorch_1711403213615/work/aten/src/ATen/ParallelNative.cpp:228.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████| 6.25M/6.25M [00:03&lt;00:00, 1.74MB/s]
+C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\ultralytics\utils\torch_utils.py:227: UserWarning: Cannot set number of intraop threads after parallel work has started or after set_num_threads call when using native parallel backend (Triggered internally at C:\bld\libtorch_1741738354177\work\aten\src\ATen\ParallelNative.cpp:228.)
   torch.set_num_threads(NUM_THREADS)  # reset OMP_NUM_THREADS for cpu training
 </pre></div>
 </div>
-<img alt="../../_images/1559e83f737354da45f9400fc3bacc0cd283c364bf0b4ad13a45fe60c080f7b8.png" src="../../_images/1559e83f737354da45f9400fc3bacc0cd283c364bf0b4ad13a45fe60c080f7b8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 C:\Users\Giulia\OneDrive - UBC\Github\cpsc330-2025W1\lectures\data\yolo_test\3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 476.6ms
+Speed: 6.5ms preprocess, 476.6ms inference, 3.9ms postprocess per image at shape (1, 3, 512, 640)
+</pre></div>
+</div>
+<img alt="../../_images/d9e89bba43989018eaa3ce5e0ae6562356d7c9dd8581d68fadb719baf482c12e.png" src="../../_images/d9e89bba43989018eaa3ce5e0ae6562356d7c9dd8581d68fadb719baf482c12e.png" />
 </div>
 </div>
 <p><br><br><br><br></p>
@@ -2013,16 +2037,16 @@ Speed: 5.9ms preprocess, 119.3ms inference, 1.2ms postprocess per image at shape
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-cpsc330-py"
+            mode: "cpsc330"
         },
         kernelOptions: {
-            name: "conda-env-cpsc330-py",
+            name: "cpsc330",
             path: "./lectures/notes"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-cpsc330-py'</script>
+    <script>kernelName = 'cpsc330'</script>
 
                 </article>
               
