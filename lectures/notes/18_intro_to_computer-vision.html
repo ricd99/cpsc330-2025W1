@@ -416,27 +416,23 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-neural-networks">Introduction to neural networks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-example-and-terminology">Neural networks example and terminology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-how-does-training-work-in-neural-networks-high-level">(Optional) How does training work in neural networks? (High-Level)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-neural-networks">Why neural networks?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Why neural networks?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-neural-networks">Why not neural networks?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Why not neural networks?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-software">Deep learning software</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-5-min">Break (5 min)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-computer-vision">Introduction to computer vision</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-with-flattened-representation-of-images">Logistic regression with flattened representation of images</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-learning">Transfer learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet">ImageNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-networks-cnns-high-level">Convolutional Neural Networks (CNNs) (high level)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-learning">Transfer learning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pre-trained-models-out-of-the-box">Using pre-trained models out-of-the-box</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pre-trained-models-as-feature-extractor">Using pre-trained models as feature extractor</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-detection">Object detection</a></li>
@@ -461,10 +457,12 @@ document.write(`
 <h3>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -472,22 +470,14 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">),</span> <span class="s2">&quot;code&quot;</span><span class="p">))</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">plotting_functions</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-
-
+<span class="kn">from</span><span class="w"> </span><span class="nn">deep_learning_code</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.dummy</span><span class="w"> </span><span class="kn">import</span> <span class="n">DummyClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">classification_report</span><span class="p">,</span>
-    <span class="n">confusion_matrix</span>
-<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span><span class="p">,</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
 
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">),</span> <span class="s2">&quot;data/&quot;</span><span class="p">)</span>
 </pre></div>
@@ -498,11 +488,16 @@ document.write(`
 <section id="learning-objectives">
 <h3>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Apply classifiers to multi-class classification algorithms.</p></li>
-<li><p>Explain the role of neural networks in machine learning, and the pros/cons of using them.</p></li>
+<li><p>Describe what multiclass classification is and how it differs from binary classification</p></li>
+<li><p>Explain how logisitic regression prediction is extended to the multiclass setting (multinominal/softmax) and roughly count its parameters</p></li>
+<li><p>Explain the basics of neural networks and how they build upon linear models.</p></li>
+<li><p>Explain at a high level what makes a model “deep”</p></li>
+<li><p>Describe the role of neural networks in machine learning, including their strengths and limitations.</p></li>
+<li><p>Explain the intuition behind convolutional neural networks: what filters do, how they slide over an image and why this helps with images</p></li>
 <li><p>Explain why the methods we’ve learned previously would not be effective on image data.</p></li>
+<li><p>Define transfer learning and explain why pre-trained models are useful in vision and NLP.</p></li>
 <li><p>Apply pre-trained neural networks to classification and regression problems.</p></li>
-<li><p>Utilize pre-trained networks as feature extractors and combine them with models we’ve learned previously.</p></li>
+<li><p>Utilize pre-trained networks as feature extractors and train simple classifier (e.g., logistic regression) on top</p></li>
 </ul>
 </section>
 </section>
@@ -524,14 +519,15 @@ document.write(`
 <section id="multi-class-classification">
 <h2>Multi-class classification<a class="headerlink" href="#multi-class-classification" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>So far we have been talking about binary classification</p></li>
+<li><p>So far, we’ve focused on binary classification (two classes).</p></li>
 <li><p>Can we use these classifiers when there are more than two classes?</p>
 <ul>
 <li><p><a class="reference external" href="http://www.image-net.org/challenges/LSVRC/">“ImageNet” computer vision competition</a>, for example, has 1000 classes</p></li>
 </ul>
 </li>
+<li><p>The goal of multi-class classification is to assign each example to exactly one of <span class="math notranslate nohighlight">\(K\)</span> possible classes.</p></li>
 <li><p>Can we use decision trees or KNNs for multi-class classification?</p></li>
-<li><p>What about logistic regression and Linear SVMs?</p></li>
+<li><p>What about logistic regression?</p></li>
 </ul>
 <ul class="simple">
 <li><p>Some models naturally extend to multiclass classification.</p></li>
@@ -542,7 +538,7 @@ document.write(`
 <li><p>the one-vs.-one approach</p></li>
 </ul>
 </li>
-<li><p>Check out <a class="reference internal" href="#appendixB_multiclass-classification.html"><span class="xref myst">appendixB</span></a> for more details.</p></li>
+<li><p>Check out <a class="reference internal" href="#AppendixD.html"><span class="xref myst">AppendixD</span></a> for more details.</p></li>
 </ul>
 <p>Let’s look at a multiclass classification with logistic regression.</p>
 <div class="cell docutils container">
@@ -1083,7 +1079,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The prediction here is class 3 because it has the highest predict proba score of 0.995 </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The prediction here is class 3 because it has the highest predict proba score of 0.995</span>
 <span class="n">lr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1101,11 +1097,15 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 <h2>Introduction to neural networks<a class="headerlink" href="#introduction-to-neural-networks" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Very popular these days under the name <strong>deep learning</strong>.</p></li>
-<li><p>Neural networks apply a sequence of transformations on your input data.</p></li>
-<li><p>They can be viewed a generalization of linear models where we apply a series of transformations.</p></li>
+<li><p>Remember this picture we saw at the beginning of the course? Deep learning is a subset of machine learning.</p></li>
+</ul>
+<p><img alt="" src="../../_images/ai-ml-dl.png" /></p>
+<ul class="simple">
+<li><p>Neural networks apply a sequence of transformations to the input data.</p></li>
+<li><p>You can think of them as a generalization of linear models, where multiple layers of transformations are applied in succession.</p></li>
 <li><p>Here is graphical representation of a logistic regression model.</p>
 <ul>
-<li><p>We have 4 features: x[0], x[1], x[2], x[3]</p></li>
+<li><p>We have 4 features: <code class="docutils literal notranslate"><span class="pre">x[0],</span> <span class="pre">x[1],</span> <span class="pre">x[2],</span> <span class="pre">x[3]</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -1177,11 +1177,34 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 <ul class="simple">
 <li><p>To make them really powerful compared to the linear models, we apply a non-linear function to the weighted sum for each hidden node.</p></li>
 </ul>
-<section id="terminology">
-<h3>Terminology<a class="headerlink" href="#terminology" title="Link to this heading">#</a></h3>
+<section id="neural-networks-example-and-terminology">
+<h3>Neural networks example and terminology<a class="headerlink" href="#neural-networks-example-and-terminology" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Neural network = neural net</p></li>
 <li><p>Deep learning ~ using neural networks</p></li>
+<li><p>This type of neural network is also referred to as a <strong>feed-forward neural network</strong></p></li>
+</ul>
+<p><img alt="" src="../../_images/nn-10.png" /></p>
+</section>
+<section id="optional-how-does-training-work-in-neural-networks-high-level">
+<h3>(Optional) How does training work in neural networks? (High-Level)<a class="headerlink" href="#optional-how-does-training-work-in-neural-networks-high-level" title="Link to this heading">#</a></h3>
+<p>Training a neural network has <strong>two main steps:</strong></p>
+<ul class="simple">
+<li><p><strong>Forward pass:</strong><br />
+Feed the input through the network to calculate the predicted output using the current parameter values (weights).</p></li>
+<li><p><strong>Backward pass:</strong></p>
+<ul>
+<li><p>Measure how far the predicted output is from the actual target (this is the <strong>loss</strong>).</p></li>
+<li><p>Calculate how to adjust each parameter to improve future predictions (<strong>gradients</strong>).</p></li>
+<li><p>Update the parameters using these gradients — this helps the model improve.</p></li>
+</ul>
+</li>
+<li><p>Summary</p>
+<ul>
+<li><p><strong>Input <span class="math notranslate nohighlight">\(\rightarrow\)</span> Forward Pass <span class="math notranslate nohighlight">\(\rightarrow\)</span> Loss <span class="math notranslate nohighlight">\(\rightarrow\)</span> Backward Pass <span class="math notranslate nohighlight">\(\rightarrow\)</span> Parameter Update <span class="math notranslate nohighlight">\(\rightarrow\)</span> Repeat</strong></p></li>
+<li><p>The model repeats this process many times, gradually improving its predictions.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="why-neural-networks">
@@ -1194,11 +1217,6 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 <li><p>You can generally get a model that will not underfit.</p></li>
 </ul>
 </li>
-</ul>
-</section>
-<section id="id1">
-<h3>Why neural networks?<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<ul class="simple">
 <li><p>The work really well for structured data:</p>
 <ul>
 <li><p>1D sequence, e.g. timeseries, language</p></li>
@@ -1222,11 +1240,6 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </ul>
 </li>
 <li><p>They are not interpretable.</p></li>
-</ul>
-</section>
-<section id="id2">
-<h3>Why not neural networks?<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<ul class="simple">
 <li><p>When you call <code class="docutils literal notranslate"><span class="pre">fit</span></code>, you are not guaranteed to get the optimal.</p>
 <ul>
 <li><p>There are now a bunch of hyperparameters specific to <code class="docutils literal notranslate"><span class="pre">fit</span></code>, rather than the model.</p></li>
@@ -1291,675 +1304,45 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 <li><p>In the last decade this field has been dominated by deep learning.</p></li>
 <li><p>We will explore <strong>image classification</strong>.</p></li>
 </ul>
-<section id="dataset">
-<h3>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
+<section id="convolutional-neural-networks-cnns-high-level">
+<h3>Convolutional Neural Networks (CNNs) (high level)<a class="headerlink" href="#convolutional-neural-networks-cnns-high-level" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>For this demonstration I’m using a subset of <a class="reference external" href="https://www.kaggle.com/datasets/andrewmvd/animal-faces">Kaggle’s Animal Faces dataset</a>.</p></li>
-<li><p>Usually structured data such as this one doesn’t come in CSV files.</p></li>
-<li><p>Also, if you are working on image datasets in the real world, they are going to be huge datasets and you do not want to load the full dataset at once in the memory.</p></li>
-<li><p>So usually you work on small batches.</p></li>
-<li><p>You are not expected to understand all the code below. But I’m including it for your reference.</p></li>
+<li><p>Neural networks come in different shapes depending on the type of data and the task.</p></li>
+<li><p>CNNs are commonly used in <strong>image classification, object detection, and medical imaging.</strong></p></li>
+<li><p>What’s the problem if we use the above feedforward architecture to learn patterns from images?</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Attribution: [Code from PyTorch docs](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html?highlight=transfer%20learning)</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torchvision</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="kn">import</span> <span class="n">lr_scheduler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">transforms</span><span class="p">,</span> <span class="n">utils</span>
-<span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="mi">200</span>
-
-<span class="n">data_transforms_bw</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">)),</span> 
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="n">num_output_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>            
-            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-        <span class="p">]</span>
-    <span class="p">),</span>
-    <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">)),</span>                        
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="n">num_output_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>            
-            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-        <span class="p">]</span>
-    <span class="p">),</span>
-<span class="p">}</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;animal_faces&quot;</span>
-<span class="n">image_datasets_bw</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">x</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">data_transforms_bw</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="n">dataloaders_bw</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
-        <span class="n">image_datasets_bw</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span>
-    <span class="p">)</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="n">dataset_sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">]}</span>
-<span class="n">class_names</span> <span class="o">=</span> <span class="n">image_datasets_bw</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a batch of training data</span>
-<span class="n">inputs_bw</span><span class="p">,</span> <span class="n">classes</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dataloaders_bw</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sample Training Images&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">make_grid</span><span class="p">(</span><span class="n">inputs_bw</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)));</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/dc9884157d095bb101ced05ca3b0958232e003889550bc1df7733e37c6181bdd.png" src="../../_images/dc9884157d095bb101ced05ca3b0958232e003889550bc1df7733e37c6181bdd.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classes: </span><span class="si">{</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Class count: </span><span class="si">{</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Samples:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First sample: </span><span class="si">{</span><span class="n">image_datasets_bw</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes: [&#39;cat&#39;, &#39;dog&#39;, &#39;wild&#39;]
-Class count: 50, 50, 50
-Samples: 150
-First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/animal_faces/train/cat/flickr_cat_000002.jpg&#39;, 0)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="logistic-regression-with-flattened-representation-of-images">
-<h3>Logistic regression with flattened representation of images<a class="headerlink" href="#logistic-regression-with-flattened-representation-of-images" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../../_images/cnn-1.png" /></p>
 <ul class="simple">
-<li><p>How can we train traditional ML models designed for tabular data on image data?</p></li>
-<li><p>Let’s flatten the images and trained Logistic regression.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code flattens the images in train and validation sets.</span>
-<span class="c1"># Again you&#39;re not expected to understand all the code.</span>
-<span class="n">flatten_transforms</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-                    <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">)),</span>
-                    <span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="n">num_output_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-                    <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                    <span class="n">transforms</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">)])</span>
-<span class="n">train_flatten</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;animal_faces/train&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">flatten_transforms</span><span class="p">)</span>
-<span class="n">valid_flatten</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;animal_faces/valid&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">flatten_transforms</span><span class="p">)</span>                                                
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_flatten</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">valid_dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">valid_flatten</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flatten_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">))</span>
-<span class="n">flatten_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">valid_dataloader</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flatten_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 40000)
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>We have flattened representation (40_000 columns) for all 150 training images.</p></li>
-<li><p>Let’s train dummy classifier and logistic regression on these flattened images.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy</span> <span class="o">=</span> <span class="n">DummyClassifier</span><span class="p">()</span>
-<span class="n">dummy</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">flatten_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">dummy</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">flatten_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3333333333333333
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dummy</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">flatten_valid</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3333333333333333
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr_flatten_pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">3000</span><span class="p">))</span>
-<span class="n">lr_flatten_pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">flatten_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: black;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-2 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-2 pre {
-  padding: 0;
-}
-
-#sk-container-id-2 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-2 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-2 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-2 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-2 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-2 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-2 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-2 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-2 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-2 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-2 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-2 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-2 label.sk-toggleable__label {
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-#sk-container-id-2 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-2 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-2 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-2 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-2 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
-}
-
-#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-2 div.sk-label label.sk-toggleable__label,
-#sk-container-id-2 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-2 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-2 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-2 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-2 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-2 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-2 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 1ex;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-2 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-2 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-2 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-2 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
-                (&#x27;logisticregression&#x27;, LogisticRegression(max_iter=3000))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;Pipeline<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
-                (&#x27;logisticregression&#x27;, LogisticRegression(max_iter=3000))])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression(max_iter=3000)</pre></div> </div></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr_flatten_pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">flatten_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr_flatten_pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">flatten_valid</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_valid</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666666
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>The model is overfitting.</p></li>
-<li><p>We are getting not so great validation results.</p></li>
-<li><p>Why flattening images is a bad idea?</p>
+<li><p>Fully connected networks are not well-suited for images because:</p>
 <ul>
-<li><p>There is some structure in this data.</p></li>
-<li><p>By “flattening” the image we throw away useful information.</p></li>
+<li><p><strong>Too many parameters:</strong> Every pixel connects to every neuron, causing the number of parameters to explode.</p></li>
+<li><p><strong>No notion of spatial structure:</strong> The model treats pixels independently and ignores the 2D arrangement of the image.</p></li>
+<li><p><strong>Lack of translation invariance:</strong> A pattern appearing in a different part of the image looks completely different to the model, so it must relearn the same pattern in multiple positions.</p></li>
 </ul>
 </li>
 </ul>
-<p>This is what we see.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.cmap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gray&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example image&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">flatten_train</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">));</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/3b3fe3e515478fd30d09787006d73847370cd03e6fec40984b78776a1a83dce5.png" src="../../_images/3b3fe3e515478fd30d09787006d73847370cd03e6fec40984b78776a1a83dce5.png" />
-</div>
-</div>
+<p><strong>Filters</strong></p>
 <ul class="simple">
-<li><p>This is what the computer sees:</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flatten_train</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.39215687, 0.39215687, 0.39215687, ..., 0.8156863 , 0.6901961 ,
-       0.627451  ], dtype=float32)
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>Hard to classify this!</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network">Convolutional neural networks</a> (CNNs) can take in images without flattening them.</p>
+<li><p><strong>Convolutional Neural Networks (CNNs)</strong> address these issues by using filters that <em>slide</em> over the input to detect local patterns.</p></li>
+<li><p>Each filter looks for a specific kind of pattern—similar to how a metal detector only reacts when it finds metal.</p></li>
+<li><p>In the example below, the filter is a 2×2 grid that slides over the image:</p>
 <ul>
-<li><p>We won’t cover CNNs here, but they are in CPSC 340.</p></li>
+<li><p>When the region under the filter matches the pattern the filter is looking for, it produces a large activation.</p></li>
+<li><p>Otherwise, it produces a small activation.</p></li>
 </ul>
 </li>
 </ul>
-<p><br><br><br><br></p>
-</section>
+<p><img alt="" src="../../_images/cnn-4.png" /></p>
+<p><img alt="" src="../../_images/cnn-5.gif" /></p>
+<ul class="simple">
+<li><p>Play around with filters: https://setosa.io/ev/image-kernels/</p></li>
+</ul>
+<p><strong>(Optional) CNNs big picture</strong></p>
+<p><img alt="" src="../../_images/cnn_big_picture.png" /></p>
+<p>Let’s explore these ideas using a subset of <a class="reference external" href="https://www.kaggle.com/datasets/andrewmvd/animal-faces">Kaggle’s Animal Faces dataset</a>.</p>
 </section>
 <section id="transfer-learning">
-<h2>Transfer learning<a class="headerlink" href="#transfer-learning" title="Link to this heading">#</a></h2>
+<h3>Transfer learning<a class="headerlink" href="#transfer-learning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>In practice, very few people train an entire CNN from scratch because it requires a large dataset, powerful computers, and a huge amount of human effort to train the model.</p></li>
 <li><p>Instead, a common practice is to download a pre-trained model and fine tune it for your task.</p></li>
@@ -1974,8 +1357,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li><p>There are many deep learning architectures out there that have been very successful across a wide range of problem, e.g.: AlexNet, VGG, ResNet, Inception, MobileNet, etc.</p></li>
 <li><p>Many of these are trained on famous datasets such as ImageNet (which contains 1.2 million labelled images with 1000 categories)</p></li>
 </ul>
-<section id="imagenet">
-<h3>ImageNet<a class="headerlink" href="#imagenet" title="Link to this heading">#</a></h3>
+<p><strong>ImageNet</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.image-net.org/">ImageNet</a> is an image dataset that became a very popular benchmark in the field ~10 years ago.</p>
 <ul>
@@ -2030,46 +1412,6 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li><p>We get prediction from this pre-trained model on a given image along with prediction probabilities.</p></li>
 <li><p>For a given image, this model will spit out one of the 1000 classes from ImageNet.</p></li>
 </ul>
-<p><img alt="" src="../../_images/cnn-ex.png" /></p>
-<p>Source: https://cezannec.github.io/Convolutional_Neural_Networks/</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">classify_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">topn</span> <span class="o">=</span> <span class="mi">4</span><span class="p">):</span>
-    <span class="n">clf</span> <span class="o">=</span> <span class="n">vgg16</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s1">&#39;VGG16_Weights.DEFAULT&#39;</span><span class="p">)</span> <span class="c1"># initialize the classifier with VGG16 weights</span>
-    <span class="n">preprocess</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
-                 <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">299</span><span class="p">),</span>
-                 <span class="n">transforms</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">299</span><span class="p">),</span>
-                 <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                 <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> 
-                                     <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]),])</span>
-
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;imagenet_classes.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
-    
-    <span class="n">img_t</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-    <span class="n">batch_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">img_t</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">clf</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">clf</span><span class="p">(</span><span class="n">batch_t</span><span class="p">)</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">probabilities</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Class&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">classes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="n">topn</span><span class="p">]],</span> 
-         <span class="s1">&#39;Probability score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">probabilities</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="n">topn</span><span class="p">]]}</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span><span class="s1">&#39;Probability score&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision</span><span class="w"> </span><span class="kn">import</span> <span class="n">transforms</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">vgg16</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict labels with associated probabilities for unseen images</span>
@@ -2124,6 +1466,7 @@ Walker hound, Walker foxhound              0.580
 </div>
 </div>
 </div>
+<p><br><br><br><br></p>
 <ul class="simple">
 <li><p>We got these predictions without “doing the ML ourselves”.</p></li>
 <li><p>We are using <strong>pre-trained</strong> <code class="docutils literal notranslate"><span class="pre">vgg16</span></code> model which is available in <code class="docutils literal notranslate"><span class="pre">torchvision</span></code>.</p></li>
@@ -2131,7 +1474,9 @@ Walker hound, Walker foxhound              0.580
 <li><p>Many of these models have been pre-trained on famous datasets like <strong>ImageNet</strong>.</p></li>
 <li><p>So if we use them out-of-the-box, they will give us one of the ImageNet classes as classification.</p></li>
 </ul>
-<p>Let’s see what labels this pre-trained model give us for some images which are very different from the training set.</p>
+<p><img alt="" src="../../_images/cnn-ex.png" /></p>
+<p>Source: https://cezannec.github.io/Convolutional_Neural_Networks/</p>
+<p>Let’s see what labels this pre-trained model gives us for some images which are very different from the training set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict labels with associated probabilities for unseen images</span>
@@ -2249,7 +1594,7 @@ lakeside, lakeshore              0.097
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using device: </span><span class="si">{</span><span class="n">device</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2267,87 +1612,47 @@ lakeside, lakeshore              0.097
 <li><p>Here, I’m using all three colour channels.</p></li>
 <li><p>Let’s read and prepare the data. (You are not expected to understand this code.)</p></li>
 </ul>
+</section>
+<section id="dataset">
+<h3>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Usually structured data such as this one doesn’t come in CSV files.</p></li>
+<li><p>Also, if you are working on image datasets in the real world, they are going to be huge datasets and you do not want to load the full dataset at once in the memory.</p></li>
+<li><p>So usually you work on small batches.</p></li>
+<li><p>You are not expected to understand all the code below. But I’m including it for your reference.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Attribution: [Code from PyTorch docs](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html?highlight=transfer%20learning)</span>
-
-<span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">64</span>
-
-<span class="n">data_transforms</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="c1"># transforms.RandomResizedCrop(224),</span>
-            <span class="c1"># transforms.RandomHorizontalFlip(),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">)),</span>     
-            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-            <span class="c1">#transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]),</span>            
-        <span class="p">]</span>
-    <span class="p">),</span>
-    <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="c1"># transforms.Resize(256),</span>
-            <span class="c1"># transforms.CenterCrop(224),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="n">IMAGE_SIZE</span><span class="p">,</span> <span class="n">IMAGE_SIZE</span><span class="p">)),</span>                        
-            <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-            <span class="c1"># transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),</span>
-            <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]),</span>                        
-        <span class="p">]</span>
-    <span class="p">),</span>
-<span class="p">}</span>
-<span class="n">data_dir</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;animal_faces&quot;</span>
-<span class="n">image_datasets</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">x</span><span class="p">:</span> <span class="n">datasets</span><span class="o">.</span><span class="n">ImageFolder</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">data_transforms</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-<span class="n">dataloaders</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
-        <span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span>
-    <span class="p">)</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s1">&#39;food-transfer-learning&#39;</span>
+<span class="n">image_datasets</span><span class="p">,</span> <span class="n">dataloaders</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 <span class="n">dataset_sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">]}</span>
 <span class="n">class_names</span> <span class="o">=</span> <span class="n">image_datasets</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span>
-
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get a batch of training data</span>
-<span class="n">inputs</span><span class="p">,</span> <span class="n">classes</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dataloaders</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sample Training Images&quot;</span><span class="p">)</span>
+<span class="n">inputs</span><span class="p">,</span> <span class="n">classes</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dataloaders</span><span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sample valid Images&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">make_grid</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)));</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d7b88cfb0b5929f124b2ed4fd819645691a6c802a6d72030cd8d0119564140ef.png" src="../../_images/d7b88cfb0b5929f124b2ed4fd819645691a6c802a6d72030cd8d0119564140ef.png" />
+<img alt="../../_images/c3b77b4833da608e329e89e28421ceab0e7ad2fc1bfee9702009ced328740cf2.png" src="../../_images/c3b77b4833da608e329e89e28421ceab0e7ad2fc1bfee9702009ced328740cf2.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classes: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">classes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Class count: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Class count: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Samples:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First sample: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes: [&#39;cat&#39;, &#39;dog&#39;, &#39;wild&#39;]
-Class count: 50, 50, 50
-Samples: 150
-First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/animal_faces/train/cat/flickr_cat_000002.jpg&#39;, 0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes: [&#39;beet_salad&#39;, &#39;chocolate_cake&#39;, &#39;edamame&#39;, &#39;french_fries&#39;, &#39;pizza&#39;, &#39;spring_rolls&#39;, &#39;sushi&#39;]
+Class count: 40, 38, 40
+Samples: 283
+First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/food-transfer-learning/train/beet_salad/104294.jpg&#39;, 0)
 </pre></div>
 </div>
 </div>
@@ -2357,35 +1662,9 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_features</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">valid_loader</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract output of s model&quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>  <span class="c1"># turn off computational graph stuff</span>
-        <span class="n">Z_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">))</span>  <span class="c1"># Initialize empty tensors</span>
-        <span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">))</span>
-        <span class="n">Z_valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">))</span>
-        <span class="n">y_valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
-            <span class="n">Z_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">valid_loader</span><span class="p">:</span>
-            <span class="n">Z_valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">Z_valid</span><span class="p">,</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="n">y_valid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">Z_train</span><span class="o">.</span><span class="n">detach</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">detach</span><span class="p">(),</span> <span class="n">Z_valid</span><span class="o">.</span><span class="n">detach</span><span class="p">(),</span> <span class="n">y_valid</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">densenet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">densenet121</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s2">&quot;DenseNet121_Weights.IMAGENET1K_V1&quot;</span><span class="p">)</span>
 <span class="n">densenet</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>  <span class="c1"># remove that last &quot;classification&quot; layer</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">Z_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">get_features</span><span class="p">(</span>
+<span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">Z_valid</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> <span class="n">get_features</span><span class="p">(</span>
     <span class="n">densenet</span><span class="p">,</span> <span class="n">dataloaders</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">],</span> <span class="n">dataloaders</span><span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
@@ -2400,7 +1679,7 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([150, 1024])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([283, 1024])
 </pre></div>
 </div>
 </div>
@@ -2460,123 +1739,123 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000472</td>
-      <td>0.003649</td>
-      <td>0.002510</td>
-      <td>0.001355</td>
-      <td>0.130603</td>
-      <td>0.881698</td>
-      <td>0.000493</td>
-      <td>0.004309</td>
-      <td>0.112671</td>
-      <td>0.000212</td>
+      <td>0.000628</td>
+      <td>0.001867</td>
+      <td>0.005263</td>
+      <td>0.000643</td>
+      <td>0.142654</td>
+      <td>0.544122</td>
+      <td>0.000459</td>
+      <td>0.004617</td>
+      <td>0.515678</td>
+      <td>0.000261</td>
       <td>...</td>
-      <td>0.674011</td>
-      <td>0.819631</td>
-      <td>0.744395</td>
-      <td>0.105675</td>
-      <td>1.379686</td>
-      <td>0.724177</td>
-      <td>1.494054</td>
-      <td>0.431038</td>
-      <td>2.194493</td>
-      <td>0.852334</td>
+      <td>0.409524</td>
+      <td>1.786506</td>
+      <td>0.286546</td>
+      <td>0.811878</td>
+      <td>0.481693</td>
+      <td>0.179064</td>
+      <td>1.025992</td>
+      <td>2.119847</td>
+      <td>2.038495</td>
+      <td>0.832221</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.000349</td>
-      <td>0.004485</td>
-      <td>0.002417</td>
-      <td>0.001791</td>
-      <td>0.085652</td>
-      <td>0.602197</td>
-      <td>0.000367</td>
-      <td>0.003940</td>
-      <td>0.145267</td>
-      <td>0.000148</td>
+      <td>0.000108</td>
+      <td>0.001419</td>
+      <td>0.003320</td>
+      <td>0.000497</td>
+      <td>0.100592</td>
+      <td>0.031338</td>
+      <td>0.000039</td>
+      <td>0.003024</td>
+      <td>0.529212</td>
+      <td>0.000396</td>
       <td>...</td>
-      <td>1.538014</td>
-      <td>0.371710</td>
-      <td>2.181493</td>
-      <td>0.134151</td>
-      <td>0.382041</td>
-      <td>2.243711</td>
-      <td>1.550061</td>
-      <td>0.673192</td>
-      <td>0.512821</td>
-      <td>1.436345</td>
+      <td>0.014607</td>
+      <td>0.006724</td>
+      <td>0.440418</td>
+      <td>0.834183</td>
+      <td>0.820324</td>
+      <td>1.111770</td>
+      <td>0.390105</td>
+      <td>1.340162</td>
+      <td>0.575756</td>
+      <td>0.728587</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.000186</td>
-      <td>0.003931</td>
-      <td>0.003131</td>
-      <td>0.003577</td>
-      <td>0.153007</td>
-      <td>0.331124</td>
-      <td>0.000446</td>
-      <td>0.004467</td>
-      <td>0.383816</td>
-      <td>0.000335</td>
+      <td>0.000350</td>
+      <td>0.006774</td>
+      <td>0.001326</td>
+      <td>0.000486</td>
+      <td>0.140210</td>
+      <td>0.257724</td>
+      <td>0.000773</td>
+      <td>0.004360</td>
+      <td>0.162747</td>
+      <td>0.000161</td>
       <td>...</td>
-      <td>1.258168</td>
-      <td>1.236056</td>
-      <td>0.108800</td>
-      <td>1.802201</td>
-      <td>1.590096</td>
-      <td>0.000297</td>
-      <td>0.167557</td>
-      <td>3.069224</td>
-      <td>0.405450</td>
-      <td>0.038550</td>
+      <td>2.170505</td>
+      <td>0.576441</td>
+      <td>0.673952</td>
+      <td>1.197436</td>
+      <td>1.226750</td>
+      <td>0.869717</td>
+      <td>0.113458</td>
+      <td>1.695457</td>
+      <td>0.203397</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.000362</td>
-      <td>0.005059</td>
-      <td>0.002439</td>
-      <td>0.003871</td>
-      <td>0.207191</td>
-      <td>0.313567</td>
-      <td>0.000740</td>
-      <td>0.003124</td>
-      <td>0.312099</td>
-      <td>0.000360</td>
+      <td>0.000423</td>
+      <td>0.005459</td>
+      <td>0.001522</td>
+      <td>0.000987</td>
+      <td>0.103520</td>
+      <td>1.944745</td>
+      <td>0.000781</td>
+      <td>0.004451</td>
+      <td>0.091491</td>
+      <td>0.000342</td>
       <td>...</td>
-      <td>0.815785</td>
-      <td>0.292724</td>
-      <td>1.025528</td>
-      <td>2.679446</td>
-      <td>0.122838</td>
-      <td>0.209428</td>
-      <td>0.670064</td>
-      <td>0.708132</td>
-      <td>0.378911</td>
-      <td>1.521911</td>
+      <td>1.202743</td>
+      <td>2.475197</td>
+      <td>1.089163</td>
+      <td>0.033112</td>
+      <td>0.153165</td>
+      <td>1.799486</td>
+      <td>0.530468</td>
+      <td>1.092399</td>
+      <td>0.120932</td>
+      <td>4.028654</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.000504</td>
-      <td>0.007138</td>
-      <td>0.006279</td>
-      <td>0.003495</td>
-      <td>0.137269</td>
-      <td>1.326189</td>
-      <td>0.000560</td>
-      <td>0.003415</td>
-      <td>0.195390</td>
+      <td>0.000289</td>
+      <td>0.001180</td>
+      <td>0.002293</td>
+      <td>0.001370</td>
+      <td>0.036232</td>
+      <td>0.290215</td>
       <td>0.000142</td>
+      <td>0.004044</td>
+      <td>0.559905</td>
+      <td>0.000636</td>
       <td>...</td>
-      <td>2.022229</td>
-      <td>0.605885</td>
-      <td>1.097979</td>
-      <td>2.012150</td>
-      <td>4.772901</td>
-      <td>1.060777</td>
-      <td>1.423177</td>
-      <td>0.728775</td>
-      <td>0.508964</td>
-      <td>1.382753</td>
+      <td>0.660834</td>
+      <td>0.000000</td>
+      <td>2.927814</td>
+      <td>0.949736</td>
+      <td>0.440601</td>
+      <td>0.031605</td>
+      <td>0.000000</td>
+      <td>0.993692</td>
+      <td>0.131639</td>
+      <td>0.731349</td>
     </tr>
   </tbody>
 </table>
@@ -2589,9 +1868,9 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">))</span>
-<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2603,19 +1882,19 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8208955223880597
 </pre></div>
 </div>
 </div>
 </div>
 <ul class="simple">
 <li><p>This is great accuracy for so little data (we only have 150 examples) and little effort of all different types of animals!!!</p></li>
-<li><p>With logistic regression and flattened representation of images we got an accuracy of 0.66.</p></li>
+<li><p>With logistic regression and flattened representation of images we would get much worse accuracy with more compute</p></li>
 </ul>
 <p><br><br></p>
 </section>
@@ -2633,6 +1912,7 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ultralytics</span><span class="w"> </span><span class="kn">import</span> <span class="n">YOLO</span>
+
 <span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n.pt&quot;</span><span class="p">)</span>  <span class="c1"># pretrained YOLOv8n model</span>
 
 <span class="n">yolo_input</span> <span class="o">=</span> <span class="n">DATA_DIR</span> <span class="o">+</span> <span class="s2">&quot;yolo_test/3356700488_183566145b.jpg&quot;</span>
@@ -2642,8 +1922,8 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">yolo_input</span><span class="p">)</span>  <span class="c1"># return a list of Results objects</span>
 <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">yolo_result</span><span class="p">)</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpimg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Load the images</span>
 <span class="n">input_img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">yolo_input</span><span class="p">)</span>
@@ -2654,13 +1934,13 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 
 <span class="c1"># Display the first image</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">input_img</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># Hide the axes</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original Image&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>  <span class="c1"># Hide the axes</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Original Image&quot;</span><span class="p">)</span>
 
 <span class="c1"># Display the second image</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result_img</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># Hide the axes</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Result Image&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>  <span class="c1"># Hide the axes</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Result Image&quot;</span><span class="p">)</span>
 
 <span class="c1"># Show the images</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -2669,18 +1949,15 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt to &#39;yolov8n.pt&#39;...
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████| 6.25M/6.25M [00:00&lt;00:00, 31.8MB/s]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 /Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/yolo_test/3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 125.4ms
-Speed: 4.5ms preprocess, 125.4ms inference, 2.4ms postprocess per image at shape (1, 3, 512, 640)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kvarada/miniforge3/envs/cpsc330/lib/python3.12/site-packages/ultralytics/utils/torch_utils.py:218: UserWarning: Cannot set number of intraop threads after parallel work has started or after set_num_threads call when using native parallel backend (Triggered internally at /Users/runner/work/_temp/anaconda/conda-bld/pytorch_1711403213615/work/aten/src/ATen/ParallelNative.cpp:228.)
   torch.set_num_threads(NUM_THREADS)  # reset OMP_NUM_THREADS for cpu training
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 /Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/yolo_test/3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 134.5ms
+Speed: 5.7ms preprocess, 134.5ms inference, 1.6ms postprocess per image at shape (1, 3, 512, 640)
 </pre></div>
 </div>
 <img alt="../../_images/1559e83f737354da45f9400fc3bacc0cd283c364bf0b4ad13a45fe60c080f7b8.png" src="../../_images/1559e83f737354da45f9400fc3bacc0cd283c364bf0b4ad13a45fe60c080f7b8.png" />
@@ -2817,27 +2094,23 @@ Speed: 4.5ms preprocess, 125.4ms inference, 2.4ms postprocess per image at shape
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-neural-networks">Introduction to neural networks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-example-and-terminology">Neural networks example and terminology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-how-does-training-work-in-neural-networks-high-level">(Optional) How does training work in neural networks? (High-Level)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-neural-networks">Why neural networks?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Why neural networks?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-neural-networks">Why not neural networks?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Why not neural networks?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-software">Deep learning software</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-5-min">Break (5 min)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-computer-vision">Introduction to computer vision</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-with-flattened-representation-of-images">Logistic regression with flattened representation of images</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-learning">Transfer learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagenet">ImageNet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-networks-cnns-high-level">Convolutional Neural Networks (CNNs) (high level)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-learning">Transfer learning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pre-trained-models-out-of-the-box">Using pre-trained models out-of-the-box</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pre-trained-models-as-feature-extractor">Using pre-trained models as feature extractor</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-detection">Object detection</a></li>
