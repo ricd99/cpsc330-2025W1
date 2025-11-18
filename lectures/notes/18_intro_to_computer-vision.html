@@ -1911,7 +1911,6 @@ lakeside, lakeshore              0.097
     <span class="sa">f</span><span class="s2">&quot;Class count: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Samples:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_datasets</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First sample: </span><span class="si">{</span><span class="n">image_datasets</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1919,7 +1918,6 @@ lakeside, lakeshore              0.097
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes: [&#39;beet_salad&#39;, &#39;chocolate_cake&#39;, &#39;edamame&#39;, &#39;french_fries&#39;, &#39;pizza&#39;, &#39;spring_rolls&#39;, &#39;sushi&#39;]
 Class count: 40, 38, 40, 40, 43, 41, 41
 Samples: 283
-First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/food-transfer-learning/train/beet_salad/104294.jpg&#39;, 0)
 </pre></div>
 </div>
 </div>
@@ -2216,8 +2214,8 @@ First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 /Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/yolo_test/3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 66.1ms
-Speed: 2.6ms preprocess, 66.1ms inference, 7.3ms postprocess per image at shape (1, 3, 512, 640)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 /Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/yolo_test/3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 64.2ms
+Speed: 3.1ms preprocess, 64.2ms inference, 8.9ms postprocess per image at shape (1, 3, 512, 640)
 </pre></div>
 </div>
 <img alt="../../_images/f03664744e1d361dcbfba9333b945051fe872811e449de4371220ca6645af1ae.png" src="../../_images/f03664744e1d361dcbfba9333b945051fe872811e449de4371220ca6645af1ae.png" />
