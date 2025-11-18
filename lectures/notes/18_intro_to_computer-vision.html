@@ -450,6 +450,7 @@ document.write(`
   <p><img alt="" src="../../_images/330-banner.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="lecture-18-multi-class-classification-and-introduction-to-computer-vision">
 <h1>Lecture 18: Multi-class classification and introduction to computer vision<a class="headerlink" href="#lecture-18-multi-class-classification-and-introduction-to-computer-vision" title="Link to this heading">#</a></h1>
+<p>UBC 2025-26</p>
 <section id="imports-and-lo">
 <h2>Imports and LO<a class="headerlink" href="#imports-and-lo" title="Link to this heading">#</a></h2>
 <section id="imports">
@@ -471,7 +472,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">plotting_functions</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">deep_learning_code</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.dummy</span><span class="w"> </span><span class="kn">import</span> <span class="n">DummyClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
@@ -557,7 +557,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/76a13e151fb44859b39d45766cc4c6d379938b7ff7ddbeb29e47ef65b546301c.png" src="../../_images/76a13e151fb44859b39d45766cc4c6d379938b7ff7ddbeb29e47ef65b546301c.png" />
+<img alt="../../_images/75f0825b805b21b9742b71f28a6de219f965f99fef0dc9e1ff8caa21b03471f2.png" src="../../_images/75f0825b805b21b9742b71f28a6de219f965f99fef0dc9e1ff8caa21b03471f2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -748,9 +748,7 @@ clickable and can be expanded/collapsed.
 /* Toggleable content - dropdown */
 
 #sk-container-id-1 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
+  display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
@@ -776,9 +774,9 @@ clickable and can be expanded/collapsed.
 
 #sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
 
 #sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
@@ -983,7 +981,273 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div></div></div></div>
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('penalty',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">penalty&nbsp;</td>
+            <td class="value">&#x27;l2&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('dual',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">dual&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('C',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">C&nbsp;</td>
+            <td class="value">1.0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('fit_intercept',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">fit_intercept&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('intercept_scaling',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">intercept_scaling&nbsp;</td>
+            <td class="value">1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('class_weight',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">class_weight&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;lbfgs&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">100</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('multi_class',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">multi_class&nbsp;</td>
+            <td class="value">&#x27;deprecated&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_jobs',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_jobs&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('l1_ratio',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">l1_ratio&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1033,7 +1297,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.64417243,  5.10584063,  1.09706504, -5.55873324])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.64417243,  5.10584062,  1.09706504, -5.55873323])
 </pre></div>
 </div>
 </div>
@@ -1070,7 +1334,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.10793260e-03, 2.31298590e-08, 5.83848731e-06, 9.95886206e-01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.10793260e-03, 2.31298589e-08, 5.83848726e-06, 9.95886206e-01])
 </pre></div>
 </div>
 </div>
@@ -1095,7 +1359,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(3)
 </pre></div>
 </div>
 </div>
@@ -1128,10 +1392,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Could not load &quot;C:\Users\Giulia\anaconda3\envs\dsci430\Library\bin\gvplugin_pango.dll&quot; - It was found, so perhaps one of its dependents was not.  Try ldd.
-</pre></div>
-</div>
-<img alt="../../_images/98fb173f89ecdb4f23aaf67b39c546a4ec6b4673cd4877e5aad25c83aa3f6e24.svg" src="../../_images/98fb173f89ecdb4f23aaf67b39c546a4ec6b4673cd4877e5aad25c83aa3f6e24.svg" />
+<img alt="../../_images/d5cb8f46d4ef094c481b6b20b79b16e77e5436d68cc6c319ab47b944cc55547b.svg" src="../../_images/d5cb8f46d4ef094c481b6b20b79b16e77e5436d68cc6c319ab47b944cc55547b.svg" />
 </div>
 </div>
 <ul class="simple">
@@ -1146,10 +1407,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Could not load &quot;C:\Users\Giulia\anaconda3\envs\dsci430\Library\bin\gvplugin_pango.dll&quot; - It was found, so perhaps one of its dependents was not.  Try ldd.
-</pre></div>
-</div>
-<img alt="../../_images/fa8f0fa51a2241d9917aea4841922734e28b6d312691bd2adf393e47bcac1fac.svg" src="../../_images/fa8f0fa51a2241d9917aea4841922734e28b6d312691bd2adf393e47bcac1fac.svg" />
+<img alt="../../_images/18a37d3f570282859b847b0956dbb954ac648a3fbe9138eacb0068149b3441ae.svg" src="../../_images/18a37d3f570282859b847b0956dbb954ac648a3fbe9138eacb0068149b3441ae.svg" />
 </div>
 </div>
 <ul class="simple">
@@ -1162,10 +1420,7 @@ $<span class="math notranslate nohighlight">\(\frac{1}{1+e^{-x}}\)</span>$</p></
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Could not load &quot;C:\Users\Giulia\anaconda3\envs\dsci430\Library\bin\gvplugin_pango.dll&quot; - It was found, so perhaps one of its dependents was not.  Try ldd.
-</pre></div>
-</div>
-<img alt="../../_images/a05b4d54cd2670ceca03703b901bb52ea7bd66b5d7bad122630a7986e8d7399d.svg" src="../../_images/a05b4d54cd2670ceca03703b901bb52ea7bd66b5d7bad122630a7986e8d7399d.svg" />
+<img alt="../../_images/ad4e126ec33fb2072eed677e025110394ddbe109de82d5f828cdea93223cc0bc.svg" src="../../_images/ad4e126ec33fb2072eed677e025110394ddbe109de82d5f828cdea93223cc0bc.svg" />
 </div>
 </div>
 <ul class="simple">
@@ -1447,16 +1702,7 @@ Feed the input through the network to calculate the predicted output using the c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b9b68287bf4ae836ee407ea7de9e11e3b5188b10000f475f514d64a40e376a58.png" src="../../_images/b9b68287bf4ae836ee407ea7de9e11e3b5188b10000f475f514d64a40e376a58.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Class  Probability score
-                                 macaque              0.714
-patas, hussar monkey, Erythrocebus patas              0.122
-      proboscis monkey, Nasalis larvatus              0.098
-                   guenon, guenon monkey              0.017
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/80b0e7a44ddd54f2125abc3eb7633ff3974a768947ae595196dabaf20802b9ae.png" src="../../_images/80b0e7a44ddd54f2125abc3eb7633ff3974a768947ae595196dabaf20802b9ae.png" />
+<img alt="../../_images/6f1f90501b0633d7351cec1094417b02a6d2ac16de8f5ba56ff067b58c1ffcf6.png" src="../../_images/6f1f90501b0633d7351cec1094417b02a6d2ac16de8f5ba56ff067b58c1ffcf6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         Class  Probability score
                      tiger cat              0.353
               tabby, tabby cat              0.207
@@ -1465,7 +1711,7 @@ Pembroke, Pembroke Welsh corgi              0.046
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/8d54e9647b2d73abaaa9c4b098d65095b4f3ab77334b28af66f730077b08aab0.png" src="../../_images/8d54e9647b2d73abaaa9c4b098d65095b4f3ab77334b28af66f730077b08aab0.png" />
+<img alt="../../_images/84500c9c8d590e4dd592b377346cce98765276fe8048e7f04cce1795280d2d7e.png" src="../../_images/84500c9c8d590e4dd592b377346cce98765276fe8048e7f04cce1795280d2d7e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     Class  Probability score
          cheetah, chetah, Acinonyx jubatus              0.983
                   leopard, Panthera pardus              0.012
@@ -1474,7 +1720,16 @@ jaguar, panther, Panthera onca, Felis onca              0.004
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/b315ed8fa044c796223d166f1f55eb50675c2f95715b5f8251cf9f6b5dac2c60.png" src="../../_images/b315ed8fa044c796223d166f1f55eb50675c2f95715b5f8251cf9f6b5dac2c60.png" />
+<img alt="../../_images/8a31b8b3f4259bbb50f722fcf71fd2333843c7dee131c592dfa96c4abdbaa8ce.png" src="../../_images/8a31b8b3f4259bbb50f722fcf71fd2333843c7dee131c592dfa96c4abdbaa8ce.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Class  Probability score
+                                 macaque              0.714
+patas, hussar monkey, Erythrocebus patas              0.122
+      proboscis monkey, Nasalis larvatus              0.098
+                   guenon, guenon monkey              0.017
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/9b24df09f09ce50895c6200603650c6e2bbab4de96ed034553cf5c5330d2d20d.png" src="../../_images/9b24df09f09ce50895c6200603650c6e2bbab4de96ed034553cf5c5330d2d20d.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                        Class  Probability score
 Walker hound, Walker foxhound              0.580
              English foxhound              0.091
@@ -1512,52 +1767,7 @@ Walker hound, Walker foxhound              0.580
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e9709227c09b83c6ca67e85cb7bdd2fdda58e3a1ee17399ed14d40ab1b2f7cba.png" src="../../_images/e9709227c09b83c6ca67e85cb7bdd2fdda58e3a1ee17399ed14d40ab1b2f7cba.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                      Class  Probability score
-                                        fig              0.637
-                                pomegranate              0.193
-grocery store, grocery, food market, market              0.041
-                                      crate              0.023
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/e0684bc1bb22d4e696b536ea36112f315d43fd2ab7f269bc077f510f86d9d906.png" src="../../_images/e0684bc1bb22d4e696b536ea36112f315d43fd2ab7f269bc077f510f86d9d906.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Class  Probability score
-            obelisk              0.104
-               pole              0.077
-bell cote, bell cot              0.057
-       sliding door              0.045
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/59807a275eb5b7155d71f956c26358de876861e8fafbe216207a562ab2c2af9c.png" src="../../_images/59807a275eb5b7155d71f956c26358de876861e8fafbe216207a562ab2c2af9c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Class  Probability score
-    castle              0.056
-     altar              0.056
-  fountain              0.051
-park bench              0.049
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/cf34b8628810d86b1026f296dcd811d43980ceb53566fa6793745896c3d0e64c.png" src="../../_images/cf34b8628810d86b1026f296dcd811d43980ceb53566fa6793745896c3d0e64c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                    Class  Probability score
-                                      lakeside, lakeshore              0.568
-worm fence, snake fence, snake-rail fence, Virginia fence              0.180
-                                                boathouse              0.101
-                           mobile home, manufactured home              0.017
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/eb4ad329d20f7af7fb40389c5fe7fac778d8f6377cb2df9c0c9706610d96d8ff.png" src="../../_images/eb4ad329d20f7af7fb40389c5fe7fac778d8f6377cb2df9c0c9706610d96d8ff.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                      Class  Probability score
-                 totem pole              0.987
-                       pole              0.011
-                    sundial              0.000
-pedestal, plinth, footstall              0.000
---------------------------------------------------------------
-</pre></div>
-</div>
-<img alt="../../_images/858c1c074e8a628eccd9cde9c70796e6971885152d32054640b0ca1477377d95.png" src="../../_images/858c1c074e8a628eccd9cde9c70796e6971885152d32054640b0ca1477377d95.png" />
+<img alt="../../_images/dc13e2916249343cdb09781570ca74c1bb246b20cba5b0a819971a24ba55054f.png" src="../../_images/dc13e2916249343cdb09781570ca74c1bb246b20cba5b0a819971a24ba55054f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                   Class  Probability score
                                        sandbar, sand bar              0.421
                     seashore, coast, seacoast, sea-coast              0.157
@@ -1566,7 +1776,52 @@ breakwater, groin, groyne, mole, bulwark, seawall, jetty              0.071
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/6973cd1ff730871c2ba9dc7b2e804c1c886584a386a93249938715c1d1aedebd.png" src="../../_images/6973cd1ff730871c2ba9dc7b2e804c1c886584a386a93249938715c1d1aedebd.png" />
+<img alt="../../_images/bc98efdb54205e885debddaf91a34863e9d113dd699a28a31be45090765792ae.png" src="../../_images/bc98efdb54205e885debddaf91a34863e9d113dd699a28a31be45090765792ae.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Class  Probability score
+            obelisk              0.104
+               pole              0.077
+bell cote, bell cot              0.057
+       sliding door              0.045
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/36234058359f07a10d001ba383be428545fe981c7480b0d69521add9266c7185.png" src="../../_images/36234058359f07a10d001ba383be428545fe981c7480b0d69521add9266c7185.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                      Class  Probability score
+                                        fig              0.637
+                                pomegranate              0.193
+grocery store, grocery, food market, market              0.041
+                                      crate              0.023
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/cc5a27339bfb6cd2b883033e60cbbce5e1cd6fc3117c98ff690c30a90c67b280.png" src="../../_images/cc5a27339bfb6cd2b883033e60cbbce5e1cd6fc3117c98ff690c30a90c67b280.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Class  Probability score
+    castle              0.056
+     altar              0.056
+  fountain              0.051
+park bench              0.049
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/f3c4517ce929f4f978cc2af9b6b5701cd6d9d6235e861b614d2be3ffd8c1cf18.png" src="../../_images/f3c4517ce929f4f978cc2af9b6b5701cd6d9d6235e861b614d2be3ffd8c1cf18.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                      Class  Probability score
+                 totem pole              0.987
+                       pole              0.011
+                    sundial              0.000
+pedestal, plinth, footstall              0.000
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/fd4d7bf12bddf442d4c5aa2d51d02eb10728fe0e0d014796a6a2bf6da806e4bf.png" src="../../_images/fd4d7bf12bddf442d4c5aa2d51d02eb10728fe0e0d014796a6a2bf6da806e4bf.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                    Class  Probability score
+                                      lakeside, lakeshore              0.568
+worm fence, snake fence, snake-rail fence, Virginia fence              0.180
+                                                boathouse              0.101
+                           mobile home, manufactured home              0.017
+--------------------------------------------------------------
+</pre></div>
+</div>
+<img alt="../../_images/97744caebe4bc547ac6f228a0a625ebff7e50961880157d2134ba3d86216e376.png" src="../../_images/97744caebe4bc547ac6f228a0a625ebff7e50961880157d2134ba3d86216e376.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                               Class  Probability score
                                          toilet seat              0.171
                                           safety pin              0.060
@@ -1575,7 +1830,7 @@ bannister, banister, balustrade, balusters, handrail              0.039
 --------------------------------------------------------------
 </pre></div>
 </div>
-<img alt="../../_images/d76bd58ceb1f6ce3a40face50bbf0f8cd69ee147ed0e4b16f685343b0cb7170c.png" src="../../_images/d76bd58ceb1f6ce3a40face50bbf0f8cd69ee147ed0e4b16f685343b0cb7170c.png" />
+<img alt="../../_images/f0bfe43b80471e465271d16695ef05ec953bb4a0931380cf623ed5eedf01ec6e.png" src="../../_images/f0bfe43b80471e465271d16695ef05ec953bb4a0931380cf623ed5eedf01ec6e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Class  Probability score
      patio, terrace              0.213
            fountain              0.164
@@ -1646,7 +1901,7 @@ lakeside, lakeshore              0.097
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e94a11da0f57d7162461268399756e992d7a0bef0d620fecc0ff6edce3194be4.png" src="../../_images/e94a11da0f57d7162461268399756e992d7a0bef0d620fecc0ff6edce3194be4.png" />
+<img alt="../../_images/686cf8da4bc15779d9ceca9703a69d9d44d13225985bfcb668cfe708e11bf463.png" src="../../_images/686cf8da4bc15779d9ceca9703a69d9d44d13225985bfcb668cfe708e11bf463.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1664,7 +1919,7 @@ lakeside, lakeshore              0.097
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classes: [&#39;beet_salad&#39;, &#39;chocolate_cake&#39;, &#39;edamame&#39;, &#39;french_fries&#39;, &#39;pizza&#39;, &#39;spring_rolls&#39;, &#39;sushi&#39;]
 Class count: 40, 38, 40, 40, 43, 41, 41
 Samples: 283
-First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\lectures\\data/food-transfer-learning\\train\\beet_salad\\104294.jpg&#39;, 0)
+First sample: (&#39;/Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/food-transfer-learning/train/beet_salad/104294.jpg&#39;, 0)
 </pre></div>
 </div>
 </div>
@@ -1755,22 +2010,22 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
       <td>0.001867</td>
       <td>0.005263</td>
       <td>0.000643</td>
-      <td>0.142654</td>
-      <td>0.544122</td>
+      <td>0.142653</td>
+      <td>0.544123</td>
       <td>0.000459</td>
       <td>0.004617</td>
-      <td>0.515678</td>
+      <td>0.515677</td>
       <td>0.000261</td>
       <td>...</td>
-      <td>0.409524</td>
+      <td>0.409525</td>
       <td>1.786506</td>
-      <td>0.286546</td>
-      <td>0.811878</td>
-      <td>0.481693</td>
-      <td>0.179064</td>
-      <td>1.025992</td>
-      <td>2.119847</td>
-      <td>2.038495</td>
+      <td>0.286545</td>
+      <td>0.811877</td>
+      <td>0.481698</td>
+      <td>0.179061</td>
+      <td>1.025997</td>
+      <td>2.119834</td>
+      <td>2.038498</td>
       <td>0.832221</td>
     </tr>
     <tr>
@@ -1780,22 +2035,22 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
       <td>0.003320</td>
       <td>0.000497</td>
       <td>0.100592</td>
-      <td>0.031338</td>
+      <td>0.031339</td>
       <td>0.000039</td>
       <td>0.003024</td>
-      <td>0.529212</td>
+      <td>0.529213</td>
       <td>0.000396</td>
       <td>...</td>
       <td>0.014607</td>
       <td>0.006724</td>
-      <td>0.440418</td>
-      <td>0.834183</td>
-      <td>0.820324</td>
-      <td>1.111770</td>
-      <td>0.390105</td>
-      <td>1.340162</td>
-      <td>0.575756</td>
-      <td>0.728587</td>
+      <td>0.440415</td>
+      <td>0.834180</td>
+      <td>0.820326</td>
+      <td>1.111771</td>
+      <td>0.390103</td>
+      <td>1.340169</td>
+      <td>0.575759</td>
+      <td>0.728584</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1804,21 +2059,21 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
       <td>0.001326</td>
       <td>0.000486</td>
       <td>0.140210</td>
-      <td>0.257724</td>
+      <td>0.257725</td>
       <td>0.000773</td>
       <td>0.004360</td>
       <td>0.162747</td>
       <td>0.000161</td>
       <td>...</td>
-      <td>2.170505</td>
-      <td>0.576441</td>
-      <td>0.673952</td>
-      <td>1.197436</td>
-      <td>1.226750</td>
-      <td>0.869717</td>
-      <td>0.113458</td>
-      <td>1.695457</td>
-      <td>0.203397</td>
+      <td>2.170512</td>
+      <td>0.576434</td>
+      <td>0.673951</td>
+      <td>1.197432</td>
+      <td>1.226748</td>
+      <td>0.869713</td>
+      <td>0.113452</td>
+      <td>1.695449</td>
+      <td>0.203399</td>
       <td>0.000000</td>
     </tr>
     <tr>
@@ -1834,16 +2089,16 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
       <td>0.091491</td>
       <td>0.000342</td>
       <td>...</td>
-      <td>1.202743</td>
-      <td>2.475197</td>
-      <td>1.089163</td>
+      <td>1.202736</td>
+      <td>2.475188</td>
+      <td>1.089156</td>
       <td>0.033112</td>
-      <td>0.153165</td>
-      <td>1.799486</td>
-      <td>0.530468</td>
-      <td>1.092399</td>
-      <td>0.120932</td>
-      <td>4.028654</td>
+      <td>0.153164</td>
+      <td>1.799476</td>
+      <td>0.530470</td>
+      <td>1.092396</td>
+      <td>0.120929</td>
+      <td>4.028651</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1855,19 +2110,19 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
       <td>0.290215</td>
       <td>0.000142</td>
       <td>0.004044</td>
-      <td>0.559905</td>
+      <td>0.559906</td>
       <td>0.000636</td>
       <td>...</td>
-      <td>0.660834</td>
+      <td>0.660837</td>
       <td>0.000000</td>
-      <td>2.927814</td>
-      <td>0.949736</td>
-      <td>0.440601</td>
-      <td>0.031605</td>
+      <td>2.927826</td>
+      <td>0.949734</td>
+      <td>0.440602</td>
+      <td>0.031607</td>
       <td>0.000000</td>
-      <td>0.993692</td>
-      <td>0.131639</td>
-      <td>0.731349</td>
+      <td>0.993694</td>
+      <td>0.131640</td>
+      <td>0.731354</td>
     </tr>
   </tbody>
 </table>
@@ -1880,9 +2135,9 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_lr</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">))</span>
+<span class="n">pipe_lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pipe_lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1894,12 +2149,12 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Z_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8208955223880597
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8507462686567164
 </pre></div>
 </div>
 </div>
@@ -1961,19 +2216,11 @@ First sample: (&#39;C:\\Users\\Giulia\\OneDrive - UBC\\Github\\cpsc330-2025W1\\l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8n.pt to &#39;yolov8n.pt&#39;...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 /Users/kvarada/CS/2025-26/330/cpsc330-2025W1/lectures/data/yolo_test/3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 66.1ms
+Speed: 2.6ms preprocess, 66.1ms inference, 7.3ms postprocess per image at shape (1, 3, 512, 640)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████| 6.25M/6.25M [00:03&lt;00:00, 1.74MB/s]
-C:\Users\Giulia\anaconda3\envs\cpsc330\Lib\site-packages\ultralytics\utils\torch_utils.py:227: UserWarning: Cannot set number of intraop threads after parallel work has started or after set_num_threads call when using native parallel backend (Triggered internally at C:\bld\libtorch_1741738354177\work\aten\src\ATen\ParallelNative.cpp:228.)
-  torch.set_num_threads(NUM_THREADS)  # reset OMP_NUM_THREADS for cpu training
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image 1/1 C:\Users\Giulia\OneDrive - UBC\Github\cpsc330-2025W1\lectures\data\yolo_test\3356700488_183566145b.jpg: 512x640 4 persons, 2 cars, 1 stop sign, 476.6ms
-Speed: 6.5ms preprocess, 476.6ms inference, 3.9ms postprocess per image at shape (1, 3, 512, 640)
-</pre></div>
-</div>
-<img alt="../../_images/d9e89bba43989018eaa3ce5e0ae6562356d7c9dd8581d68fadb719baf482c12e.png" src="../../_images/d9e89bba43989018eaa3ce5e0ae6562356d7c9dd8581d68fadb719baf482c12e.png" />
+<img alt="../../_images/f03664744e1d361dcbfba9333b945051fe872811e449de4371220ca6645af1ae.png" src="../../_images/f03664744e1d361dcbfba9333b945051fe872811e449de4371220ca6645af1ae.png" />
 </div>
 </div>
 <p><br><br><br><br></p>
@@ -2037,16 +2284,16 @@ Speed: 6.5ms preprocess, 476.6ms inference, 3.9ms postprocess per image at shape
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "cpsc330"
+            mode: "conda-env-cpsc330-py"
         },
         kernelOptions: {
-            name: "cpsc330",
+            name: "conda-env-cpsc330-py",
             path: "./lectures/notes"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'cpsc330'</script>
+    <script>kernelName = 'conda-env-cpsc330-py'</script>
 
                 </article>
               
