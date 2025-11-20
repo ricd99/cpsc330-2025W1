@@ -64,7 +64,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Section 102" href="../102-Varada-lectures/README.html" />
+    <link rel="next" title="Appendix A: Lecture 09" href="AppendixA.html" />
     <link rel="prev" title="Lecture 18: Multi-class classification and introduction to computer vision" href="18_intro_to_computer-vision.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -210,6 +210,10 @@
 <li class="toctree-l1"><a class="reference internal" href="17_natural-language-processing.html">Lecture 17: Introduction to natural language processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="18_intro_to_computer-vision.html">Lecture 18: Multi-class classification and introduction to computer vision</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 19: Time series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppendixA.html">Appendix A: Lecture 09</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppendixB.html">Appendix A: Lecture 13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppendixC.html">Appendix C: Basic text preprocessing [video]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppendixD.html">Appendix D: Multi-class, meta-strategies</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Section slides</span></p>
 <ul class="nav bd-sidenav">
@@ -9291,6 +9295,12 @@ Test score: 0.84
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 0.85
+Test score: 0.84
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9298,6 +9308,40 @@ Test score: 0.84
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rainfall</th>
+      <td>0.081292</td>
+    </tr>
+    <tr>
+      <th>Rainfall_lag1</th>
+      <td>0.008040</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p>Rainfall from today has a positive coefficient.</p></li>
@@ -9336,6 +9380,149 @@ Test score: 0.84
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Rainfall</th>
+      <th>Rainfall_lag1</th>
+      <th>Rainfall_lag2</th>
+      <th>Rainfall_lag3</th>
+      <th>Humidity3pm</th>
+      <th>Humidity3pm_lag1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2008-12-01</td>
+      <td>Albury</td>
+      <td>0.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>22.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2008-12-02</td>
+      <td>Albury</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>22.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2008-12-03</td>
+      <td>Albury</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>NaN</td>
+      <td>30.0</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2008-12-04</td>
+      <td>Albury</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>16.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2008-12-05</td>
+      <td>Albury</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33.0</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2008-12-06</td>
+      <td>Albury</td>
+      <td>0.2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>23.0</td>
+      <td>33.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2008-12-07</td>
+      <td>Albury</td>
+      <td>0.0</td>
+      <td>0.2</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>19.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2008-12-08</td>
+      <td>Albury</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.2</td>
+      <td>1.0</td>
+      <td>19.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2008-12-09</td>
+      <td>Albury</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.2</td>
+      <td>9.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2008-12-10</td>
+      <td>Albury</td>
+      <td>1.4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>27.0</td>
+      <td>9.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Note the pattern of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
 <div class="cell docutils container">
@@ -9369,6 +9556,12 @@ Test score: 0.84
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train score: 0.85
+Test score: 0.85
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9385,6 +9578,56 @@ Test score: 0.84
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coef</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Rainfall</th>
+      <td>0.107917</td>
+    </tr>
+    <tr>
+      <th>Rainfall_lag1</th>
+      <td>0.023105</td>
+    </tr>
+    <tr>
+      <th>Rainfall_lag2</th>
+      <td>0.018434</td>
+    </tr>
+    <tr>
+      <th>Rainfall_lag3</th>
+      <td>0.017829</td>
+    </tr>
+    <tr>
+      <th>Humidity3pm</th>
+      <td>1.278441</td>
+    </tr>
+    <tr>
+      <th>Humidity3pm_lag1</th>
+      <td>-0.266120</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Note the pattern in the magnitude of the coefficients.</p>
 <p><br><br><br><br></p>
@@ -9532,11 +9775,11 @@ Test score: 0.84
       </div>
     </a>
     <a class="right-next"
-       href="../102-Varada-lectures/README.html"
+       href="AppendixA.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Section 102</p>
+        <p class="prev-next-title">Appendix A: Lecture 09</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
