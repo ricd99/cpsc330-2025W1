@@ -621,8 +621,8 @@ Freq: 3h, Name: one, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">xticks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">citibike</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="n">citibike</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticks</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2"> %m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">xtick_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">citibike</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="n">citibike</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xtick_labels</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2"> %m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">citibike</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Rentals&quot;</span><span class="p">);</span>
@@ -631,7 +631,7 @@ Freq: 3h, Name: one, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/385c4ecf5e93b35aa730b21613545a4320a0c0bde164bf54a088f880b82b424f.png" src="../../_images/385c4ecf5e93b35aa730b21613545a4320a0c0bde164bf54a088f880b82b424f.png" />
+<img alt="../../_images/24b89b1ad280ac918e2c858e1baf827474fb8fa7adaee9ad8efc4cb2669fad7b.png" src="../../_images/24b89b1ad280ac918e2c858e1baf827474fb8fa7adaee9ad8efc4cb2669fad7b.png" />
 </div>
 </div>
 <ul class="simple">
@@ -696,7 +696,7 @@ Name: one, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3a884099d3288a9de1c1fa62517c4240c40cf1f86b3082ef4861e61cffa34a01.png" src="../../_images/3a884099d3288a9de1c1fa62517c4240c40cf1f86b3082ef4861e61cffa34a01.png" />
+<img alt="../../_images/aed026293012f1fcfaba6a8bbd69617318e14b18563095c25a54b10eeab05d04.png" src="../../_images/aed026293012f1fcfaba6a8bbd69617318e14b18563095c25a54b10eeab05d04.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -769,7 +769,7 @@ Name: one, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b02e2664e92d7b3da58a1e7c55603d667cf757116631a3c8fc3842d5b7cd4d9.png" src="../../_images/9b02e2664e92d7b3da58a1e7c55603d667cf757116631a3c8fc3842d5b7cd4d9.png" />
+<img alt="../../_images/f167b4bf16b7fd111503e02c79ed4ab667253cd109ae99f9dcda8655e064460c.png" src="../../_images/f167b4bf16b7fd111503e02c79ed4ab667253cd109ae99f9dcda8655e064460c.png" />
 </div>
 </div>
 <p>This split is looking reasonable now. We’ll train our model on the blue part and evaluate it on the red part.</p>
@@ -890,18 +890,26 @@ Freq: 3h, Name: one, Length: 184, dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code credit: Adapted from </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code credit: Adapted from</span>
 <span class="c1"># https://learning.oreilly.com/library/view/introduction-to-machine/9781449369880/</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">eval_on_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">n_train</span><span class="o">=</span><span class="mi">184</span><span class="p">,</span> <span class="n">sales_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-                     <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Rentals&#39;</span><span class="p">,</span> 
-                     <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;Default&quot;</span><span class="p">,</span> 
-                     <span class="n">impute</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">eval_on_features</span><span class="p">(</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">,</span>
+    <span class="n">regressor</span><span class="p">,</span>
+    <span class="n">xtick_labels</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_train</span><span class="o">=</span><span class="mi">184</span><span class="p">,</span>
+    <span class="n">sales_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Rentals&quot;</span><span class="p">,</span>
+    <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;Default&quot;</span><span class="p">,</span>
+    <span class="n">impute</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate a regression model on a given set of features and target.</span>
 
-<span class="sd">    This function splits the data into training and test sets, fits the </span>
-<span class="sd">    regression model to the training data, and then evaluates and plots </span>
+<span class="sd">    This function splits the data into training and test sets, fits the</span>
+<span class="sd">    regression model to the training data, and then evaluates and plots</span>
 <span class="sd">    the performance of the model on both the training and test datasets.</span>
 
 <span class="sd">    Parameters:</span>
@@ -938,7 +946,7 @@ Freq: 3h, Name: one, Length: 184, dtype: int64
         <span class="n">simp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">()</span>
         <span class="n">X_train</span> <span class="o">=</span> <span class="n">simp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
         <span class="n">X_test</span> <span class="o">=</span> <span class="n">simp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-    
+
     <span class="c1"># Fit the model on the training data</span>
     <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -953,15 +961,22 @@ Freq: 3h, Name: one, Length: 184, dtype: int64
     <span class="c1"># Plotting</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 
-    <span class="c1"># If not sales data, adjust x-ticks for dates (assumes datetime format)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">sales_data</span><span class="p">:</span> 
-        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mi">8</span><span class="p">),</span> <span class="n">xticks</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2"> %m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+    <span class="c1"># # If not sales data, adjust x-ticks for dates (assumes datetime format)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sales_data</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span>
+            <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">),</span> <span class="mi">8</span><span class="p">),</span>
+            <span class="n">xtick_labels</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2"> %m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">),</span>
+            <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
 
     <span class="c1"># Plot training and test data, along with predictions</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">),</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span> <span class="o">+</span> <span class="n">n_train</span><span class="p">),</span> <span class="n">y_test</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">),</span> <span class="n">y_pred_train</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;prediction train&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span> <span class="o">+</span> <span class="n">n_train</span><span class="p">),</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;prediction test&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span> <span class="o">+</span> <span class="n">n_train</span><span class="p">),</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;prediction test&quot;</span>
+    <span class="p">)</span>
 
     <span class="c1"># Set plot title, labels, and legend</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Features= &quot;</span> <span class="o">+</span> <span class="n">feat_names</span>
@@ -979,7 +994,7 @@ Freq: 3h, Name: one, Length: 184, dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;POSIX time&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;POSIX time&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -988,7 +1003,7 @@ Freq: 3h, Name: one, Length: 184, dtype: int64
 Test-set R^2: -0.04
 </pre></div>
 </div>
-<img alt="../../_images/b0b61fbfea45426bab0037886c65d724e733441c972bcded3497edd3fa1c6ca3.png" src="../../_images/b0b61fbfea45426bab0037886c65d724e733441c972bcded3497edd3fa1c6ca3.png" />
+<img alt="../../_images/4b38105a6a2b71fec2f362de70192a86b3d840d0d392c65ad5f5fa842536f8c5.png" src="../../_images/4b38105a6a2b71fec2f362de70192a86b3d840d0d392c65ad5f5fa842536f8c5.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1127,7 +1142,7 @@ Test-set R^2: -0.04
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regressor</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;Hour of the day&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;Hour of the day&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1136,7 +1151,7 @@ Test-set R^2: -0.04
 Test-set R^2: 0.60
 </pre></div>
 </div>
-<img alt="../../_images/6c8caa2361b26a4ed7e02d447ca290b3ebfa33fe54cbebd48df929b8c2ee6ff1.png" src="../../_images/6c8caa2361b26a4ed7e02d447ca290b3ebfa33fe54cbebd48df929b8c2ee6ff1.png" />
+<img alt="../../_images/ce15cc9d614908f1cb280cca25b1ad74716c74b5e3e0a4f48fa24b69182623fc.png" src="../../_images/ce15cc9d614908f1cb280cca25b1ad74716c74b5e3e0a4f48fa24b69182623fc.png" />
 </div>
 </div>
 <p>The scores are better when we add time of the day feature.</p>
@@ -1150,7 +1165,7 @@ Test-set R^2: 0.60
         <span class="n">citibike</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
     <span class="p">]</span>
 <span class="p">)</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day + day of week&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">regressor</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day + day of week&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1159,7 +1174,7 @@ Test-set R^2: 0.60
 Test-set R^2: 0.84
 </pre></div>
 </div>
-<img alt="../../_images/d7a765e6f9676c7ad7bd03b3172eebb60873f4f394c8db28d38e750e6e041ab1.png" src="../../_images/d7a765e6f9676c7ad7bd03b3172eebb60873f4f394c8db28d38e750e6e041ab1.png" />
+<img alt="../../_images/047ed58ed4300fcb87d8120871c078f3942f8cfe9646b631f733d8b13d09ad3a.png" src="../../_images/047ed58ed4300fcb87d8120871c078f3942f8cfe9646b631f733d8b13d09ad3a.png" />
 </div>
 </div>
 <p>The results are much better. The time of the day and day of the week features are clearly helping.</p>
@@ -1172,7 +1187,7 @@ Test-set R^2: 0.84
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
 
 <span class="n">lr</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">();</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day + day of week&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day + day of week&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1181,7 +1196,7 @@ Test-set R^2: 0.84
 Test-set R^2: 0.13
 </pre></div>
 </div>
-<img alt="../../_images/107cc0e6fdf21a53209a7b6390a0716422e732bca66f02f975f3a1023362e9c9.png" src="../../_images/107cc0e6fdf21a53209a7b6390a0716422e732bca66f02f975f3a1023362e9c9.png" />
+<img alt="../../_images/994391c618f47071a6b5de2cadc58e19b680842c31dbb0d3ec6518ec43bf40d6.png" src="../../_images/994391c618f47071a6b5de2cadc58e19b680842c31dbb0d3ec6518ec43bf40d6.png" />
 </div>
 </div>
 </section>
@@ -1478,7 +1493,7 @@ Test-set R^2: 0.13
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week_onehot</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">(),</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;hour of day OHE + day of week OHE&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week_onehot</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">(),</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;hour of day OHE + day of week OHE&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1487,7 +1502,7 @@ Test-set R^2: 0.13
 Test-set R^2: 0.62
 </pre></div>
 </div>
-<img alt="../../_images/84c9894c8ab93c2d91997115314a220beacedf280c4877503a6b7cf973d26f08.png" src="../../_images/84c9894c8ab93c2d91997115314a220beacedf280c4877503a6b7cf973d26f08.png" />
+<img alt="../../_images/e63b9f1dc4c3613fd395f14fc01efd1a7d461cf8651f65378a0eba32289a4021.png" src="../../_images/e63b9f1dc4c3613fd395f14fc01efd1a7d461cf8651f65378a0eba32289a4021.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1881,7 +1896,7 @@ Test-set R^2: 0.62
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week_onehot_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day OHE + day of week OHE + interaction feats&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week_onehot_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day OHE + day of week OHE + interaction feats&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1890,7 +1905,7 @@ Test-set R^2: 0.62
 Test-set R^2: 0.85
 </pre></div>
 </div>
-<img alt="../../_images/f679f37ea106b09e81c00302bc91ca4e23c22044b8dc1ff4bf9a6f338241234a.png" src="../../_images/f679f37ea106b09e81c00302bc91ca4e23c22044b8dc1ff4bf9a6f338241234a.png" />
+<img alt="../../_images/28d346df8b63352c69d57c364d3a4c03bfbf4a977628d6e7a68519ec8fd6e7ce.png" src="../../_images/28d346df8b63352c69d57c364d3a4c03bfbf4a977628d6e7a68519ec8fd6e7ce.png" />
 </div>
 </div>
 <p>The scores are much better now. Since we are using a linear model, we can examine the coefficients learned by <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>.</p>
@@ -2304,7 +2319,7 @@ Freq: 3h, Name: one, Length: 248, dtype: int64
        ...,
        [ 8., 16., 36.,  2.,  3.],
        [17.,  8., 16., 36.,  2.],
-       [22., 17.,  8., 16., 36.]], shape=(248, 5))
+       [22., 17.,  8., 16., 36.]])
 </pre></div>
 </div>
 </div>
@@ -2312,7 +2327,7 @@ Freq: 3h, Name: one, Length: 248, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lr</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_lag_features</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;Lag features&quot;</span><span class="p">,</span> <span class="n">impute</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_lag_features</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;Lag features&quot;</span><span class="p">,</span> <span class="n">impute</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2321,7 +2336,7 @@ Freq: 3h, Name: one, Length: 248, dtype: int64
 Test-set R^2: 0.37
 </pre></div>
 </div>
-<img alt="../../_images/7045910a00d6f3cf5f544cec22f5ef13846e483d9e1edb39fa402b901df8a53c.png" src="../../_images/7045910a00d6f3cf5f544cec22f5ef13846e483d9e1edb39fa402b901df8a53c.png" />
+<img alt="../../_images/7599327bd1bc59907f7456da0f2aaba96cb3fc8543aa8dd7242f6ebb28791477.png" src="../../_images/7599327bd1bc59907f7456da0f2aaba96cb3fc8543aa8dd7242f6ebb28791477.png" />
 </div>
 </div>
 <p>The results are not great. But let’s examine the coefficients.</p>
@@ -2395,16 +2410,16 @@ Test-set R^2: 0.37
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">()</span>
 <span class="n">X_lag_features_imp</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_lag_features</span><span class="p">)</span>
 <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_lag_features_imp</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rf</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;Lag features&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_lag_features_imp</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rf</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span><span class="o">=</span><span class="s2">&quot;Lag features&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-set R^2: 0.94
-Test-set R^2: 0.68
+Test-set R^2: 0.69
 </pre></div>
 </div>
-<img alt="../../_images/32d6756eccdae4ed3fbfef8997c85b62dc07c296aaaa3fa6d6817fa3bdf9fe0e.png" src="../../_images/32d6756eccdae4ed3fbfef8997c85b62dc07c296aaaa3fa6d6817fa3bdf9fe0e.png" />
+<img alt="../../_images/5333dc9339a01b8626f3475010af13e5bf6d3b84baebfd0952d0f3c1d98fcf91.png" src="../../_images/5333dc9339a01b8626f3475010af13e5bf6d3b84baebfd0952d0f3c1d98fcf91.png" />
 </div>
 </div>
 <p>The results are better than <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> with lag features but they are not as good as the results with our previously engineered features. How about combining lag-based features and the previously extracted features?</p>
@@ -2418,7 +2433,7 @@ Test-set R^2: 0.68
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
-<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week_onehot_poly_lag</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rf</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day OHE + day of week OHE + interaction feats + Lag feats&quot;</span><span class="p">)</span>
+<span class="n">eval_on_features</span><span class="p">(</span><span class="n">X_hour_week_onehot_poly_lag</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rf</span><span class="p">,</span> <span class="n">xtick_labels</span><span class="p">,</span> <span class="n">feat_names</span> <span class="o">=</span> <span class="s2">&quot;hour of day OHE + day of week OHE + interaction feats + Lag feats&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2427,7 +2442,7 @@ Test-set R^2: 0.68
 Test-set R^2: 0.79
 </pre></div>
 </div>
-<img alt="../../_images/712878b0cbb6725f4841ddf609bd0677de50243a0edd3f8745b3fbfbe9f0128d.png" src="../../_images/712878b0cbb6725f4841ddf609bd0677de50243a0edd3f8745b3fbfbe9f0128d.png" />
+<img alt="../../_images/de2c948b4467071426dc0b44feedbdb9f205e0811292aa4d9c2f73c83b4de6df.png" src="../../_images/de2c948b4467071426dc0b44feedbdb9f205e0811292aa4d9c2f73c83b4de6df.png" />
 </div>
 </div>
 <p>Some improvement but we are getting better results without the lag features in this case.</p>
@@ -2445,7 +2460,7 @@ Test-set R^2: 0.79
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3449e2a8d333d06add4e1f10eb5698604881982d1c1be5190ffb74eed0a6dd2c.png" src="../../_images/3449e2a8d333d06add4e1f10eb5698604881982d1c1be5190ffb74eed0a6dd2c.png" />
+<img alt="../../_images/7f97c58beecc2e12df4f98a47a5e0cdf079295519f06ba0f609e6d01f3d72122.png" src="../../_images/7f97c58beecc2e12df4f98a47a5e0cdf079295519f06ba0f609e6d01f3d72122.png" />
 </div>
 </div>
 <p>There is <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html"><code class="docutils literal notranslate"><span class="pre">TimeSeriesSplit</span></code></a> for time series data.</p>
@@ -2520,36 +2535,36 @@ Test-set R^2: 0.79
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000639</td>
-      <td>0.000274</td>
+      <td>0.001925</td>
+      <td>0.000934</td>
       <td>0.642676</td>
       <td>0.873182</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.000555</td>
-      <td>0.000165</td>
+      <td>0.001026</td>
+      <td>0.000749</td>
       <td>0.828405</td>
       <td>0.874305</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.000483</td>
-      <td>0.000194</td>
+      <td>0.000998</td>
+      <td>0.000499</td>
       <td>0.773851</td>
       <td>0.901262</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.000833</td>
-      <td>0.000160</td>
+      <td>0.001228</td>
+      <td>0.000532</td>
       <td>0.696712</td>
       <td>0.889429</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.000489</td>
-      <td>0.000168</td>
+      <td>0.001336</td>
+      <td>0.000541</td>
       <td>0.892733</td>
       <td>0.863889</td>
     </tr>
@@ -3308,7 +3323,7 @@ Test-set R^2: 0.68
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8b8f86189be642c400798547b511a2f2322509f6ab45c164cf3834067a8e1f9d.png" src="../../_images/8b8f86189be642c400798547b511a2f2322509f6ab45c164cf3834067a8e1f9d.png" />
+<img alt="../../_images/74781f7f44717e62535d296b4dd86ad7457c05e3b031f117c0bf54472be256fc.png" src="../../_images/74781f7f44717e62535d296b4dd86ad7457c05e3b031f117c0bf54472be256fc.png" />
 </div>
 </div>
 <p>We can create a dataset using purely lag features.</p>
@@ -3947,7 +3962,7 @@ Test-set R^2: 0.68
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8b8f86189be642c400798547b511a2f2322509f6ab45c164cf3834067a8e1f9d.png" src="../../_images/8b8f86189be642c400798547b511a2f2322509f6ab45c164cf3834067a8e1f9d.png" />
+<img alt="../../_images/74781f7f44717e62535d296b4dd86ad7457c05e3b031f117c0bf54472be256fc.png" src="../../_images/74781f7f44717e62535d296b4dd86ad7457c05e3b031f117c0bf54472be256fc.png" />
 </div>
 </div>
 <ul class="simple">
@@ -5937,7 +5952,7 @@ Date
 Name: count, dtype: int64
 </pre></div>
 </div>
-<img alt="../../_images/efc160f275c595ff729f5c3a10ff32d5e4141ab515466e19dcc6f98a14ac865c.png" src="../../_images/efc160f275c595ff729f5c3a10ff32d5e4141ab515466e19dcc6f98a14ac865c.png" />
+<img alt="../../_images/255ee5b7d36bcfd13a539fb27f34f18b5af5cce49b5367bbe3a4ff281ebed2e8.png" src="../../_images/255ee5b7d36bcfd13a539fb27f34f18b5af5cce49b5367bbe3a4ff281ebed2e8.png" />
 </div>
 </div>
 <p>The typical spacing seems to be 1 day for each location but there are several exceptions. We seem to have several missing measurements.</p>
@@ -6034,7 +6049,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/65236a42b139f1e58597684badb24955904a64defd7b6455653ff9af3e39ae6d.png" src="../../_images/65236a42b139f1e58597684badb24955904a64defd7b6455653ff9af3e39ae6d.png" />
+<img alt="../../_images/0cdb9365abbc266e4e021011ad3105b86fb4f072d49f6a6b8164ca01a298f235.png" src="../../_images/0cdb9365abbc266e4e021011ad3105b86fb4f072d49f6a6b8164ca01a298f235.png" />
 </div>
 </div>
 <p>We’re learning relationships from the blue part; predicting only using features in the red part from the day before.</p>
@@ -7231,7 +7246,7 @@ Test score: 0.84
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8478316682480326)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8478316682480326
 </pre></div>
 </div>
 </div>
@@ -8202,8 +8217,7 @@ Test score: 0.84
 </div></div></div>
 </div>
 <ul class="simple">
-<li><p>No improvements in the scores but the coefficients make some sense,</p></li>
-<li><p>A negative coefficient for summer and a positive coefficients for winter.</p></li>
+<li><p>No improvements in the scores but a negative coefficient with bigger magnitude for summer makes sense.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8213,7 +8227,7 @@ Test score: 0.84
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5d90348cc978d48e832c148d70ed2fb858058c3d062ab7cdff56fa3ca1e0f38d.png" src="../../_images/5d90348cc978d48e832c148d70ed2fb858058c3d062ab7cdff56fa3ca1e0f38d.png" />
+<img alt="../../_images/5f6db3f09b8980da0ce4aae51ed35edde71dc42c6e2a201c2d929edc3c3243ee.png" src="../../_images/5f6db3f09b8980da0ce4aae51ed35edde71dc42c6e2a201c2d929edc3c3243ee.png" />
 </div>
 </div>
 </section>
