@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 20: Time series &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
+    <title>Lecture 19: Time series &#8212; CPSC 330 Applied Machine Learning 2025W1</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/101-103-Giulia-lectures/20_time-series';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/101-103-Giulia-lectures/19_time-series';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -307,7 +307,7 @@
       
       
       
-      <li><a href="../../_sources/lectures/101-103-Giulia-lectures/20_time-series.ipynb" target="_blank"
+      <li><a href="../../_sources/lectures/101-103-Giulia-lectures/19_time-series.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 20: Time series</h1>
+    <h1>Lecture 19: Time series</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -452,9 +452,9 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="" src="../../_images/330-banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="lecture-20-time-series">
-<h1>Lecture 20: Time series<a class="headerlink" href="#lecture-20-time-series" title="Link to this heading">#</a></h1>
-<p>UBC 2024-25</p>
+<section class="tex2jax_ignore mathjax_ignore" id="lecture-19-time-series">
+<h1>Lecture 19: Time series<a class="headerlink" href="#lecture-19-time-series" title="Link to this heading">#</a></h1>
+<p>UBC 2025-26</p>
 <p><img alt="" src="../../_images/time-series-dall-e.png" /></p>
 <p>The picture is created using DALL-E!</p>
 <blockquote>
@@ -2359,10 +2359,10 @@ Test-set R^2: 0.37
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-set R^2: 0.94
-Test-set R^2: 0.69
+Test-set R^2: 0.70
 </pre></div>
 </div>
-<img alt="../../_images/42514575cb737848ad1b68602b26e9302787f53270311fa7c9208be20301f952.png" src="../../_images/42514575cb737848ad1b68602b26e9302787f53270311fa7c9208be20301f952.png" />
+<img alt="../../_images/4293dd185f933eb9fbc020efbd38dc69b4a95a96ae9d6e644762a5da9dc9ca23.png" src="../../_images/4293dd185f933eb9fbc020efbd38dc69b4a95a96ae9d6e644762a5da9dc9ca23.png" />
 </div>
 </div>
 <p>The results are better than <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> with lag features but they are not as good as the results with our previously engineered features. How about combining lag-based features and the previously extracted features?</p>
@@ -2381,11 +2381,11 @@ Test-set R^2: 0.69
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-set R^2: 0.95
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-set R^2: 0.96
 Test-set R^2: 0.78
 </pre></div>
 </div>
-<img alt="../../_images/0027bf91755f8586127ff9b7ae6d9f4261800a023e1d6b8f009e4151a0dce645.png" src="../../_images/0027bf91755f8586127ff9b7ae6d9f4261800a023e1d6b8f009e4151a0dce645.png" />
+<img alt="../../_images/a2170039611a2bdd3b01cfc75378b5fa98c45a8a44fd2c96470e624d94e82683.png" src="../../_images/a2170039611a2bdd3b01cfc75378b5fa98c45a8a44fd2c96470e624d94e82683.png" />
 </div>
 </div>
 <p>Some improvement but we are getting better results without the lag features in this case.</p>
@@ -2478,36 +2478,36 @@ Test-set R^2: 0.78
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.002011</td>
-      <td>0.001003</td>
+      <td>0.003995</td>
+      <td>0.001506</td>
       <td>0.642676</td>
       <td>0.873182</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.003717</td>
-      <td>0.001010</td>
+      <td>0.003414</td>
+      <td>0.000995</td>
       <td>0.828405</td>
       <td>0.874305</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.001997</td>
-      <td>0.000000</td>
+      <td>0.003002</td>
+      <td>0.001003</td>
       <td>0.773851</td>
       <td>0.901262</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001506</td>
-      <td>0.001009</td>
+      <td>0.001510</td>
+      <td>0.001519</td>
       <td>0.696712</td>
       <td>0.889429</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.003151</td>
-      <td>0.000000</td>
+      <td>0.005659</td>
+      <td>0.001011</td>
       <td>0.892733</td>
       <td>0.863889</td>
     </tr>
