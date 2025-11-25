@@ -411,7 +411,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-21-1">(iClicker) Exercise 21.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-20-1">(iClicker) Exercise 20.1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">Recap</a></li>
@@ -436,7 +436,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-5-min">Break (5 min)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">❓❓ Questions for you</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-21-2">(iClicker) Exercise 21.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-20-2">(iClicker) Exercise 20.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meier-survival-curve">Kaplan-Meier survival curve</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cox-proportional-hazards-model">Cox proportional hazards model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-plots">Survival plots</a></li>
@@ -535,8 +535,8 @@ document.write(`
 </section>
 <section id="questions-for-you">
 <h2>❓❓ Questions for you<a class="headerlink" href="#questions-for-you" title="Link to this heading">#</a></h2>
-<section id="iclicker-exercise-21-1">
-<h3>(iClicker) Exercise 21.1<a class="headerlink" href="#iclicker-exercise-21-1" title="Link to this heading">#</a></h3>
+<section id="iclicker-exercise-20-1">
+<h3>(iClicker) Exercise 20.1<a class="headerlink" href="#iclicker-exercise-20-1" title="Link to this heading">#</a></h3>
 <p><strong>Select all of the following statements which are TRUE.</strong></p>
 <ul class="simple">
 <li><p>(A) We need to be careful when splitting the data when working with time series data.</p></li>
@@ -1128,6 +1128,7 @@ memory usage: 907.8+ KB
     <span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">),</span> <span class="n">categorical_features</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">&quot;passthrough&quot;</span><span class="p">,</span> <span class="n">passthrough_features</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="n">drop_features</span><span class="p">),</span>
+    <span class="n">verbose_feature_names_out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1144,13 +1145,7 @@ memory usage: 907.8+ KB
 <p>It worked! Let’s get the column names of the transformed data from the column transformer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_columns</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">numeric_features</span>
-    <span class="o">+</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-    <span class="o">+</span> <span class="n">passthrough_features</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_columns</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1195,23 +1190,23 @@ memory usage: 907.8+ KB
       <th>tenure</th>
       <th>MonthlyCharges</th>
       <th>TotalCharges</th>
-      <th>StreamingMovies_No</th>
-      <th>StreamingMovies_No internet service</th>
-      <th>StreamingMovies_Yes</th>
-      <th>OnlineBackup_No</th>
-      <th>OnlineBackup_No internet service</th>
-      <th>OnlineBackup_Yes</th>
       <th>gender_Female</th>
+      <th>gender_Male</th>
+      <th>Dependents_No</th>
+      <th>Dependents_Yes</th>
+      <th>DeviceProtection_No</th>
+      <th>DeviceProtection_No internet service</th>
+      <th>DeviceProtection_Yes</th>
       <th>...</th>
+      <th>MultipleLines_No</th>
       <th>MultipleLines_No phone service</th>
       <th>MultipleLines_Yes</th>
-      <th>PhoneService_No</th>
-      <th>PhoneService_Yes</th>
-      <th>PaperlessBilling_No</th>
-      <th>PaperlessBilling_Yes</th>
       <th>Contract_Month-to-month</th>
       <th>Contract_One year</th>
       <th>Contract_Two year</th>
+      <th>InternetService_DSL</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
       <th>SeniorCitizen</th>
     </tr>
   </thead>
@@ -1221,20 +1216,20 @@ memory usage: 907.8+ KB
       <td>0.707712</td>
       <td>0.185175</td>
       <td>0.513678</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1247,17 +1242,17 @@ memory usage: 907.8+ KB
       <td>-0.979562</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>...</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1270,21 +1265,21 @@ memory usage: 907.8+ KB
       <td>1.133562</td>
       <td>0.226789</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>...</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -1295,20 +1290,20 @@ memory usage: 907.8+ KB
       <td>-0.950696</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
@@ -1325,6 +1320,7 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>...</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1332,7 +1328,6 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -1484,7 +1479,7 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.035 (+/- 0.003)</td>
+      <td>0.036 (+/- 0.002)</td>
       <td>0.009 (+/- 0.001)</td>
       <td>0.804 (+/- 0.014)</td>
       <td>0.808 (+/- 0.002)</td>
@@ -1565,16 +1560,16 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>logistic regression</th>
-      <td>0.035 (+/- 0.003)</td>
+      <td>0.036 (+/- 0.002)</td>
       <td>0.009 (+/- 0.001)</td>
       <td>0.804 (+/- 0.014)</td>
       <td>0.808 (+/- 0.002)</td>
     </tr>
     <tr>
       <th>random forest</th>
-      <td>0.385 (+/- 0.011)</td>
-      <td>0.023 (+/- 0.002)</td>
-      <td>0.790 (+/- 0.014)</td>
+      <td>0.403 (+/- 0.029)</td>
+      <td>0.022 (+/- 0.002)</td>
+      <td>0.787 (+/- 0.012)</td>
       <td>0.998 (+/- 0.000)</td>
     </tr>
   </tbody>
@@ -1588,8 +1583,8 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3523,  389],
-       [ 720,  650]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3524,  388],
+       [ 725,  645]])
 </pre></div>
 </div>
 </div>
@@ -2717,8 +2712,8 @@ Name: tenure, Length: 1370, dtype: int64
 <section id="id4">
 <h2>❓❓ Questions for you<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 </section>
-<section id="iclicker-exercise-21-2">
-<h2>(iClicker) Exercise 21.2<a class="headerlink" href="#iclicker-exercise-21-2" title="Link to this heading">#</a></h2>
+<section id="iclicker-exercise-20-2">
+<h2>(iClicker) Exercise 20.2<a class="headerlink" href="#iclicker-exercise-20-2" title="Link to this heading">#</a></h2>
 <p><strong>Select all of the following statements which are TRUE.</strong></p>
 <ul class="simple">
 <li><p>(A) Right censoring occurs when the endpoint of event has not been observed for all study subjects by the end of the study period.</p></li>
@@ -2866,23 +2861,23 @@ Name: tenure, Length: 1370, dtype: int64
       <th>tenure</th>
       <th>SeniorCitizen</th>
       <th>MonthlyCharges</th>
-      <th>StreamingMovies_No</th>
-      <th>StreamingMovies_No internet service</th>
-      <th>StreamingMovies_Yes</th>
-      <th>OnlineBackup_No</th>
-      <th>OnlineBackup_No internet service</th>
-      <th>OnlineBackup_Yes</th>
+      <th>gender_Female</th>
+      <th>gender_Male</th>
+      <th>Dependents_No</th>
+      <th>Dependents_Yes</th>
+      <th>DeviceProtection_No</th>
+      <th>DeviceProtection_No internet service</th>
       <th>...</th>
+      <th>PaperlessBilling_Yes</th>
       <th>MultipleLines_No</th>
       <th>MultipleLines_No phone service</th>
       <th>MultipleLines_Yes</th>
-      <th>PhoneService_No</th>
-      <th>PhoneService_Yes</th>
-      <th>PaperlessBilling_No</th>
-      <th>PaperlessBilling_Yes</th>
       <th>Contract_Month-to-month</th>
       <th>Contract_One year</th>
       <th>Contract_Two year</th>
+      <th>InternetService_DSL</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
     </tr>
   </thead>
   <tbody>
@@ -2892,20 +2887,20 @@ Name: tenure, Length: 1370, dtype: int64
       <td>50.0</td>
       <td>1.0</td>
       <td>0.185175</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2918,17 +2913,17 @@ Name: tenure, Length: 1370, dtype: int64
       <td>-0.641538</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -2941,21 +2936,21 @@ Name: tenure, Length: 1370, dtype: int64
       <td>0.0</td>
       <td>1.133562</td>
       <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
     </tr>
     <tr>
@@ -2966,20 +2961,20 @@ Name: tenure, Length: 1370, dtype: int64
       <td>0.458524</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
     </tr>
     <tr>
@@ -2996,6 +2991,7 @@ Name: tenure, Length: 1370, dtype: int64
       <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -3003,7 +2999,6 @@ Name: tenure, Length: 1370, dtype: int64
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
@@ -3385,46 +3380,46 @@ Name: tenure, Length: 1370, dtype: int64
       <td>0.094290</td>
     </tr>
     <tr>
-      <th>StreamingMovies_No</th>
-      <td>0.110985</td>
-      <td>1.117378</td>
-      <td>0.068042</td>
-      <td>-0.022375</td>
-      <td>0.244344</td>
-      <td>0.977873</td>
-      <td>1.276784</td>
+      <th>gender_Female</th>
+      <td>0.018217</td>
+      <td>1.018384</td>
+      <td>0.066333</td>
+      <td>-0.111793</td>
+      <td>0.148227</td>
+      <td>0.894230</td>
+      <td>1.159776</td>
       <td>0.0</td>
-      <td>1.631122</td>
-      <td>1.028647e-01</td>
-      <td>3.281180</td>
+      <td>0.274631</td>
+      <td>7.835995e-01</td>
+      <td>0.351812</td>
     </tr>
     <tr>
-      <th>StreamingMovies_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
+      <th>gender_Male</th>
+      <td>-0.018217</td>
+      <td>0.981948</td>
+      <td>0.066333</td>
+      <td>-0.148227</td>
+      <td>0.111793</td>
+      <td>0.862236</td>
+      <td>1.118281</td>
       <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
+      <td>-0.274631</td>
+      <td>7.835995e-01</td>
+      <td>0.351812</td>
     </tr>
     <tr>
-      <th>StreamingMovies_Yes</th>
-      <td>-0.070898</td>
-      <td>0.931556</td>
-      <td>0.068689</td>
-      <td>-0.205527</td>
-      <td>0.063730</td>
-      <td>0.814218</td>
-      <td>1.065805</td>
+      <th>Dependents_No</th>
+      <td>0.063772</td>
+      <td>1.065849</td>
+      <td>0.075042</td>
+      <td>-0.083308</td>
+      <td>0.210852</td>
+      <td>0.920067</td>
+      <td>1.234730</td>
       <td>0.0</td>
-      <td>-1.032161</td>
-      <td>3.019969e-01</td>
-      <td>1.727394</td>
+      <td>0.849812</td>
+      <td>3.954294e-01</td>
+      <td>1.338508</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3439,48 +3434,6 @@ Name: tenure, Length: 1370, dtype: int64
       <td>...</td>
       <td>...</td>
       <td>...</td>
-    </tr>
-    <tr>
-      <th>PaperlessBilling_No</th>
-      <td>-0.075063</td>
-      <td>0.927685</td>
-      <td>0.068817</td>
-      <td>-0.209943</td>
-      <td>0.059816</td>
-      <td>0.810631</td>
-      <td>1.061641</td>
-      <td>0.0</td>
-      <td>-1.090765</td>
-      <td>2.753764e-01</td>
-      <td>1.860523</td>
-    </tr>
-    <tr>
-      <th>PaperlessBilling_Yes</th>
-      <td>0.075063</td>
-      <td>1.077953</td>
-      <td>0.068817</td>
-      <td>-0.059816</td>
-      <td>0.209943</td>
-      <td>0.941938</td>
-      <td>1.233608</td>
-      <td>0.0</td>
-      <td>1.090765</td>
-      <td>2.753764e-01</td>
-      <td>1.860523</td>
-    </tr>
-    <tr>
-      <th>Contract_Month-to-month</th>
-      <td>0.812875</td>
-      <td>2.254380</td>
-      <td>0.069188</td>
-      <td>0.677268</td>
-      <td>0.948482</td>
-      <td>1.968493</td>
-      <td>2.581787</td>
-      <td>0.0</td>
-      <td>11.748725</td>
-      <td>7.169269e-32</td>
-      <td>103.459873</td>
     </tr>
     <tr>
       <th>Contract_One year</th>
@@ -3509,6 +3462,48 @@ Name: tenure, Length: 1370, dtype: int64
       <td>-9.565746</td>
       <td>1.113949e-21</td>
       <td>69.604807</td>
+    </tr>
+    <tr>
+      <th>InternetService_DSL</th>
+      <td>-0.161001</td>
+      <td>0.851291</td>
+      <td>0.072286</td>
+      <td>-0.302679</td>
+      <td>-0.019324</td>
+      <td>0.738836</td>
+      <td>0.980862</td>
+      <td>0.0</td>
+      <td>-2.227289</td>
+      <td>2.592797e-02</td>
+      <td>5.269347</td>
+    </tr>
+    <tr>
+      <th>InternetService_Fiber optic</th>
+      <td>0.186869</td>
+      <td>1.205470</td>
+      <td>0.071515</td>
+      <td>0.046702</td>
+      <td>0.327037</td>
+      <td>1.047810</td>
+      <td>1.386853</td>
+      <td>0.0</td>
+      <td>2.612998</td>
+      <td>8.975172e-03</td>
+      <td>6.799845</td>
+    </tr>
+    <tr>
+      <th>InternetService_No</th>
+      <td>-0.057267</td>
+      <td>0.944342</td>
+      <td>0.100970</td>
+      <td>-0.255165</td>
+      <td>0.140631</td>
+      <td>0.774789</td>
+      <td>1.150999</td>
+      <td>0.0</td>
+      <td>-0.567169</td>
+      <td>5.705995e-01</td>
+      <td>0.809450</td>
     </tr>
   </tbody>
 </table>
@@ -3860,7 +3855,7 @@ Name: Churn, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/46e4308cbcba1a79ba3b3a51f1d9d99326b685e97c393ee90b3c547e2ce71f1a.png" src="../../_images/46e4308cbcba1a79ba3b3a51f1d9d99326b685e97c393ee90b3c547e2ce71f1a.png" />
+<img alt="../../_images/54e291b1ab31836346f10d674335ea06331cc482a1bb286788cffb70a8d0906d.png" src="../../_images/54e291b1ab31836346f10d674335ea06331cc482a1bb286788cffb70a8d0906d.png" />
 </div>
 </div>
 <ul class="simple">
@@ -4980,16 +4975,16 @@ in the call in `.fit`. See documentation in link [E] below.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "cpsc330"
+            mode: "conda-env-cpsc330-py"
         },
         kernelOptions: {
-            name: "cpsc330",
+            name: "conda-env-cpsc330-py",
             path: "./lectures/notes"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'cpsc330'</script>
+    <script>kernelName = 'conda-env-cpsc330-py'</script>
 
                 </article>
               
@@ -5038,7 +5033,7 @@ in the call in `.fit`. See documentation in link [E] below.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-for-you">❓❓ Questions for you</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-21-1">(iClicker) Exercise 21.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-20-1">(iClicker) Exercise 20.1</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap">Recap</a></li>
@@ -5063,7 +5058,7 @@ in the call in `.fit`. See documentation in link [E] below.
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-5-min">Break (5 min)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">❓❓ Questions for you</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-21-2">(iClicker) Exercise 21.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iclicker-exercise-20-2">(iClicker) Exercise 20.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meier-survival-curve">Kaplan-Meier survival curve</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cox-proportional-hazards-model">Cox proportional hazards model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-plots">Survival plots</a></li>
