@@ -415,7 +415,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-plots">Survival plots</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-given-customer-has-been-here-n-months-what-s-the-outlook">(Optional) Given customer has been here <span class="math notranslate nohighlight">\(n\)</span> months, what’s the outlook?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-evaluation">(Optional) Evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-approaches-what-did-we-not-cover">Other approaches / what did we not cover?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-censoring">Types of censoring</a></li>
@@ -1045,19 +1048,6 @@ memory usage: 907.8+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_columns</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">numeric_features</span>
-    <span class="o">+</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-    <span class="o">+</span> <span class="n">passthrough_features</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">preprocessor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_df</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">train_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">new_columns</span>
 <span class="p">)</span>
@@ -1099,17 +1089,17 @@ memory usage: 907.8+ KB
       <th>InternetService_DSL</th>
       <th>InternetService_Fiber optic</th>
       <th>InternetService_No</th>
+      <th>Partner_No</th>
+      <th>Partner_Yes</th>
       <th>OnlineSecurity_No</th>
       <th>OnlineSecurity_No internet service</th>
-      <th>OnlineSecurity_Yes</th>
-      <th>PaperlessBilling_No</th>
       <th>...</th>
-      <th>DeviceProtection_Yes</th>
       <th>MultipleLines_No</th>
       <th>MultipleLines_No phone service</th>
       <th>MultipleLines_Yes</th>
-      <th>Partner_No</th>
-      <th>Partner_Yes</th>
+      <th>StreamingMovies_No</th>
+      <th>StreamingMovies_No internet service</th>
+      <th>StreamingMovies_Yes</th>
       <th>Contract_Month-to-month</th>
       <th>Contract_One year</th>
       <th>Contract_Two year</th>
@@ -1125,16 +1115,16 @@ memory usage: 907.8+ KB
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1151,14 +1141,14 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1175,15 +1165,15 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
-      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1199,14 +1189,14 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>...</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1222,16 +1212,16 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1273,7 +1263,10 @@ memory usage: 907.8+ KB
 </div>
 <ul class="simple">
 <li><p>We’ll start with a model called <code class="docutils literal notranslate"><span class="pre">KaplanMeierFitter</span></code> from <code class="docutils literal notranslate"><span class="pre">lifelines</span></code> package to get a Kaplan Meier curve.</p></li>
-<li><p>For this model we only use two columns: tenure and churn.</p></li>
+<li><p>The <a class="reference external" href="https://web.stanford.edu/~lutian/coursepdf/KMpaper.pdf">original paper by Kaplan and Meier</a> has been cited over 68000 times!</p></li>
+</ul>
+<ul class="simple">
+<li><p>For this model we only use two columns: <code class="docutils literal notranslate"><span class="pre">tenure</span></code> and <code class="docutils literal notranslate"><span class="pre">churn</span></code>.</p></li>
 <li><p>We do not use any other features.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1400,20 +1393,20 @@ memory usage: 907.8+ KB
       <th>InternetService_DSL</th>
       <th>InternetService_Fiber optic</th>
       <th>InternetService_No</th>
-      <th>OnlineSecurity_No</th>
-      <th>OnlineSecurity_No internet service</th>
-      <th>OnlineSecurity_Yes</th>
-      <th>...</th>
-      <th>Contract_One year</th>
-      <th>Contract_Two year</th>
+      <th>Partner_No</th>
+      <th>Partner_Yes</th>
       <th>OnlineBackup_No</th>
-      <th>OnlineBackup_No internet service</th>
-      <th>OnlineBackup_Yes</th>
+      <th>...</th>
+      <th>Contract_Two year</th>
+      <th>TechSupport_No</th>
+      <th>TechSupport_No internet service</th>
+      <th>TechSupport_Yes</th>
       <th>PhoneService_No</th>
       <th>PhoneService_Yes</th>
-      <th>DeviceProtection_No</th>
-      <th>DeviceProtection_No internet service</th>
-      <th>DeviceProtection_Yes</th>
+      <th>PaymentMethod_Bank transfer (automatic)</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
     </tr>
   </thead>
   <tbody>
@@ -1426,18 +1419,18 @@ memory usage: 907.8+ KB
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -1452,17 +1445,17 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
     </tr>
     <tr>
@@ -1476,18 +1469,18 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3932</th>
@@ -1500,10 +1493,9 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1512,6 +1504,7 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>6124</th>
@@ -1523,16 +1516,16 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>1.0</td>
       <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -1649,7 +1642,6 @@ memory usage: 907.8+ KB
 <li><p>We already have some actionable information here.</p></li>
 <li><p>The curve drops down fast at the beginning suggesting that people tend to leave early on.</p></li>
 <li><p>If there would have been a big drop in the curve, it means a bunch of people left at that time (e.g., after a 1-month free trial).</p></li>
-<li><p>By the way, the <a class="reference external" href="https://web.stanford.edu/~lutian/coursepdf/KMpaper.pdf">original paper by Kaplan and Meier</a> has been cited over 68000 times!</p></li>
 </ul>
 <p>We can also create the K-M curve for different subgroups:</p>
 <div class="cell docutils container">
@@ -1823,11 +1815,11 @@ memory usage: 907.8+ KB
       <td>0.018217</td>
     </tr>
     <tr>
-      <th>MultipleLines_No phone service</th>
+      <th>PhoneService_No</th>
       <td>0.014650</td>
     </tr>
     <tr>
-      <th>PhoneService_No</th>
+      <th>MultipleLines_No phone service</th>
       <td>0.014650</td>
     </tr>
     <tr>
@@ -1851,7 +1843,7 @@ memory usage: 907.8+ KB
       <td>-0.019556</td>
     </tr>
     <tr>
-      <th>OnlineBackup_No internet service</th>
+      <th>StreamingTV_No internet service</th>
       <td>-0.057267</td>
     </tr>
     <tr>
@@ -1863,19 +1855,19 @@ memory usage: 907.8+ KB
       <td>-0.057267</td>
     </tr>
     <tr>
+      <th>InternetService_No</th>
+      <td>-0.057267</td>
+    </tr>
+    <tr>
       <th>TechSupport_No internet service</th>
       <td>-0.057267</td>
     </tr>
     <tr>
+      <th>OnlineBackup_No internet service</th>
+      <td>-0.057267</td>
+    </tr>
+    <tr>
       <th>OnlineSecurity_No internet service</th>
-      <td>-0.057267</td>
-    </tr>
-    <tr>
-      <th>StreamingTV_No internet service</th>
-      <td>-0.057267</td>
-    </tr>
-    <tr>
-      <th>InternetService_No</th>
       <td>-0.057267</td>
     </tr>
     <tr>
@@ -1954,672 +1946,6 @@ memory usage: 907.8+ KB
 </li>
 </ul>
 <p>This makes sense!!!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cph.baseline_hazard_ # baseline hazard</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cph</span><span class="o">.</span><span class="n">summary</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>coef</th>
-      <th>exp(coef)</th>
-      <th>se(coef)</th>
-      <th>coef lower 95%</th>
-      <th>coef upper 95%</th>
-      <th>exp(coef) lower 95%</th>
-      <th>exp(coef) upper 95%</th>
-      <th>cmp to</th>
-      <th>z</th>
-      <th>p</th>
-      <th>-log2(p)</th>
-    </tr>
-    <tr>
-      <th>covariate</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>SeniorCitizen</th>
-      <td>-0.019556</td>
-      <td>0.980634</td>
-      <td>0.057254</td>
-      <td>-0.131773</td>
-      <td>0.092660</td>
-      <td>0.876540</td>
-      <td>1.097088</td>
-      <td>0.0</td>
-      <td>-0.341571</td>
-      <td>7.326741e-01</td>
-      <td>0.448757</td>
-    </tr>
-    <tr>
-      <th>MonthlyCharges</th>
-      <td>-0.003185</td>
-      <td>0.996820</td>
-      <td>0.040129</td>
-      <td>-0.081837</td>
-      <td>0.075467</td>
-      <td>0.921422</td>
-      <td>1.078387</td>
-      <td>0.0</td>
-      <td>-0.079377</td>
-      <td>9.367329e-01</td>
-      <td>0.094290</td>
-    </tr>
-    <tr>
-      <th>InternetService_DSL</th>
-      <td>-0.161001</td>
-      <td>0.851291</td>
-      <td>0.072286</td>
-      <td>-0.302679</td>
-      <td>-0.019324</td>
-      <td>0.738836</td>
-      <td>0.980862</td>
-      <td>0.0</td>
-      <td>-2.227289</td>
-      <td>2.592797e-02</td>
-      <td>5.269347</td>
-    </tr>
-    <tr>
-      <th>InternetService_Fiber optic</th>
-      <td>0.186869</td>
-      <td>1.205470</td>
-      <td>0.071515</td>
-      <td>0.046702</td>
-      <td>0.327037</td>
-      <td>1.047810</td>
-      <td>1.386853</td>
-      <td>0.0</td>
-      <td>2.612998</td>
-      <td>8.975172e-03</td>
-      <td>6.799845</td>
-    </tr>
-    <tr>
-      <th>InternetService_No</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>OnlineSecurity_No</th>
-      <td>0.311151</td>
-      <td>1.364995</td>
-      <td>0.069644</td>
-      <td>0.174652</td>
-      <td>0.447650</td>
-      <td>1.190832</td>
-      <td>1.564631</td>
-      <td>0.0</td>
-      <td>4.467755</td>
-      <td>7.904462e-06</td>
-      <td>16.948901</td>
-    </tr>
-    <tr>
-      <th>OnlineSecurity_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>OnlineSecurity_Yes</th>
-      <td>-0.330346</td>
-      <td>0.718675</td>
-      <td>0.072881</td>
-      <td>-0.473189</td>
-      <td>-0.187502</td>
-      <td>0.623012</td>
-      <td>0.829027</td>
-      <td>0.0</td>
-      <td>-4.532694</td>
-      <td>5.823610e-06</td>
-      <td>17.389655</td>
-    </tr>
-    <tr>
-      <th>PaperlessBilling_No</th>
-      <td>-0.075063</td>
-      <td>0.927685</td>
-      <td>0.068817</td>
-      <td>-0.209943</td>
-      <td>0.059816</td>
-      <td>0.810631</td>
-      <td>1.061641</td>
-      <td>0.0</td>
-      <td>-1.090765</td>
-      <td>2.753764e-01</td>
-      <td>1.860523</td>
-    </tr>
-    <tr>
-      <th>PaperlessBilling_Yes</th>
-      <td>0.075063</td>
-      <td>1.077953</td>
-      <td>0.068817</td>
-      <td>-0.059816</td>
-      <td>0.209943</td>
-      <td>0.941938</td>
-      <td>1.233608</td>
-      <td>0.0</td>
-      <td>1.090765</td>
-      <td>2.753764e-01</td>
-      <td>1.860523</td>
-    </tr>
-    <tr>
-      <th>MultipleLines_No</th>
-      <td>0.162904</td>
-      <td>1.176924</td>
-      <td>0.066166</td>
-      <td>0.033222</td>
-      <td>0.292587</td>
-      <td>1.033780</td>
-      <td>1.339889</td>
-      <td>0.0</td>
-      <td>2.462060</td>
-      <td>1.381416e-02</td>
-      <td>6.177709</td>
-    </tr>
-    <tr>
-      <th>MultipleLines_No phone service</th>
-      <td>0.014650</td>
-      <td>1.014758</td>
-      <td>0.127087</td>
-      <td>-0.234436</td>
-      <td>0.263736</td>
-      <td>0.791017</td>
-      <td>1.301784</td>
-      <td>0.0</td>
-      <td>0.115276</td>
-      <td>9.082265e-01</td>
-      <td>0.138876</td>
-    </tr>
-    <tr>
-      <th>MultipleLines_Yes</th>
-      <td>-0.171899</td>
-      <td>0.842064</td>
-      <td>0.066810</td>
-      <td>-0.302844</td>
-      <td>-0.040954</td>
-      <td>0.738715</td>
-      <td>0.959873</td>
-      <td>0.0</td>
-      <td>-2.572962</td>
-      <td>1.008322e-02</td>
-      <td>6.631899</td>
-    </tr>
-    <tr>
-      <th>gender_Female</th>
-      <td>0.018217</td>
-      <td>1.018384</td>
-      <td>0.066333</td>
-      <td>-0.111793</td>
-      <td>0.148227</td>
-      <td>0.894230</td>
-      <td>1.159776</td>
-      <td>0.0</td>
-      <td>0.274631</td>
-      <td>7.835995e-01</td>
-      <td>0.351812</td>
-    </tr>
-    <tr>
-      <th>gender_Male</th>
-      <td>-0.018217</td>
-      <td>0.981948</td>
-      <td>0.066333</td>
-      <td>-0.148227</td>
-      <td>0.111793</td>
-      <td>0.862236</td>
-      <td>1.118281</td>
-      <td>0.0</td>
-      <td>-0.274631</td>
-      <td>7.835995e-01</td>
-      <td>0.351812</td>
-    </tr>
-    <tr>
-      <th>Dependents_No</th>
-      <td>0.063772</td>
-      <td>1.065849</td>
-      <td>0.075042</td>
-      <td>-0.083308</td>
-      <td>0.210852</td>
-      <td>0.920067</td>
-      <td>1.234730</td>
-      <td>0.0</td>
-      <td>0.849812</td>
-      <td>3.954294e-01</td>
-      <td>1.338508</td>
-    </tr>
-    <tr>
-      <th>Dependents_Yes</th>
-      <td>-0.063772</td>
-      <td>0.938219</td>
-      <td>0.075042</td>
-      <td>-0.210852</td>
-      <td>0.083308</td>
-      <td>0.809894</td>
-      <td>1.086877</td>
-      <td>0.0</td>
-      <td>-0.849812</td>
-      <td>3.954294e-01</td>
-      <td>1.338508</td>
-    </tr>
-    <tr>
-      <th>StreamingTV_No</th>
-      <td>0.049083</td>
-      <td>1.050307</td>
-      <td>0.067990</td>
-      <td>-0.084176</td>
-      <td>0.182342</td>
-      <td>0.919270</td>
-      <td>1.200024</td>
-      <td>0.0</td>
-      <td>0.721910</td>
-      <td>4.703500e-01</td>
-      <td>1.088193</td>
-    </tr>
-    <tr>
-      <th>StreamingTV_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>StreamingTV_Yes</th>
-      <td>-0.008830</td>
-      <td>0.991209</td>
-      <td>0.068706</td>
-      <td>-0.143491</td>
-      <td>0.125831</td>
-      <td>0.866328</td>
-      <td>1.134090</td>
-      <td>0.0</td>
-      <td>-0.128522</td>
-      <td>8.977359e-01</td>
-      <td>0.155637</td>
-    </tr>
-    <tr>
-      <th>TechSupport_No</th>
-      <td>0.212303</td>
-      <td>1.236522</td>
-      <td>0.069653</td>
-      <td>0.075786</td>
-      <td>0.348820</td>
-      <td>1.078732</td>
-      <td>1.417394</td>
-      <td>0.0</td>
-      <td>3.048022</td>
-      <td>2.303533e-03</td>
-      <td>8.761936</td>
-    </tr>
-    <tr>
-      <th>TechSupport_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>TechSupport_Yes</th>
-      <td>-0.212133</td>
-      <td>0.808857</td>
-      <td>0.072954</td>
-      <td>-0.355121</td>
-      <td>-0.069145</td>
-      <td>0.701089</td>
-      <td>0.933191</td>
-      <td>0.0</td>
-      <td>-2.907752</td>
-      <td>3.640370e-03</td>
-      <td>8.101699</td>
-    </tr>
-    <tr>
-      <th>Partner_No</th>
-      <td>0.244814</td>
-      <td>1.277384</td>
-      <td>0.067499</td>
-      <td>0.112519</td>
-      <td>0.377109</td>
-      <td>1.119094</td>
-      <td>1.458063</td>
-      <td>0.0</td>
-      <td>3.626946</td>
-      <td>2.867927e-04</td>
-      <td>11.767704</td>
-    </tr>
-    <tr>
-      <th>Partner_Yes</th>
-      <td>-0.244814</td>
-      <td>0.782850</td>
-      <td>0.067499</td>
-      <td>-0.377109</td>
-      <td>-0.112519</td>
-      <td>0.685841</td>
-      <td>0.893580</td>
-      <td>0.0</td>
-      <td>-3.626946</td>
-      <td>2.867927e-04</td>
-      <td>11.767704</td>
-    </tr>
-    <tr>
-      <th>PaymentMethod_Bank transfer (automatic)</th>
-      <td>-0.244273</td>
-      <td>0.783274</td>
-      <td>0.070841</td>
-      <td>-0.383119</td>
-      <td>-0.105427</td>
-      <td>0.681732</td>
-      <td>0.899940</td>
-      <td>0.0</td>
-      <td>-3.448184</td>
-      <td>5.643700e-04</td>
-      <td>10.791071</td>
-    </tr>
-    <tr>
-      <th>PaymentMethod_Credit card (automatic)</th>
-      <td>-0.302801</td>
-      <td>0.738746</td>
-      <td>0.072176</td>
-      <td>-0.444263</td>
-      <td>-0.161339</td>
-      <td>0.641297</td>
-      <td>0.851003</td>
-      <td>0.0</td>
-      <td>-4.195334</td>
-      <td>2.724703e-05</td>
-      <td>15.163541</td>
-    </tr>
-    <tr>
-      <th>PaymentMethod_Electronic check</th>
-      <td>0.280801</td>
-      <td>1.324190</td>
-      <td>0.062293</td>
-      <td>0.158709</td>
-      <td>0.402892</td>
-      <td>1.171997</td>
-      <td>1.496146</td>
-      <td>0.0</td>
-      <td>4.507754</td>
-      <td>6.551759e-06</td>
-      <td>17.219686</td>
-    </tr>
-    <tr>
-      <th>PaymentMethod_Mailed check</th>
-      <td>0.172697</td>
-      <td>1.188506</td>
-      <td>0.071787</td>
-      <td>0.031997</td>
-      <td>0.313397</td>
-      <td>1.032514</td>
-      <td>1.368064</td>
-      <td>0.0</td>
-      <td>2.405681</td>
-      <td>1.614236e-02</td>
-      <td>5.953005</td>
-    </tr>
-    <tr>
-      <th>StreamingMovies_No</th>
-      <td>0.110985</td>
-      <td>1.117378</td>
-      <td>0.068042</td>
-      <td>-0.022375</td>
-      <td>0.244344</td>
-      <td>0.977873</td>
-      <td>1.276784</td>
-      <td>0.0</td>
-      <td>1.631122</td>
-      <td>1.028647e-01</td>
-      <td>3.281180</td>
-    </tr>
-    <tr>
-      <th>StreamingMovies_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>StreamingMovies_Yes</th>
-      <td>-0.070898</td>
-      <td>0.931556</td>
-      <td>0.068689</td>
-      <td>-0.205527</td>
-      <td>0.063730</td>
-      <td>0.814218</td>
-      <td>1.065805</td>
-      <td>0.0</td>
-      <td>-1.032161</td>
-      <td>3.019969e-01</td>
-      <td>1.727394</td>
-    </tr>
-    <tr>
-      <th>Contract_Month-to-month</th>
-      <td>0.812875</td>
-      <td>2.254380</td>
-      <td>0.069188</td>
-      <td>0.677268</td>
-      <td>0.948482</td>
-      <td>1.968493</td>
-      <td>2.581787</td>
-      <td>0.0</td>
-      <td>11.748725</td>
-      <td>7.169269e-32</td>
-      <td>103.459873</td>
-    </tr>
-    <tr>
-      <th>Contract_One year</th>
-      <td>-0.351821</td>
-      <td>0.703406</td>
-      <td>0.077761</td>
-      <td>-0.504231</td>
-      <td>-0.199412</td>
-      <td>0.603970</td>
-      <td>0.819213</td>
-      <td>0.0</td>
-      <td>-4.524364</td>
-      <td>6.057732e-06</td>
-      <td>17.332791</td>
-    </tr>
-    <tr>
-      <th>Contract_Two year</th>
-      <td>-0.776427</td>
-      <td>0.460047</td>
-      <td>0.081167</td>
-      <td>-0.935512</td>
-      <td>-0.617342</td>
-      <td>0.392385</td>
-      <td>0.539376</td>
-      <td>0.0</td>
-      <td>-9.565746</td>
-      <td>1.113949e-21</td>
-      <td>69.604807</td>
-    </tr>
-    <tr>
-      <th>OnlineBackup_No</th>
-      <td>0.298561</td>
-      <td>1.347917</td>
-      <td>0.067781</td>
-      <td>0.165713</td>
-      <td>0.431408</td>
-      <td>1.180234</td>
-      <td>1.539424</td>
-      <td>0.0</td>
-      <td>4.404809</td>
-      <td>1.058770e-05</td>
-      <td>16.527251</td>
-    </tr>
-    <tr>
-      <th>OnlineBackup_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>OnlineBackup_Yes</th>
-      <td>-0.282600</td>
-      <td>0.753821</td>
-      <td>0.069192</td>
-      <td>-0.418213</td>
-      <td>-0.146987</td>
-      <td>0.658222</td>
-      <td>0.863305</td>
-      <td>0.0</td>
-      <td>-4.084314</td>
-      <td>4.420730e-05</td>
-      <td>14.465356</td>
-    </tr>
-    <tr>
-      <th>PhoneService_No</th>
-      <td>0.014650</td>
-      <td>1.014758</td>
-      <td>0.127087</td>
-      <td>-0.234436</td>
-      <td>0.263736</td>
-      <td>0.791017</td>
-      <td>1.301784</td>
-      <td>0.0</td>
-      <td>0.115276</td>
-      <td>9.082265e-01</td>
-      <td>0.138876</td>
-    </tr>
-    <tr>
-      <th>PhoneService_Yes</th>
-      <td>-0.014650</td>
-      <td>0.985457</td>
-      <td>0.127087</td>
-      <td>-0.263736</td>
-      <td>0.234436</td>
-      <td>0.768176</td>
-      <td>1.264195</td>
-      <td>0.0</td>
-      <td>-0.115276</td>
-      <td>9.082265e-01</td>
-      <td>0.138876</td>
-    </tr>
-    <tr>
-      <th>DeviceProtection_No</th>
-      <td>0.180214</td>
-      <td>1.197473</td>
-      <td>0.067879</td>
-      <td>0.047174</td>
-      <td>0.313254</td>
-      <td>1.048304</td>
-      <td>1.367868</td>
-      <td>0.0</td>
-      <td>2.654935</td>
-      <td>7.932379e-03</td>
-      <td>6.978031</td>
-    </tr>
-    <tr>
-      <th>DeviceProtection_No internet service</th>
-      <td>-0.057267</td>
-      <td>0.944342</td>
-      <td>0.100970</td>
-      <td>-0.255165</td>
-      <td>0.140631</td>
-      <td>0.774789</td>
-      <td>1.150999</td>
-      <td>0.0</td>
-      <td>-0.567169</td>
-      <td>5.705995e-01</td>
-      <td>0.809450</td>
-    </tr>
-    <tr>
-      <th>DeviceProtection_Yes</th>
-      <td>-0.154556</td>
-      <td>0.856795</td>
-      <td>0.069302</td>
-      <td>-0.290385</td>
-      <td>-0.018727</td>
-      <td>0.747975</td>
-      <td>0.981447</td>
-      <td>0.0</td>
-      <td>-2.230194</td>
-      <td>2.573457e-02</td>
-      <td>5.280148</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <p>Could we have gotten this type of information out of sklearn?</p>
 <ul class="simple">
 <li><p>Yes, let’s try it out!</p></li>
@@ -2832,6 +2158,7 @@ Name: Churn, dtype: object
     <span class="p">(</span><span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">),</span> <span class="n">categorical_features</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">&quot;passthrough&quot;</span><span class="p">,</span> <span class="n">passthrough_features</span><span class="p">),</span>
     <span class="p">(</span><span class="s2">&quot;drop&quot;</span><span class="p">,</span> <span class="n">drop_features</span><span class="p">),</span>
+    <span class="n">verbose_feature_names_out</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -2846,13 +2173,7 @@ Name: Churn, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_columns</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">numeric_features</span>
-    <span class="o">+</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">named_transformers_</span><span class="p">[</span><span class="s2">&quot;onehotencoder&quot;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-    <span class="o">+</span> <span class="n">passthrough_features</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_columns</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2970,19 +2291,11 @@ Name: Churn, dtype: object
       <td>-0.104235</td>
     </tr>
     <tr>
-      <th>InternetService_No</th>
-      <td>-0.139412</td>
-    </tr>
-    <tr>
-      <th>DeviceProtection_No internet service</th>
+      <th>StreamingTV_No internet service</th>
       <td>-0.139412</td>
     </tr>
     <tr>
       <th>OnlineBackup_No internet service</th>
-      <td>-0.139412</td>
-    </tr>
-    <tr>
-      <th>OnlineSecurity_No internet service</th>
       <td>-0.139412</td>
     </tr>
     <tr>
@@ -2994,7 +2307,15 @@ Name: Churn, dtype: object
       <td>-0.139412</td>
     </tr>
     <tr>
-      <th>StreamingTV_No internet service</th>
+      <th>InternetService_No</th>
+      <td>-0.139412</td>
+    </tr>
+    <tr>
+      <th>DeviceProtection_No internet service</th>
+      <td>-0.139412</td>
+    </tr>
+    <tr>
+      <th>OnlineSecurity_No internet service</th>
       <td>-0.139412</td>
     </tr>
     <tr>
@@ -3092,7 +2413,7 @@ Name: Churn, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8d89852e49a3368a680b835051597c9bd5af3c2ab8fe48c9e3c1f55e1c04cf36.png" src="../../../_images/8d89852e49a3368a680b835051597c9bd5af3c2ab8fe48c9e3c1f55e1c04cf36.png" />
+<img alt="../../../_images/4f56ec2fe99ab805c2ed4aa61383ce71921d25b6e255dd3bb043d55349c2f885.png" src="../../../_images/4f56ec2fe99ab805c2ed4aa61383ce71921d25b6e255dd3bb043d55349c2f885.png" />
 </div>
 </div>
 <ul class="simple">
@@ -3212,6 +2533,9 @@ dtype: float64
 <div><p>Predict the survival function for individuals, given their covariates. This assumes that the individual just entered the study (that is, we do not condition on how long they have already lived for.)</p>
 </div></blockquote>
 <p>So these curves are “starting now”.</p>
+<p><br><br></p>
+<section id="optional-given-customer-has-been-here-n-months-what-s-the-outlook">
+<h3>(Optional) Given customer has been here <span class="math notranslate nohighlight">\(n\)</span> months, what’s the outlook?<a class="headerlink" href="#optional-given-customer-has-been-here-n-months-what-s-the-outlook" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>There’s no probability prerequisite for this course, so this is optional material.</p></li>
 <li><p>But you can do some interesting stuff here with conditional probabilities.</p></li>
@@ -3363,6 +2687,7 @@ dtype: float64
 <li><p>With regular supervised learning, tenure was a feature and we could only predict whether or not they had churned by then.</p></li>
 </ul>
 <p><br><br></p>
+</section>
 </section>
 <section id="optional-evaluation">
 <h2>(Optional) Evaluation<a class="headerlink" href="#optional-evaluation" title="Link to this heading">#</a></h2>
@@ -4256,7 +3581,10 @@ in the call in `.fit`. See documentation in link [E] below.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-plots">Survival plots</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-given-customer-has-been-here-n-months-what-s-the-outlook">(Optional) Given customer has been here <span class="math notranslate nohighlight">\(n\)</span> months, what’s the outlook?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-evaluation">(Optional) Evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-approaches-what-did-we-not-cover">Other approaches / what did we not cover?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-censoring">Types of censoring</a></li>
