@@ -212,6 +212,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../notes/19_time-series.html">Lecture 19: Time series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notes/20_survival-analysis.html">Lecture 20: Survival analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notes/21_communication.html">Lecture 21: Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notes/final-exam-review-guiding-question.html">Final exam preparation: guiding questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notes/AppendixA.html">Appendix A: Lecture 09</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notes/AppendixB.html">Appendix A: Lecture 13</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notes/AppendixC.html">Appendix C: Basic text preprocessing [video]</a></li>
@@ -839,75 +840,7 @@ memory usage: 1.1+ MB
 <p>Oh, looks like <code class="docutils literal notranslate"><span class="pre">TotalCharges</span></code> is not a numeric type. What if we change the type of this column to float?</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;TotalCharges&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;TotalCharges&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;TotalCharges&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s2">&quot;TotalCharges&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/generic.py:6643,</span> in <span class="ni">NDFrame.astype</span><span class="nt">(self, dtype, copy, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6637</span>     <span class="n">results</span> <span class="o">=</span> <span class="p">[</span>
-<span class="nn">   6638         ser.astype(dtype, copy=copy, errors=errors) for _, ser</span> in <span class="ni">self.items</span><span class="nt">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">6639</span>     <span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">6641</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6642</span>     <span class="c1"># else, only a single dtype is given</span>
-<span class="ne">-&gt; </span><span class="mi">6643</span>     <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6644</span>     <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor_from_mgr</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">new_data</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6645</span>     <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;astype&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/internals/managers.py:430,</span> in <span class="ni">BaseBlockManager.astype</span><span class="nt">(self, dtype, copy, errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">427</span> <span class="k">elif</span> <span class="n">using_copy_on_write</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">428</span>     <span class="n">copy</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="ne">--&gt; </span><span class="mi">430</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span>     <span class="s2">&quot;astype&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">432</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">433</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">434</span>     <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span>     <span class="n">using_cow</span><span class="o">=</span><span class="n">using_copy_on_write</span><span class="p">(),</span>
-<span class="g g-Whitespace">    </span><span class="mi">436</span> <span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/internals/managers.py:363,</span> in <span class="ni">BaseBlockManager.apply</span><span class="nt">(self, f, align_keys, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>         <span class="n">applied</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">363</span>         <span class="n">applied</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">f</span><span class="p">)(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span>     <span class="n">result_blocks</span> <span class="o">=</span> <span class="n">extend_blocks</span><span class="p">(</span><span class="n">applied</span><span class="p">,</span> <span class="n">result_blocks</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">366</span> <span class="n">out</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">from_blocks</span><span class="p">(</span><span class="n">result_blocks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/internals/blocks.py:758,</span> in <span class="ni">Block.astype</span><span class="nt">(self, dtype, copy, errors, using_cow, squeeze)</span>
-<span class="g g-Whitespace">    </span><span class="mi">755</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Can not squeeze with more than one column.&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">756</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># type: ignore[call-overload]</span>
-<span class="ne">--&gt; </span><span class="mi">758</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array_safe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">760</span> <span class="n">new_values</span> <span class="o">=</span> <span class="n">maybe_coerce_values</span><span class="p">(</span><span class="n">new_values</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">762</span> <span class="n">refs</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/dtypes/astype.py:237,</span> in <span class="ni">astype_array_safe</span><span class="nt">(values, dtype, copy, errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">numpy_dtype</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">237</span>     <span class="n">new_values</span> <span class="o">=</span> <span class="n">astype_array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span> <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="c1"># e.g. _astype_nansafe can fail on object-dtype of strings</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>     <span class="c1">#  trying to convert to float</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;ignore&quot;</span><span class="p">:</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/dtypes/astype.py:182,</span> in <span class="ni">astype_array</span><span class="nt">(values, dtype, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">182</span>     <span class="n">values</span> <span class="o">=</span> <span class="n">_astype_nansafe</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="c1"># in pandas we don&#39;t store numpy str dtypes, so convert to object</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-
-<span class="nn">File ~/miniforge3/envs/cpsc330/lib/python3.12/site-packages/pandas/core/dtypes/astype.py:133,</span> in <span class="ni">_astype_nansafe</span><span class="nt">(arr, dtype, copy, skipna)</span>
-<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span> <span class="k">if</span> <span class="n">copy</span> <span class="ow">or</span> <span class="n">arr</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">or</span> <span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="c1"># Explicit copy, or required since NumPy can&#39;t view from / to object.</span>
-<span class="ne">--&gt; </span><span class="mi">133</span>     <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: could not convert string to float: &#39; &#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train_df[&quot;TotalCharges&quot;] = train_df[&quot;TotalCharges&quot;].astype(float)</span>
 </pre></div>
 </div>
 </div>
@@ -1086,23 +1019,23 @@ memory usage: 907.8+ KB
       <th>tenure</th>
       <th>MonthlyCharges</th>
       <th>TotalCharges</th>
-      <th>InternetService_DSL</th>
-      <th>InternetService_Fiber optic</th>
-      <th>InternetService_No</th>
-      <th>Partner_No</th>
-      <th>Partner_Yes</th>
-      <th>OnlineSecurity_No</th>
-      <th>OnlineSecurity_No internet service</th>
-      <th>...</th>
-      <th>MultipleLines_No</th>
-      <th>MultipleLines_No phone service</th>
-      <th>MultipleLines_Yes</th>
-      <th>StreamingMovies_No</th>
-      <th>StreamingMovies_No internet service</th>
-      <th>StreamingMovies_Yes</th>
+      <th>OnlineBackup_No</th>
+      <th>OnlineBackup_No internet service</th>
+      <th>OnlineBackup_Yes</th>
       <th>Contract_Month-to-month</th>
       <th>Contract_One year</th>
       <th>Contract_Two year</th>
+      <th>InternetService_DSL</th>
+      <th>...</th>
+      <th>PaymentMethod_Bank transfer (automatic)</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>OnlineSecurity_No</th>
+      <th>OnlineSecurity_No internet service</th>
+      <th>OnlineSecurity_Yes</th>
+      <th>Dependents_No</th>
+      <th>Dependents_Yes</th>
       <th>SeniorCitizen</th>
     </tr>
   </thead>
@@ -1112,22 +1045,22 @@ memory usage: 907.8+ KB
       <td>0.707712</td>
       <td>0.185175</td>
       <td>0.513678</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
@@ -1141,17 +1074,17 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
+      <td>1.0</td>
       <td>...</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -1160,22 +1093,22 @@ memory usage: 907.8+ KB
       <td>-0.148349</td>
       <td>1.133562</td>
       <td>0.226789</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -1184,22 +1117,22 @@ memory usage: 907.8+ KB
       <td>-1.248999</td>
       <td>0.458524</td>
       <td>-0.950696</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
@@ -1214,17 +1147,17 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>0.0</td>
+      <td>1.0</td>
       <td>...</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
@@ -1272,12 +1205,6 @@ memory usage: 907.8+ KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">lifelines</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kvarada/miniforge3/envs/cpsc330/lib/python3.12/site-packages/autograd/scipy/misc.py:3: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
-  import scipy.misc as osp_misc
 </pre></div>
 </div>
 </div>
@@ -1390,23 +1317,23 @@ memory usage: 907.8+ KB
       <th>SeniorCitizen</th>
       <th>Churn</th>
       <th>MonthlyCharges</th>
-      <th>InternetService_DSL</th>
-      <th>InternetService_Fiber optic</th>
-      <th>InternetService_No</th>
-      <th>Partner_No</th>
-      <th>Partner_Yes</th>
       <th>OnlineBackup_No</th>
-      <th>...</th>
+      <th>OnlineBackup_No internet service</th>
+      <th>OnlineBackup_Yes</th>
+      <th>Contract_Month-to-month</th>
+      <th>Contract_One year</th>
       <th>Contract_Two year</th>
-      <th>TechSupport_No</th>
-      <th>TechSupport_No internet service</th>
-      <th>TechSupport_Yes</th>
+      <th>...</th>
+      <th>StreamingTV_No</th>
+      <th>StreamingTV_No internet service</th>
+      <th>StreamingTV_Yes</th>
+      <th>Dependents_No</th>
+      <th>Dependents_Yes</th>
+      <th>DeviceProtection_No</th>
+      <th>DeviceProtection_No internet service</th>
+      <th>DeviceProtection_Yes</th>
       <th>PhoneService_No</th>
       <th>PhoneService_Yes</th>
-      <th>PaymentMethod_Bank transfer (automatic)</th>
-      <th>PaymentMethod_Credit card (automatic)</th>
-      <th>PaymentMethod_Electronic check</th>
-      <th>PaymentMethod_Mailed check</th>
     </tr>
   </thead>
   <tbody>
@@ -1416,23 +1343,23 @@ memory usage: 907.8+ KB
       <td>1.0</td>
       <td>0.0</td>
       <td>0.185175</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <th>5707</th>
@@ -1445,18 +1372,18 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <th>3442</th>
@@ -1464,23 +1391,23 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>0.0</td>
       <td>1.133562</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <th>3932</th>
@@ -1488,23 +1415,23 @@ memory usage: 907.8+ KB
       <td>1.0</td>
       <td>1.0</td>
       <td>0.458524</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>0.0</td>
-      <td>1.0</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>6124</th>
@@ -1517,16 +1444,16 @@ memory usage: 907.8+ KB
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
+      <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
@@ -1557,7 +1484,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/cbd22e43889ecdb89a6a77278320c3e813a164f17cbb1d284f164ad94136bee5.png" src="../../../_images/cbd22e43889ecdb89a6a77278320c3e813a164f17cbb1d284f164ad94136bee5.png" />
+<img alt="../../../_images/40a3eff874bda829f8ebd1fdda54312049fe385f72a6f89ef88abedca0a4972a.png" src="../../../_images/40a3eff874bda829f8ebd1fdda54312049fe385f72a6f89ef88abedca0a4972a.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1574,7 +1501,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.6391518364256
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(32.6391518364256)
 </pre></div>
 </div>
 </div>
@@ -1587,7 +1514,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.854744525547446
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(17.854744525547446)
 </pre></div>
 </div>
 </div>
@@ -1600,7 +1527,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.816717791411044
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(37.816717791411044)
 </pre></div>
 </div>
 </div>
@@ -1618,7 +1545,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/bc097b7afc50c3a15883866e7875a69e14cd4da05ee8a336a337ae03d29eece3.png" src="../../../_images/bc097b7afc50c3a15883866e7875a69e14cd4da05ee8a336a337ae03d29eece3.png" />
+<img alt="../../../_images/fe6eb5203708a941b29e1e82166ee2b41e784c1e3cff0cbd8a4899cad1ca4ad0.png" src="../../../_images/fe6eb5203708a941b29e1e82166ee2b41e784c1e3cff0cbd8a4899cad1ca4ad0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1635,7 +1562,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8692ebf2886bb32c37de6f93fe9f0dfd8c92260370214bf93c8219c42252cc5c.png" src="../../../_images/8692ebf2886bb32c37de6f93fe9f0dfd8c92260370214bf93c8219c42252cc5c.png" />
+<img alt="../../../_images/96386f30ad7f9b57266440e365c8b3df03e7fc4ef83215b6ce217c7b9c45c169.png" src="../../../_images/96386f30ad7f9b57266440e365c8b3df03e7fc4ef83215b6ce217c7b9c45c169.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1670,7 +1597,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/13a6f19b9ef429c1bf3bd4dceee53845c691a890afaa9e4f5a5b28fb02ce0c48.png" src="../../../_images/13a6f19b9ef429c1bf3bd4dceee53845c691a890afaa9e4f5a5b28fb02ce0c48.png" />
+<img alt="../../../_images/03c0699f026c1d77c406688d12ed3a65963ba99c4cb6d1a1842e743ae5c2fd1b.png" src="../../../_images/03c0699f026c1d77c406688d12ed3a65963ba99c4cb6d1a1842e743ae5c2fd1b.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1713,7 +1640,7 @@ memory usage: 907.8+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kvarada/miniforge3/envs/cpsc330/lib/python3.12/site-packages/lifelines/fitters/coxph_fitter.py:1217: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kvarada/miniforge3/envs/cpsc330/lib/python3.13/site-packages/lifelines/fitters/coxph_fitter.py:1217: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
   self._time_fit_was_called = datetime.utcnow().strftime(&quot;%Y-%m-%d %H:%M:%S&quot;) + &quot; UTC&quot;
 </pre></div>
 </div>
@@ -1843,15 +1770,7 @@ memory usage: 907.8+ KB
       <td>-0.019556</td>
     </tr>
     <tr>
-      <th>StreamingTV_No internet service</th>
-      <td>-0.057267</td>
-    </tr>
-    <tr>
-      <th>StreamingMovies_No internet service</th>
-      <td>-0.057267</td>
-    </tr>
-    <tr>
-      <th>DeviceProtection_No internet service</th>
+      <th>TechSupport_No internet service</th>
       <td>-0.057267</td>
     </tr>
     <tr>
@@ -1859,15 +1778,23 @@ memory usage: 907.8+ KB
       <td>-0.057267</td>
     </tr>
     <tr>
-      <th>TechSupport_No internet service</th>
-      <td>-0.057267</td>
-    </tr>
-    <tr>
-      <th>OnlineBackup_No internet service</th>
+      <th>DeviceProtection_No internet service</th>
       <td>-0.057267</td>
     </tr>
     <tr>
       <th>OnlineSecurity_No internet service</th>
+      <td>-0.057267</td>
+    </tr>
+    <tr>
+      <th>StreamingMovies_No internet service</th>
+      <td>-0.057267</td>
+    </tr>
+    <tr>
+      <th>StreamingTV_No internet service</th>
+      <td>-0.057267</td>
+    </tr>
+    <tr>
+      <th>OnlineBackup_No internet service</th>
       <td>-0.057267</td>
     </tr>
     <tr>
@@ -2259,11 +2186,11 @@ Name: Churn, dtype: object
       <td>0.001249</td>
     </tr>
     <tr>
-      <th>MultipleLines_No phone service</th>
+      <th>PhoneService_No</th>
       <td>-0.004362</td>
     </tr>
     <tr>
-      <th>PhoneService_No</th>
+      <th>MultipleLines_No phone service</th>
       <td>-0.004362</td>
     </tr>
     <tr>
@@ -2295,11 +2222,15 @@ Name: Churn, dtype: object
       <td>-0.139412</td>
     </tr>
     <tr>
+      <th>DeviceProtection_No internet service</th>
+      <td>-0.139412</td>
+    </tr>
+    <tr>
       <th>OnlineBackup_No internet service</th>
       <td>-0.139412</td>
     </tr>
     <tr>
-      <th>StreamingMovies_No internet service</th>
+      <th>OnlineSecurity_No internet service</th>
       <td>-0.139412</td>
     </tr>
     <tr>
@@ -2311,11 +2242,7 @@ Name: Churn, dtype: object
       <td>-0.139412</td>
     </tr>
     <tr>
-      <th>DeviceProtection_No internet service</th>
-      <td>-0.139412</td>
-    </tr>
-    <tr>
-      <th>OnlineSecurity_No internet service</th>
+      <th>StreamingMovies_No internet service</th>
       <td>-0.139412</td>
     </tr>
     <tr>
@@ -2413,7 +2340,7 @@ Name: Churn, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/4f56ec2fe99ab805c2ed4aa61383ce71921d25b6e255dd3bb043d55349c2f885.png" src="../../../_images/4f56ec2fe99ab805c2ed4aa61383ce71921d25b6e255dd3bb043d55349c2f885.png" />
+<img alt="../../../_images/c8d90c3788c9ce3dcf8485cd4003c2a6426f3563d12a53ee292ec3afdb520596.png" src="../../../_images/c8d90c3788c9ce3dcf8485cd4003c2a6426f3563d12a53ee292ec3afdb520596.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2447,7 +2374,7 @@ Name: Churn, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/ef52bf04a0da9157efd4c50fb446a47b275b37ea3f05cef6ed178633649bbbc2.png" src="../../../_images/ef52bf04a0da9157efd4c50fb446a47b275b37ea3f05cef6ed178633649bbbc2.png" />
+<img alt="../../../_images/89be7247fde6308d68e01e82189fa3c329b93a9b124eec02002f9e598bd78a62.png" src="../../../_images/89be7247fde6308d68e01e82189fa3c329b93a9b124eec02002f9e598bd78a62.png" />
 </div>
 </div>
 <p>Now let’s look at the survival plots for the people with different MonthlyCharges.</p>
@@ -2460,7 +2387,7 @@ Name: Churn, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/978f6376c79b3990a0c39253ff977ec9240fe8c192748fe8b1b50807906306c7.png" src="../../../_images/978f6376c79b3990a0c39253ff977ec9240fe8c192748fe8b1b50807906306c7.png" />
+<img alt="../../../_images/1f7040886a2c5b08216dc03821b01b565ddb18a15e9b7a0f08e5ab565d4200fc.png" src="../../../_images/1f7040886a2c5b08216dc03821b01b565ddb18a15e9b7a0f08e5ab565d4200fc.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2525,7 +2452,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/063bfbeb0fc0d89131ec17c2f93ddbfc002a6b5a989f5cf7215b396e174bce18.png" src="../../../_images/063bfbeb0fc0d89131ec17c2f93ddbfc002a6b5a989f5cf7215b396e174bce18.png" />
+<img alt="../../../_images/b87ba66e3b69df56951a92e7cc2b297d9cf27d846e12d5b5be9b1efa21b64fa4.png" src="../../../_images/b87ba66e3b69df56951a92e7cc2b297d9cf27d846e12d5b5be9b1efa21b64fa4.png" />
 </div>
 </div>
 <p>From <code class="docutils literal notranslate"><span class="pre">predict_survival_function</span></code> documentation:</p>
@@ -2562,77 +2489,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>6464</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0.0</th>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>0.996788</td>
-    </tr>
-    <tr>
-      <th>2.0</th>
-      <td>0.991966</td>
-    </tr>
-    <tr>
-      <th>3.0</th>
-      <td>0.989443</td>
-    </tr>
-    <tr>
-      <th>4.0</th>
-      <td>0.982570</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>68.0</th>
-      <td>0.429634</td>
-    </tr>
-    <tr>
-      <th>69.0</th>
-      <td>0.429634</td>
-    </tr>
-    <tr>
-      <th>70.0</th>
-      <td>0.429634</td>
-    </tr>
-    <tr>
-      <th>71.0</th>
-      <td>0.429634</td>
-    </tr>
-    <tr>
-      <th>72.0</th>
-      <td>0.429634</td>
-    </tr>
-  </tbody>
-</table>
-<p>73 rows × 1 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2649,9 +2505,6 @@ dtype: float64
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">]);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/8ff65c9cf8d0413f8b106ed75d3e5ba5d40f87fc7d0fc1f0f2c3eb4e08d8e1fc.png" src="../../../_images/8ff65c9cf8d0413f8b106ed75d3e5ba5d40f87fc7d0fc1f0f2c3eb4e08d8e1fc.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2674,9 +2527,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/33c19990d792a9bfac1df4b7e71d6c80c1e74d2c9577348175baa4187db2a7af.png" src="../../../_images/33c19990d792a9bfac1df4b7e71d6c80c1e74d2c9577348175baa4187db2a7af.png" />
-</div>
 </div>
 <ul class="simple">
 <li><p>Another useful application: you could ask what is the <a class="reference external" href="https://en.wikipedia.org/wiki/Customer_lifetime_value">customer lifetime value</a>.</p>
@@ -2698,20 +2548,10 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.8641864337292489
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cph</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">test_df_surv</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.7277854625841886
 </pre></div>
 </div>
 </div>
@@ -2723,11 +2563,6 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8625888648969532
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2735,20 +2570,10 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8625888648969532
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cph</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">test_df_surv</span><span class="p">,</span> <span class="n">scoring_method</span><span class="o">=</span><span class="s2">&quot;concordance_index&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8546143543902771
 </pre></div>
 </div>
 </div>
@@ -2769,697 +2594,10 @@ dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <tbody>
-    <tr>
-      <th>null_distribution</th>
-      <td>chi squared</td>
-    </tr>
-    <tr>
-      <th>degrees_freedom</th>
-      <td>43</td>
-    </tr>
-    <tr>
-      <th>test_name</th>
-      <td>log-likelihood ratio test</td>
-    </tr>
-  </tbody>
-</table>
-</div><table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>test_statistic</th>
-      <th>p</th>
-      <th>-log2(p)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2206.68</td>
-      <td>&lt;0.005</td>
-      <td>inf</td>
-    </tr>
-  </tbody>
-</table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cph</span><span class="o">.</span><span class="n">check_assumptions</span><span class="p">(</span><span class="n">train_df_surv</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The ``p_value_threshold`` is set at 0.01. Even under the null hypothesis of no violations, some
-covariates will be below the threshold by chance. This is compounded when there are many covariates.
-Similarly, when there are lots of observations, even minor deviances from the proportional hazard
-assumption will be flagged.
-
-With that in mind, it&#39;s best to use a combination of statistical tests and visual tests to determine
-the most serious violations. Produce visual plots using ``check_assumptions(..., show_plots=True)``
-and looking for non-constant lines. See link [A] below for a full example.
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <tbody>
-    <tr>
-      <th>null_distribution</th>
-      <td>chi squared</td>
-    </tr>
-    <tr>
-      <th>degrees_of_freedom</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>model</th>
-      <td>&lt;lifelines.CoxPHFitter: fitted with 5282 total...</td>
-    </tr>
-    <tr>
-      <th>test_name</th>
-      <td>proportional_hazard_test</td>
-    </tr>
-  </tbody>
-</table>
-</div><table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>test_statistic</th>
-      <th>p</th>
-      <th>-log2(p)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="2" valign="top">Contract_Month-to-month</th>
-      <th>km</th>
-      <td>0.07</td>
-      <td>0.80</td>
-      <td>0.33</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.00</td>
-      <td>0.97</td>
-      <td>0.04</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Contract_One year</th>
-      <th>km</th>
-      <td>14.52</td>
-      <td>&lt;0.005</td>
-      <td>12.81</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>10.11</td>
-      <td>&lt;0.005</td>
-      <td>9.41</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Contract_Two year</th>
-      <th>km</th>
-      <td>8.86</td>
-      <td>&lt;0.005</td>
-      <td>8.42</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>7.69</td>
-      <td>0.01</td>
-      <td>7.49</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Dependents_No</th>
-      <th>km</th>
-      <td>0.07</td>
-      <td>0.79</td>
-      <td>0.34</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.07</td>
-      <td>0.79</td>
-      <td>0.34</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Dependents_Yes</th>
-      <th>km</th>
-      <td>0.07</td>
-      <td>0.79</td>
-      <td>0.34</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.07</td>
-      <td>0.79</td>
-      <td>0.34</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">DeviceProtection_No</th>
-      <th>km</th>
-      <td>0.07</td>
-      <td>0.79</td>
-      <td>0.34</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.08</td>
-      <td>0.77</td>
-      <td>0.37</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">DeviceProtection_No internet service</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">DeviceProtection_Yes</th>
-      <th>km</th>
-      <td>0.70</td>
-      <td>0.40</td>
-      <td>1.31</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.76</td>
-      <td>0.38</td>
-      <td>1.38</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">InternetService_DSL</th>
-      <th>km</th>
-      <td>0.32</td>
-      <td>0.57</td>
-      <td>0.81</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.28</td>
-      <td>0.59</td>
-      <td>0.75</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">InternetService_Fiber optic</th>
-      <th>km</th>
-      <td>1.02</td>
-      <td>0.31</td>
-      <td>1.68</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.98</td>
-      <td>0.32</td>
-      <td>1.64</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">InternetService_No</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">MonthlyCharges</th>
-      <th>km</th>
-      <td>1.65</td>
-      <td>0.20</td>
-      <td>2.33</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>1.72</td>
-      <td>0.19</td>
-      <td>2.40</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">MultipleLines_No</th>
-      <th>km</th>
-      <td>1.57</td>
-      <td>0.21</td>
-      <td>2.25</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>1.87</td>
-      <td>0.17</td>
-      <td>2.55</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">MultipleLines_No phone service</th>
-      <th>km</th>
-      <td>0.03</td>
-      <td>0.86</td>
-      <td>0.21</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.05</td>
-      <td>0.83</td>
-      <td>0.27</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">MultipleLines_Yes</th>
-      <th>km</th>
-      <td>1.92</td>
-      <td>0.17</td>
-      <td>2.59</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>2.35</td>
-      <td>0.13</td>
-      <td>3.00</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">OnlineBackup_No</th>
-      <th>km</th>
-      <td>0.29</td>
-      <td>0.59</td>
-      <td>0.76</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.24</td>
-      <td>0.63</td>
-      <td>0.68</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">OnlineBackup_No internet service</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">OnlineBackup_Yes</th>
-      <th>km</th>
-      <td>1.25</td>
-      <td>0.26</td>
-      <td>1.92</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>1.17</td>
-      <td>0.28</td>
-      <td>1.84</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">OnlineSecurity_No</th>
-      <th>km</th>
-      <td>0.02</td>
-      <td>0.88</td>
-      <td>0.19</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.09</td>
-      <td>0.77</td>
-      <td>0.38</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">OnlineSecurity_No internet service</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">OnlineSecurity_Yes</th>
-      <th>km</th>
-      <td>0.56</td>
-      <td>0.46</td>
-      <td>1.13</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.85</td>
-      <td>0.36</td>
-      <td>1.49</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PaperlessBilling_No</th>
-      <th>km</th>
-      <td>0.03</td>
-      <td>0.86</td>
-      <td>0.21</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.02</td>
-      <td>0.90</td>
-      <td>0.16</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PaperlessBilling_Yes</th>
-      <th>km</th>
-      <td>0.03</td>
-      <td>0.86</td>
-      <td>0.21</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.02</td>
-      <td>0.90</td>
-      <td>0.16</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Partner_No</th>
-      <th>km</th>
-      <td>0.27</td>
-      <td>0.60</td>
-      <td>0.73</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.37</td>
-      <td>0.54</td>
-      <td>0.88</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Partner_Yes</th>
-      <th>km</th>
-      <td>0.27</td>
-      <td>0.60</td>
-      <td>0.73</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.37</td>
-      <td>0.54</td>
-      <td>0.88</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PaymentMethod_Bank transfer (automatic)</th>
-      <th>km</th>
-      <td>0.44</td>
-      <td>0.51</td>
-      <td>0.98</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.51</td>
-      <td>0.48</td>
-      <td>1.07</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PaymentMethod_Credit card (automatic)</th>
-      <th>km</th>
-      <td>1.46</td>
-      <td>0.23</td>
-      <td>2.14</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>1.70</td>
-      <td>0.19</td>
-      <td>2.38</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PaymentMethod_Electronic check</th>
-      <th>km</th>
-      <td>0.06</td>
-      <td>0.81</td>
-      <td>0.30</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.05</td>
-      <td>0.82</td>
-      <td>0.29</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PaymentMethod_Mailed check</th>
-      <th>km</th>
-      <td>2.36</td>
-      <td>0.12</td>
-      <td>3.01</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>2.85</td>
-      <td>0.09</td>
-      <td>3.45</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PhoneService_No</th>
-      <th>km</th>
-      <td>0.03</td>
-      <td>0.86</td>
-      <td>0.21</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.05</td>
-      <td>0.83</td>
-      <td>0.27</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">PhoneService_Yes</th>
-      <th>km</th>
-      <td>0.03</td>
-      <td>0.86</td>
-      <td>0.21</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.05</td>
-      <td>0.83</td>
-      <td>0.27</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">SeniorCitizen</th>
-      <th>km</th>
-      <td>0.00</td>
-      <td>0.95</td>
-      <td>0.08</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.00</td>
-      <td>0.95</td>
-      <td>0.08</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">StreamingMovies_No</th>
-      <th>km</th>
-      <td>1.10</td>
-      <td>0.30</td>
-      <td>1.76</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>1.25</td>
-      <td>0.26</td>
-      <td>1.93</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">StreamingMovies_No internet service</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">StreamingMovies_Yes</th>
-      <th>km</th>
-      <td>2.45</td>
-      <td>0.12</td>
-      <td>3.09</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>2.73</td>
-      <td>0.10</td>
-      <td>3.35</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">StreamingTV_No</th>
-      <th>km</th>
-      <td>1.09</td>
-      <td>0.30</td>
-      <td>1.76</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.90</td>
-      <td>0.34</td>
-      <td>1.55</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">StreamingTV_No internet service</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">StreamingTV_Yes</th>
-      <th>km</th>
-      <td>2.48</td>
-      <td>0.12</td>
-      <td>3.12</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>2.23</td>
-      <td>0.14</td>
-      <td>2.89</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">TechSupport_No</th>
-      <th>km</th>
-      <td>0.49</td>
-      <td>0.49</td>
-      <td>1.04</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.50</td>
-      <td>0.48</td>
-      <td>1.07</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">TechSupport_No internet service</th>
-      <th>km</th>
-      <td>0.25</td>
-      <td>0.62</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.26</td>
-      <td>0.61</td>
-      <td>0.72</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">TechSupport_Yes</th>
-      <th>km</th>
-      <td>1.92</td>
-      <td>0.17</td>
-      <td>2.59</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>2.01</td>
-      <td>0.16</td>
-      <td>2.68</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">gender_Female</th>
-      <th>km</th>
-      <td>0.22</td>
-      <td>0.64</td>
-      <td>0.65</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.08</td>
-      <td>0.78</td>
-      <td>0.35</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">gender_Male</th>
-      <th>km</th>
-      <td>0.22</td>
-      <td>0.64</td>
-      <td>0.65</td>
-    </tr>
-    <tr>
-      <th>rank</th>
-      <td>0.08</td>
-      <td>0.78</td>
-      <td>0.35</td>
-    </tr>
-  </tbody>
-</table></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. Variable &#39;Contract_One year&#39; failed the non-proportional test: p-value is 0.0001.
-
-   Advice: with so few unique values (only 2), you can include `strata=[&#39;Contract_One year&#39;, ...]`
-in the call in `.fit`. See documentation in link [E] below.
-
-2. Variable &#39;Contract_Two year&#39; failed the non-proportional test: p-value is 0.0029.
-
-   Advice: with so few unique values (only 2), you can include `strata=[&#39;Contract_Two year&#39;, ...]`
-in the call in `.fit`. See documentation in link [E] below.
-
----
-[A]  https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Proportional%20hazard%20assumption.html
-[B]  https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Proportional%20hazard%20assumption.html#Bin-variable-and-stratify-on-it
-[C]  https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Proportional%20hazard%20assumption.html#Introduce-time-varying-covariates
-[D]  https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Proportional%20hazard%20assumption.html#Modify-the-functional-form
-[E]  https://lifelines.readthedocs.io/en/latest/jupyter_notebooks/Proportional%20hazard%20assumption.html#Stratification
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
