@@ -41,6 +41,7 @@ parts:
   - file: lectures/notes/19_time-series.ipynb
   - file: lectures/notes/20_survival-analysis.ipynb
   - file: lectures/notes/21_communication.ipynb
+  - file: lectures/notes/22_AIcsCoreFairness.pdf  
   - file: lectures/notes/23_deployment-conclusion.ipynb
   - file: lectures/notes/final-exam-review-guiding-question.ipynb
   - file: lectures/notes/AppendixA.ipynb
